@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Research interests of SMS Laboratory, Hannam University">
+  <title>Research | SMS Laboratory</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .research-page { background:#fff; }
+    .research-page .research-banner { background:#102B46; padding:48px 28px 45px; text-align:center; }
+    .research-page .research-banner .eyebrow { margin:0 0 12px; color:#A8BFD2; font-size:.76rem; letter-spacing:.2em; font-weight:700; }
+    .research-page .research-banner h1 { margin:0; color:#fff; font-size:clamp(2.2rem,4vw,3rem); font-weight:800; letter-spacing:-.035em; line-height:1.2; }
+    .research-page .research-banner .subtitle { margin:15px 0 0; color:#D3DEE8; font-size:.95rem; }
+    .research-page .research-content { max-width:1200px; margin:0 auto; padding:70px 28px 100px; }
+    .research-page .section-label { margin:0 0 8px; color:#55718E; font-size:.74rem; letter-spacing:.15em; font-weight:800; }
+    .research-page .section-heading { margin:0 0 16px; padding:0 0 17px 15px; border-left:4px solid #176BA0; border-bottom:1px solid #E5E7EB; color:#102B46; font-size:clamp(1.5rem,2.5vw,2rem); line-height:1.3; }
+    .research-page .intro { max-width:900px; margin:0 0 34px; color:#526579; line-height:1.85; font-size:1rem; }
+    .research-page .research-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; }
+    .research-page .research-card { min-width:0; background:#fff; border:1px solid #E2E8EF; border-top:4px solid #176BA0; padding:30px 26px 32px; box-shadow:0 5px 18px rgba(13,39,68,.055); transition:transform .2s ease,box-shadow .2s ease; }
+    .research-page .research-card:hover { transform:translateY(-4px); box-shadow:0 12px 25px rgba(13,39,68,.11); }
+    .research-page .research-number { margin:0 0 19px; color:#7390A9; font-size:.82rem; font-weight:800; letter-spacing:.1em; }
+    .research-page .research-card h3 { margin:0 0 9px; color:#102B46; font-size:1.22rem; line-height:1.4; }
+    .research-page .research-card .ko-title { margin:0 0 20px; color:#5F7993; font-size:.9rem; font-weight:700; }
+    .research-page .research-card .description { margin:0; color:#45596E; font-size:.94rem; line-height:1.85; overflow-wrap:break-word; }
+    @media(max-width:900px) { .research-page .research-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    @media(max-width:650px) { .research-page .research-banner { padding:42px 20px 40px; } .research-page .research-content { padding:46px 18px 65px; } .research-page .research-grid { grid-template-columns:1fr; gap:18px; } .research-page .research-card { padding:25px 22px 27px; } }
+  </style>
+</head>
+<body>
+<header>
+  <nav aria-label="주 메뉴">
+    <a href="index.html" class="logo" aria-label="SMS Laboratory Home">SMS <span style="font-weight:500;margin-left:8px;font-size:.8rem;letter-spacing:0;line-height:1.2;max-width:165px">Smart Materials and<br>Structures Laboratory</span></a>
+    <ul>
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="professor.html">PROFESSOR</a></li>
+      <li><a href="members.html">MEMBERS</a></li>
+      <li><a href="research.html" class="active" aria-current="page">RESEARCH</a></li>
+      <li><a href="gallery.html">GALLERY</a></li>
+      <li><a href="contact.html">CONTACT</a></li>
+    </ul>
+  </nav>
+</header>
+<main class="research-page">
+  <div class="research-banner">
+    <p class="eyebrow">SMS LABORATORY</p>
+    <h1>Research</h1>
+    <p class="subtitle">연구 분야 소개</p>
+  </div>
+  <section class="research-content" aria-labelledby="research-heading">
+    <p class="section-label">OUR RESEARCH</p>
+    <h2 class="section-heading" id="research-heading">Research Interests</h2>
+    <p class="intro">SMS Laboratory는 콘크리트의 역학적·전기적 특성을 기반으로 구조물의 상태를 평가하는 기술과 지속가능한 스마트 건설재료를 연구합니다.</p>
+    <div class="research-grid">
+      <article class="research-card">
+        <p class="research-number">01 / RESEARCH AREA</p>
+        <h3>Self-Sensing Concrete</h3>
+        <p class="ko-title">자가감지 콘크리트</p>
+        <p class="description">콘크리트의 전기저항 및 정전용량 변화를 활용하여 외부 하중과 변형에 따른 전기적 응답을 분석합니다. 재료 구성과 전극 조건에 따른 감지 성능을 평가하고, 측정 신호의 안정성과 신뢰성을 높이는 기술을 연구합니다.</p>
+      </article>
+      <article class="research-card">
+        <p class="research-number">02 / RESEARCH AREA</p>
+        <h3>Structural Health Monitoring</h3>
+        <p class="ko-title">구조물 상태 모니터링</p>
+        <p class="description">전기적 측정 및 임피던스 기반 분석 기술을 활용하여 콘크리트와 구조물의 상태 변화를 평가합니다. 하중과 환경 조건에 따른 전기적 응답 특성을 분석하고, 구조물의 상태 평가에 적용할 수 있는 측정 기술을 연구합니다.</p>
+      </article>
+      <article class="research-card">
+        <p class="research-number">03 / RESEARCH AREA</p>
+        <h3>Sustainable Smart Construction Materials</h3>
+        <p class="ko-title">친환경 스마트 건설재료</p>
+        <p class="description">슬래그 및 산업부산물 등 대체 재료를 활용하여 환경 부담을 줄이는 고성능 건설재료를 연구합니다. 배합 조건에 따른 역학적·내구적 특성과 전기적 특성을 함께 평가하여 기능성과 지속가능성을 갖춘 재료의 개발을 목표로 합니다.</p>
+      </article>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="footer-inner">
+    <div><strong style="font-size:1.1rem">HANNAM UNIVERSITY</strong><br><span>한남대학교</span></div>
+    <p><strong>SMS Laboratory</strong><br>Smart Materials and Structures Laboratory<br>Daejeon, Republic of Korea</p>
+    <p>© 2025 SMS Laboratory</p>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professor | SMS Laboratory | Hannam University</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ==========================================
+           PROFESSOR PAGE
+           ========================================== */
+
+        .cv-section h3 {
+            margin-top: 2rem;
+            color: #102f52;
+        }
+
+        .cv-section ul {
+            margin: 0;
+            padding-left: 1.2rem;
+        }
+
+        .cv-section li {
+            margin-bottom: 0.35rem;
+            line-height: 1.5;
+        }
+
+        .contact-box {
+            background: #f5f7fb;
+            padding: 1.2rem 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .cv-section {
+            padding-top: 16px;
+            padding-bottom: 70px;
+        }
+
+        .cv-section h3 {
+            padding-bottom: 10px;
+            border-bottom: 1px solid #dce5ef;
+            letter-spacing: .025em;
+        }
+
+        .cv-section ul {
+            margin-bottom: 24px;
+        }
+
+        .cv-section li {
+            margin-bottom: 12px;
+            color: #34465a;
+        }
+
+        .contact-box {
+            border-left: 3px solid #17639b;
+            background: #f5f8fc;
+        }
+
+        .contact-box p {
+            margin: .5rem 0;
+            overflow-wrap: anywhere;
+        }
+
+        .profile-info h2 {
+            border-left: none;
+            padding-left: 0;
+        }
+
+        /* ==========================================
+   PROFESSOR BANNER
+   RESEARCH 페이지와 동일한 디자인
+   ========================================== */
+
+.professor-page .professor-banner {
+    background: #102B46;
+    padding: 48px 28px 45px;
+    text-align: center;
+}
+
+/* SMS LABORATORY */
+.professor-page .professor-banner p.eyebrow {
+    display: block;
+    margin: 0 0 12px;
+    padding: 0;
+    border: none;
+
+    color: #A8BFD2;
+    font-family: 'Pretendard', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: .76rem;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: .2em;
+    line-height: 1.65;
+    text-transform: none;
+    word-spacing: normal;
+}
+
+/* Professor */
+.professor-page .professor-banner h1 {
+    margin: 0;
+    padding: 0;
+    color: #FFFFFF;
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -.035em;
+    line-height: 1.2;
+}
+
+/* 지도교수 소개 및 연구 업적 */
+.professor-page .professor-banner p.subtitle {
+    margin: 15px 0 0;
+    padding: 0;
+    color: #D3DEE8;
+    font-size: .95rem;
+    font-weight: 400;
+    letter-spacing: normal;
+}
+
+/* 모바일 */
+@media (max-width: 650px) {
+    .professor-page .professor-banner {
+        padding: 42px 20px 40px;
+    }
+}
+    </style>
+</head>
+
+<body>
+
+<!-- ==========================================
+     HEADER
+     ========================================== -->
+
+<header>
+    <nav aria-label="주 메뉴">
+
+        <a href="index.html" class="logo" aria-label="SMS Laboratory Home">
+            SMS
+            <span style="
+                font-weight:500;
+                margin-left:8px;
+                font-size:.8rem;
+                letter-spacing:0;
+                line-height:1.2;
+                max-width:165px;
+            ">
+                Smart Materials and<br>
+                Structures Laboratory
+            </span>
+        </a>
+
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li>
+                <a href="professor.html" class="active" aria-current="page">
+                    PROFESSOR
+                </a>
+            </li>
+            <li><a href="members.html">MEMBERS</a></li>
+            <li><a href="research.html">RESEARCH</a></li>
+            <li><a href="gallery.html">GALLERY</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+
+    </nav>
+</header>
+
+
+<!-- ==========================================
+     PROFESSOR BANNER
+     ========================================== -->
+
+<main class="professor-page">
+
+    <div class="professor-banner">
+        <p class="eyebrow">SMS LABORATORY</p>
+        <h1>Professor</h1>
+        <p class="subtitle">지도교수 소개 및 연구 업적</p>
+    </div>
+
+
+    <!-- ==========================================
+         PROFESSOR PROFILE
+         ========================================== -->
+
+    <section>
+
+        <div class="profile-wrap">
+
+            <div class="profile-photo">
+                <img src="img/professor.jpg" alt="Professor Photo">
+            </div>
+
+            <div class="profile-info">
+
+                <h2>김민경 교수 (Min Kyoung Kim)</h2>
+
+                <p>
+                    <strong>Affiliation:</strong>
+                    한남대학교 건설환경공학과 (Hannam University)
+                </p>
+
+                <p>
+                    <strong>Research Fields:</strong>
+                    UHPFRC, SH-SFRC, 스마트 건설재료,
+                    자가감지 콘크리트, EIT
+                </p>
+
+                <div class="contact-box">
+
+                    <p>
+                        <strong>Tel:</strong>
+                        +82-42-629-7931
+                    </p>
+
+                    <p>
+                        <strong>Mobile:</strong>
+                        +82-10-4809-0961
+                    </p>
+
+                    <p>
+                        <strong>E-mail:</strong>
+                        mkkim9112@hnu.kr
+                    </p>
+
+                    <p>
+                        <strong>Office:</strong>
+                        Department of Civil and Environmental Engineering,<br>
+                        70 Hannam-ro, Daedeok-gu,
+                        Daejeon 34430, Republic of Korea
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         CURRICULUM VITAE
+         ========================================== -->
+
+    <section class="cv-section">
+
+        <h2>Curriculum Vitae</h2>
+
+
+        <!-- EDUCATION -->
+
+        <h3>EDUCATION</h3>
+
+        <ul>
+
+            <li>
+                <strong>Doctor of Philosophy &amp; Master of Science</strong>
+                (2014.03 – 2019.08)<br>
+                SEJONG University, Structural Engineering<br>
+                Dissertation:
+                <em>
+                    Electro-mechanical response of self-sensing
+                    fiber-reinforced cementitious composites (SSFRCs)
+                </em><br>
+                Advisor: Prof. Dong Joo Kim
+            </li>
+
+            <li>
+                <strong>Bachelor of Science</strong>
+                (2010.03 – 2014.02)<br>
+                SEJONG University, Structural Engineering
+            </li>
+
+        </ul>
+
+
+        <!-- EXPERIENCE -->
+
+        <h3>EXPERIENCE</h3>
+
+        <ul>
+
+            <li>
+                <strong>Assistant Professor</strong>
+                (2024.09 – Present)<br>
+                Hannam University
+            </li>
+
+            <li>
+                <strong>Post-Doctoral Researcher</strong>
+                (2023.11 – 2024.08)<br>
+                KICT – Structural Engineering Research Institute
+            </li>
+
+            <li>
+                <strong>Researcher</strong>
+                (2023.02 – 2023.10)<br>
+                State University of New York, Buffalo
+            </li>
+
+            <li>
+                <strong>Senior Researcher</strong>
+                (2022.04 – 2023.10)<br>
+                SEJONG University
+            </li>
+
+            <li>
+                <strong>Research Assistant Professor</strong>
+                (2021.03 – 2022.03)<br>
+                SEJONG University
+            </li>
+
+            <li>
+                <strong>Post-Doctoral Researcher</strong>
+                (2019.09 – 2021.02)<br>
+                SEJONG University
+            </li>
+
+        </ul>
+
+
+        <!-- RESEARCH INTERESTS -->
+
+        <h3>RESEARCH INTERESTS</h3>
+
+        <ul>
+
+            <li>
+                Ultra-high-performance fiber-reinforced concrete (UHPFRC)
+            </li>
+
+            <li>
+                Strain-hardening steel-fiber-reinforced concrete (SH-SFRC)
+            </li>
+
+            <li>
+                Smart construction materials
+            </li>
+
+            <li>
+                Smart concrete with self-sensing, self-healing,
+                and self-crack closing capacity
+            </li>
+
+            <li>
+                Electrical impedance tomography (EIT) technology
+            </li>
+
+        </ul>
+
+
+        <!-- ==========================================
+             PUBLICATIONS
+             ========================================== -->
+
+        <h3>PUBLICATIONS (SCI-listed)</h3>
+
+        <ul>
+
+            <li>
+                S Kwon, S Lee, H Kang, MK Kim, S Her, S Bae,
+                DJ Kim, and J Moon,
+                “Performance of self-healing cementitious mortar
+                with PVA fiber and SAP,”
+                International Journal of Concrete Structures and Materials,
+                18(1), 2024, 53.
+            </li>
+
+            <li>
+                TT Lai, MK Kim, VD Truong, TU Kim, and DJ Kim,
+                “Electromechanical response of smart ultra-high
+                performance concrete beams under flexure:
+                Effects of filler type and electrode spacing,”
+                Cement and Concrete Composites,
+                152, 2024, 105629.
+            </li>
+
+            <li>
+                MK Kim and DDL Chung,
+                “Inductance-based sensing of surface roughness,
+                with application to wear sensing,”
+                Journal of Materials Science,
+                59(33), 2024, 15816-15829.
+            </li>
+
+            <li>
+                MK Kim, MA Al-Qaralleh, and DDL Chung,
+                “Strong piezoresistivity and piezopermittivity
+                of cement-based material without functional
+                admixture and their correlation,”
+                Cement and Concrete Composites,
+                151, 2024, 105587.
+            </li>
+
+            <li>
+                MK Kim, TU Kim, and DJ Kim,
+                “Smart ultra-high-performance concrete under
+                cyclic high compressive stress,”
+                Case Studies in Construction Materials,
+                20, 2024, 03116.
+            </li>
+
+            <li>
+                JS Cho, TU Kim, MK Kim, and DJ Kim,
+                “Electromechanical response of smart
+                ultra-high-performance concrete under uniaxial load:
+                Experimental investigation and electric field analysis,”
+                Construction and Building Materials,
+                435, 2024, 136880.
+            </li>
+
+            <li>
+                S Yoon, MK Kim, TU Kim, D Jeon, H Song,
+                J-I Suh, JE Oh, and DJ Kim,
+                “Enhancing image resolution in single-side
+                electrical resistance tomography (ERT)
+                by utilizing theoretical sensitivity analysis:
+                Experimental validation and application to cement mortar,”
+                Journal of Building Engineering,
+                84, 2024, 108480.
+            </li>
+
+            <li>
+                MK Kim and DDL Chung,
+                “Piezoinductance in a carbon fiber tow,”
+                Carbon, 223, 2024, 119013.
+            </li>
+
+            <li>
+                MK Kim and DDL Chung,
+                “Electrical-connection-related stray inductance
+                causing overassessment of the electrical resistance
+                by using the two-probe method,”
+                Journal of Electronic Materials,
+                53(2), 2024, 1026-1034.
+            </li>
+
+            <li>
+                MK Kim and DDL Chung,
+                “Inductance-based and inductance-capacitance-based
+                structural self-sensing of shape-changing deformation
+                in aluminum,”
+                Sensors and Actuators A: Physical,
+                365, 2024, 114926.
+            </li>
+
+            <li>
+                MK Kim and DDL Chung,
+                “Unprecedented sensing of the twist level in fiber
+                tows, as shown for carbon fiber by inductance-based
+                self-sensing, which provides fast, low-cost and
+                large-format sensing,”
+                Carbon, 214, 2023, 118349.
+            </li>
+
+            <li>
+                MK Kim and DJ Kim,
+                “Electromechanical response of strain-hardening
+                fiber-reinforced cementitious composites (SH-FRCCs)
+                under direct tension: A review,”
+                Sensors and Actuators A: Physical,
+                349, 2023, 114096.
+            </li>
+
+            <li>
+                TU Kim, MK Kim, JW Park, and DJ Kim,
+                “Effects of temperature and humidity on
+                self-stress sensing capacity of smart concrete blocks,”
+                Journal of Building Engineering,
+                69, 2023, 106227.
+            </li>
+
+            <li>
+                S Yoon, D Jeon, JE Oh,
+                MK Kim (Corresponding author), and DJ Kim,
+                “Experimentally validated analytical solutions
+                to homogeneous problems of electrical impedance
+                tomography (EIT) on rectangular cement-based materials,”
+                Applied Sciences,
+                13, 2023, 335.
+            </li>
+
+            <li>
+                MK Kim, S Yoon, and DJ Kim,
+                “Different electrical voltage responses of cement
+                composites under forward and backward current directions,”
+                Case Studies in Construction Materials,
+                16, 2022, e01118.
+            </li>
+
+            <li>
+                D Jeon, MK Kim, H Woo, Y Jeong,
+                JE Oh, J Moon, DJ Kim, and S Yoon,
+                “High-accuracy rebar position detection using
+                deep learning-based frequency-difference
+                electrical resistance tomography,”
+                Automation in Construction,
+                135, 2022, 104116.
+            </li>
+
+            <li>
+                MK Kim, HV Le, and DJ Kim,
+                “Electromechanical response of smart ultra-high
+                performance concrete under external loads
+                corresponding to different electrical measurements,”
+                Sensors, 21, 2021, 1281.
+            </li>
+
+            <li>
+                D Jeon, MK Kim, H Woo, Y Jeong,
+                JE Oh, DJ Kim, and S Yoon,
+                “Detecting embedded rebar in cement mortar
+                by frequency-difference electrical resistance tomography,”
+                Automation in Construction,
+                132, 2021, 103974.
+            </li>
+
+            <li>
+                HV Le, MK Kim, SU Kim, S-Y Chung, and DJ Kim,
+                “Enhancing self-stress sensing ability of smart
+                ultra-high performance concretes under compression
+                by nano functional fillers,”
+                Journal of Building Engineering,
+                44, 2021, 102717.
+            </li>
+
+            <li>
+                SY Lee, HV Le, MK Kim, DJ Kim, and Park J,
+                “An innovative smart concrete anchorage with
+                self-stress sensing capacity of prestressing stress
+                of PS tendon,”
+                Sensors, 21(5), 2021, 5251.
+            </li>
+
+            <li>
+                HV Le, MK Kim, DJ Kim, and J Park,
+                “Electrical properties of smart ultra-high
+                performance concrete under various temperatures,
+                humidities, and age of concrete,”
+                Cement and Concrete Composites,
+                118, 2021, 103979.
+            </li>
+
+            <li>
+                MK Kim, J Park, and DJ Kim,
+                “Characterizing the electro-mechanical response
+                of self-sensing steel-fiber reinforced
+                cementitious composites,”
+                Construction and Building Materials,
+                240, 2020, 117954.
+            </li>
+
+            <li>
+                HW Noh, MK Kim, and DJ Kim,
+                “Comparative performance of four electrodes
+                for measuring the electromechanical response
+                of self-damage detecting concrete under tensile load,”
+                Sensors, 19, 2019, 3645.
+            </li>
+
+            <li>
+                MK Kim, DJ Kim, Y-S Chung, and E Choi,
+                “Effects of short heat treatment period on pullout
+                resistance of shape memory alloy fibers in mortar,”
+                Materials, 12, 2019, 2278.
+            </li>
+
+            <li>
+                MK Kim and DJ Kim,
+                “Electromechanical response of high-performance
+                fiber-reinforced cementitious composites containing
+                milled glass fibers under tension,”
+                Materials, 11, 2018, 1115.
+            </li>
+
+            <li>
+                MK Kim, DJ Kim, and Y-K An,
+                “Electro-mechanical self-sensing response
+                of ultra-high-performance fiber reinforced
+                concrete in tension,”
+                Composites Part B,
+                134, 2018, 254–264.
+            </li>
+
+            <li>
+                MK Kim, DJ Kim, Y-S Chung, and E Choi,
+                “Direct tensile behavior of shape-memory-alloy
+                fiber-reinforced cement composites,”
+                Construction and Building Materials,
+                102, 2016, 462–470.
+            </li>
+
+        </ul>
+
+
+        <!-- ==========================================
+             DOMESTIC JOURNAL
+             ========================================== -->
+
+        <h3>Domestic Journal</h3>
+
+        <ul>
+
+            <li>
+                TU Kim, MK Kim, and DJ Kim,
+                “Investigation of the electromechanical response
+                of smart ultra-high performance fiber-reinforced
+                concrete under flexural,”
+                Journal of the Korea Institute for Structural
+                Maintenance and Inspection,
+                26(5), 2022, pp. 57-65.
+            </li>
+
+            <li>
+                SY Lee, MK Kim, and DJ Kim,
+                “Effect of loading rate on self-stress sensing
+                capacity of the smart UHPC,”
+                Journal of the Korea Academia-Industrical,
+                22(5), 2021, pp. 81-88.
+            </li>
+
+            <li>
+                MK Kim and DJ Kim,
+                “Effects of milled glass fibers on the
+                damage-sensing capacity of steel-fiber-reinforced
+                cementitious composites,”
+                Journal of the Korea Concrete Institute,
+                29(5), 2017, pp. 457-464.
+            </li>
+
+        </ul>
+
+
+        <!-- ==========================================
+             PATENTS
+             ========================================== -->
+
+        <h3>Patents</h3>
+
+        <ul>
+
+            <li>
+                D Jeon, S Yoon, H Woo, MK Kim, and DJ Kim,
+                “Detecting embedded rebar in cement mortar
+                by frequency-difference electrical impedance tomography,”
+                Korean Patent 10-2619840.
+            </li>
+
+            <li>
+                DJ Kim and MK Kim,
+                “Damage self-sensing steel-fiber-reinforced
+                concrete with milled glass fiber,”
+                Korean Patent 10-1888481.
+            </li>
+
+        </ul>
+
+
+        <!-- ==========================================
+             INTERNATIONAL CONFERENCES
+             ========================================== -->
+
+        <h3>International Conferences</h3>
+
+        <ul>
+
+            <li>
+                MK Kim and DDL Chung,
+                “Inductance-based structural self-sensing,
+                as shown for sensing shape-changing deformation
+                in aluminum,”
+                MS&amp;T23: Materials Science &amp; Technology,
+                Columbus, OH, USA, Oct 1–4, 2023.
+            </li>
+
+            <li>
+                MK Kim and DDL Chung,
+                “Unprecedented sensing of the twisting in fiber
+                tows, as shown for carbon fibers by
+                inductance-based self-sensing, which provides
+                fast, low-cost and large-format sensing,”
+                MS&amp;T23: Materials Science &amp; Technology,
+                Columbus, OH, USA, Oct 1–4, 2023.
+            </li>
+
+            <li>
+                MK Kim and DDL Chung,
+                “Electrical-lead-related stray inductance
+                causing over-assessment of the electrical
+                resistance measured using the two-probe method,”
+                MS&amp;T23: Materials Science &amp; Technology,
+                Columbus, OH, USA, Oct 1–4, 2023.
+            </li>
+
+            <li>
+                TU Kim, MK Kim, LT Tu, and DJ Kim,
+                “Electromechanical response of smart repair
+                material with carbon black based on rapid setting cement,”
+                Bridge Engineering Institute Conference 2023 (BEI-2023),
+                Rome, Italy, July 17–20, 2023.
+            </li>
+
+            <li>
+                D-L Nguyen, Tran V-T, Nguyen H-T-T, and MK Kim,
+                “Crack patterns in direct tension and flexure
+                of ultra-high-performance fiber-reinforced
+                concrete with scale effect,”
+                2020 5th International Conference on Green
+                Technology and Sustainable Development (GTSD),
+                Ho Chi Minh City, Vietnam, Nov 27–28, 2020.
+            </li>
+
+            <li>
+                SY Lee, MK Kim, and DJ Kim,
+                “Self-sensing response of smart ultra-high
+                performance concrete under direct tension,”
+                Innovative Non-Destructive Testing for Civil Engineers
+                (INDTCE) 2019,
+                Waikoloa, Hawaii, USA, Nov 20–23, 2019.
+            </li>
+
+            <li>
+                SI Choi, MK Kim, DJ Kim, and Y-K An,
+                “Multiple microcracking behavior of ultra-high-performance
+                fiber reinforced concrete under high-rate direct tension:
+                Investigation based on a digital image correlation technique,”
+                The 2019 World Congress on Advances in Structural
+                Engineering and Mechanics (ASEM19),
+                Jeju Island, Korea, Sep 17–21, 2019.
+            </li>
+
+            <li>
+                MK Kim and DJ Kim,
+                “Electromechanical response of self-sensing
+                concrete beam under flexure,”
+                Proceedings of the 26th International Conference
+                on International Community of Composites Engineering,
+                Paris, France, July 15–21, 2018.
+            </li>
+
+            <li>
+                DJ Kim and MK Kim,
+                “The Damage Self-Sensing Response of
+                Ultra-High-Performance Fiber-Reinforced Concrete in Tension,”
+                Proceedings of the 3rd International Conference
+                on Smart Materials and Structures,
+                Orlando, FL, USA, March 20–22, 2017.
+            </li>
+
+        </ul>
+
+
+        <!-- ==========================================
+             AWARDS
+             ========================================== -->
+
+        <h3>Awards</h3>
+
+        <ul>
+            <li>
+                Best Paper Presentation Award,
+                KCI Conference, Oct. 22, 2015.
+            </li>
+        </ul>
+
+    </section>
+
+</main>
+
+
+<!-- ==========================================
+     FOOTER
+     ========================================== -->
+
+<footer>
+
+    <div class="footer-inner">
+
+        <div>
+            <strong style="font-size:1.1rem">
+                HANNAM UNIVERSITY
+            </strong>
+            <br>
+            <span>한남대학교</span>
+        </div>
+
+        <p>
+            <strong>SMS Laboratory</strong><br>
+            Smart Materials and Structures Laboratory<br>
+            Daejeon, Republic of Korea
+        </p>
+
+        <p>© 2025 SMS Laboratory</p>
+
+    </div>
+
+</footer>
+
+</body>
+</html>

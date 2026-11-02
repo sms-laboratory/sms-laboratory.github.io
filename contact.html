@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact SMS Laboratory at Hannam University">
+  <title>Contact | SMS Laboratory</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .contact-page { background:#fff; }
+    .contact-page .contact-banner { background:#102B46; padding:48px 28px 45px; text-align:center; }
+    .contact-page .contact-banner .eyebrow { margin:0 0 12px; color:#A8BFD2; font-size:.76rem; font-weight:700; letter-spacing:.2em; }
+    .contact-page .contact-banner h1 { margin:0; padding:0; border:0; color:#fff; font-size:clamp(2.2rem,4vw,3rem); font-weight:800; line-height:1.2; }
+    .contact-page .contact-banner .subtitle { margin:15px 0 0; color:#D3DEE8; font-size:.95rem; }
+    .contact-page .contact-section { max-width:1200px; margin:0 auto; padding:66px 28px 88px; }
+    .contact-page .section-label { margin:0 0 8px; color:#55718E; font-size:.74rem; font-weight:800; letter-spacing:.15em; }
+    .contact-page .section-heading { margin:0 0 28px; padding:0 0 17px 15px; border-left:4px solid #176BA0; border-bottom:1px solid #E5E7EB; color:#102B46; font-size:clamp(1.5rem,2.5vw,2rem); }
+    .contact-page .contact-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+    .contact-page .contact-card { padding:30px; border:1px solid #E3E9F0; background:#fff; box-shadow:0 5px 20px rgba(16,43,70,.045); }
+    .contact-page .contact-card h3 { margin:0 0 19px; color:#102B46; font-size:1.15rem; }
+    .contact-page .contact-card dl { margin:0; }
+    .contact-page .contact-card dt { margin-top:16px; color:#637B93; font-size:.76rem; font-weight:800; letter-spacing:.07em; text-transform:uppercase; }
+    .contact-page .contact-card dt:first-child { margin-top:0; }
+    .contact-page .contact-card dd { margin:5px 0 0; color:#34465A; overflow-wrap:anywhere; }
+    .contact-page .contact-card a { color:#17639B; text-decoration:none; }
+    .contact-page .contact-card a:hover { text-decoration:underline; }
+    .contact-page .location-block { margin-top:44px; }
+    .contact-page .location-box { padding:29px 30px; border:1px solid #E3E9F0; background:#F6F8FB; }
+    .contact-page .location-box p { margin:0 0 9px; }
+    .contact-page .location-box p:last-child { margin-bottom:0; }
+    .contact-page .location-box .address { color:#102B46; font-weight:700; }
+    .contact-page .location-box .note { color:#687A8D; font-size:.9rem; }
+    .contact-page .inquiry { margin-top:36px; padding:25px 30px; border-left:4px solid #176BA0; background:#F6F8FB; }
+    .contact-page .inquiry h3 { margin:0 0 8px; color:#102B46; font-size:1.08rem; }
+    .contact-page .inquiry p { margin:0; color:#4B6074; }
+    @media (max-width:700px) {
+      .contact-page .contact-banner { padding:42px 20px 40px; }
+      .contact-page .contact-section { padding:45px 18px 65px; }
+      .contact-page .contact-grid { grid-template-columns:1fr; gap:16px; }
+      .contact-page .contact-card, .contact-page .location-box { padding:23px 20px; }
+      .contact-page .inquiry { padding:22px 20px; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <nav aria-label="주 메뉴">
+    <a href="index.html" class="logo" aria-label="SMS Laboratory Home">SMS <span style="font-weight:500;margin-left:8px;font-size:.8rem;letter-spacing:0;line-height:1.2;max-width:165px">Smart Materials and<br>Structures Laboratory</span></a>
+    <ul>
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="professor.html">PROFESSOR</a></li>
+      <li><a href="members.html">MEMBERS</a></li>
+      <li><a href="research.html">RESEARCH</a></li>
+      <li><a href="gallery.html">GALLERY</a></li>
+      <li><a href="contact.html" class="active" aria-current="page">CONTACT</a></li>
+    </ul>
+  </nav>
+</header>
+<main class="contact-page">
+  <div class="contact-banner">
+    <p class="eyebrow">SMS LABORATORY</p>
+    <h1>Contact</h1>
+    <p class="subtitle">연구실 연락처 및 위치 안내</p>
+  </div>
+  <section class="contact-section" aria-labelledby="contact-heading">
+    <p class="section-label">GET IN TOUCH</p>
+    <h2 class="section-heading" id="contact-heading">Contact Information</h2>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Laboratory</h3>
+        <dl>
+          <dt>Name</dt>
+          <dd>Smart Materials and Structures Laboratory (SMS Lab)</dd>
+          <dt>University</dt>
+          <dd>Hannam University (한남대학교)</dd>
+          <dt>Department</dt>
+          <dd>Department of Civil and Environmental Engineering (건설환경공학과)</dd>
+        </dl>
+      </div>
+      <div class="contact-card">
+        <h3>Professor</h3>
+        <dl>
+          <dt>Name</dt>
+          <dd>Prof. Min Kyoung Kim (김민경 교수)</dd>
+          <dt>E-mail</dt>
+          <dd><a href="mailto:mkkim9112@hnu.kr">mkkim9112@hnu.kr</a></dd>
+          <dt>Tel</dt>
+          <dd><a href="tel:+82426297931">+82-42-629-7931</a></dd>
+        </dl>
+      </div>
+    </div>
+    <div class="location-block">
+      <p class="section-label">FIND US</p>
+      <h2 class="section-heading">Location</h2>
+      <div class="location-box">
+        <p class="address">한남대학교 · 대전광역시 대덕구 한남로 70 (34430)</p>
+        <p>Hannam University, 70 Hannam-ro, Daedeok-gu, Daejeon 34430, Republic of Korea</p>
+        <p><strong>SMS 연구실:</strong> 공과대학 09번 건물, 10층 14호 (1014호)</p>
+        <p><strong>교수님 연구실:</strong> 공과대학 09번 건물, 10층 04호 (1004호)</p>
+      </div>
+    </div>
+    <div class="inquiry">
+      <h3>Research &amp; Graduate Inquiries</h3>
+      <p>공동연구 및 대학원 진학 관련 문의는 위 이메일로 연락해 주시기 바랍니다.</p>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="footer-inner">
+    <div><strong style="font-size:1.1rem">HANNAM UNIVERSITY</strong><br><span>한남대학교</span></div>
+    <p><strong>SMS Laboratory</strong><br>Smart Materials and Structures Laboratory<br>Daejeon, Republic of Korea</p>
+    <p>© 2025 SMS Laboratory</p>
+  </div>
+</footer>
+</body>
+</html>

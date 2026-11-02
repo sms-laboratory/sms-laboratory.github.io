@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Members of SMS Laboratory, Hannam University">
+
+    <title>Members | SMS Laboratory</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* ========================================
+           MEMBERS PAGE
+        ======================================== */
+
+        .members-page {
+            background: #ffffff;
+        }
+
+
+        /* ========================================
+           MEMBERS BANNER
+        ======================================== */
+
+        .members-page .members-banner {
+            background: #102B46;
+            border-bottom: none;
+            padding: 48px 28px 45px;
+            text-align: center;
+        }
+
+        .members-page .members-banner .eyebrow {
+            color: #A8BFD2;
+            font-size: 0.76rem;
+            letter-spacing: 0.2em;
+            font-weight: 700;
+            margin: 0 0 12px;
+        }
+
+        .members-page .members-banner h1 {
+            margin: 0;
+            color: #ffffff;
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.035em;
+            line-height: 1.2;
+        }
+
+        .members-page .members-banner p:last-child {
+            margin: 15px 0 0;
+            color: #D3DEE8;
+            font-size: 0.95rem;
+        }
+
+
+        /* ========================================
+           MEMBERS SECTION
+        ======================================== */
+
+        .members-page .members-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 65px 28px 30px;
+        }
+
+        .members-page .members-section:last-child {
+            padding-bottom: 95px;
+        }
+
+        .members-page .section-label {
+            font-size: 0.74rem;
+            letter-spacing: 0.15em;
+            font-weight: 800;
+            color: #55718E;
+            margin: 0 0 8px;
+        }
+
+        .members-page .section-heading {
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            color: #102B46;
+            margin: 0 0 28px;
+            padding: 0 0 17px 15px;
+            border-left: 4px solid #176BA0;
+            border-bottom: 1px solid #E5E7EB;
+            line-height: 1.3;
+        }
+
+
+        /* ========================================
+           MEMBER GRID
+        ======================================== */
+
+        .members-page .member-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+
+        /* ========================================
+           MEMBER CARD
+        ======================================== */
+
+        .members-page .member-card {
+            min-width: 0;
+            overflow: hidden;
+
+            background: #ffffff;
+
+            border: 1px solid #E5E7EB;
+            border-radius: 4px;
+
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .members-page .member-card:hover {
+            transform: translateY(-4px);
+
+            box-shadow: 0 12px 25px rgba(16, 43, 70, 0.12);
+        }
+
+
+        /* ========================================
+           MEMBER PHOTO
+        ======================================== */
+
+        .members-page .member-card img {
+            display: block;
+
+            width: 100%;
+            height: 275px;
+
+            object-fit: cover;
+            object-position: center top;
+
+            background: #F3F4F6;
+        }
+
+
+        /* ========================================
+           MEMBER INFORMATION
+        ======================================== */
+
+        .members-page .member-info {
+            padding: 21px 15px 25px;
+            text-align: center;
+        }
+
+        .members-page .member-role {
+            color: #66809A;
+
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+
+            margin: 0 0 11px;
+        }
+
+        .members-page .member-name {
+            color: #102B46;
+
+            font-size: 1.18rem;
+            font-weight: 800;
+            line-height: 1.4;
+
+            margin: 0;
+        }
+
+        .members-page .kr-name {
+            display: block;
+
+            font-size: 0.98rem;
+            font-weight: 600;
+
+            margin-top: 5px;
+        }
+
+        .members-page .member-sub {
+            margin: 14px 0 0;
+
+            color: #7B8794;
+            font-size: 0.86rem;
+        }
+
+
+        /* ========================================
+           RESPONSIVE DESIGN
+        ======================================== */
+
+        @media (max-width: 900px) {
+
+            .members-page .member-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+        }
+
+        @media (max-width: 650px) {
+
+            .members-page .members-banner {
+                padding: 42px 20px 40px;
+            }
+
+            .members-page .members-section {
+                padding: 45px 18px 15px;
+            }
+
+            .members-page .members-section:last-child {
+                padding-bottom: 65px;
+            }
+
+            .members-page .member-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 15px;
+            }
+
+            .members-page .member-card img {
+                height: 220px;
+            }
+
+            .members-page .member-info {
+                padding: 17px 12px 20px;
+            }
+
+            .members-page .member-name {
+                font-size: 1.05rem;
+            }
+
+        }
+
+        @media (max-width: 390px) {
+
+            .members-page .member-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .members-page .member-card img {
+                height: 300px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <!-- ========================================
+         HEADER
+    ======================================== -->
+
+    <header>
+
+        <nav aria-label="주 메뉴">
+
+            <a href="index.html"
+               class="logo"
+               aria-label="SMS Laboratory Home">
+
+                SMS
+
+                <span style="
+                    font-weight: 500;
+                    margin-left: 8px;
+                    font-size: 0.8rem;
+                    letter-spacing: 0;
+                    line-height: 1.2;
+                    max-width: 165px;
+                ">
+                    Smart Materials and<br>
+                    Structures Laboratory
+                </span>
+
+            </a>
+
+
+            <ul>
+
+                <li>
+                    <a href="index.html">HOME</a>
+                </li>
+
+                <li>
+                    <a href="professor.html">PROFESSOR</a>
+                </li>
+
+                <li>
+                    <a href="members.html"
+                       class="active"
+                       aria-current="page">
+                        MEMBERS
+                    </a>
+                </li>
+
+                <li>
+                    <a href="research.html">RESEARCH</a>
+                </li>
+
+                <li>
+                    <a href="gallery.html">GALLERY</a>
+                </li>
+
+                <li>
+                    <a href="contact.html">CONTACT</a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ========================================
+         MAIN
+    ======================================== -->
+
+    <main class="members-page">
+
+
+        <!-- MEMBERS BANNER -->
+
+        <div class="members-banner">
+
+            <p class="eyebrow">
+                SMS LABORATORY
+            </p>
+
+            <h1>
+                Members
+            </h1>
+
+            <p>
+                연구실 구성원 소개
+            </p>
+
+        </div>
+
+
+        <!-- ========================================
+             MASTER'S STUDENTS
+        ======================================== -->
+
+        <section class="members-section"
+                 aria-labelledby="masters-heading">
+
+            <p class="section-label">
+                OUR PEOPLE
+            </p>
+
+            <h2 class="section-heading"
+                id="masters-heading">
+                Master's Students
+            </h2>
+
+
+            <div class="member-grid">
+
+
+                <!-- 하건호 -->
+
+                <article class="member-card">
+
+                    <img src="img/hagunho.jpg"
+                         alt="하건호 사진"
+                         loading="lazy">
+
+                    <div class="member-info">
+
+                        <p class="member-role">
+                            M.S. Student
+                        </p>
+
+                        <h3 class="member-name">
+                            Gun Ho Ha
+                            <span class="kr-name">(하건호)</span>
+                        </h3>
+
+                        <p class="member-sub">
+                            2025.03 ~
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 유성 -->
+
+                <article class="member-card">
+
+                    <img src="img/Sung Yu.jpg"
+                         alt="유성 사진"
+                         loading="lazy">
+
+                    <div class="member-info">
+
+                        <p class="member-role">
+                            M.S. Student
+                        </p>
+
+                        <h3 class="member-name">
+                            Sung Yu
+                            <span class="kr-name">(유 성)</span>
+                        </h3>
+
+                        <p class="member-sub">
+                            2025.03 ~
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 임우진 -->
+
+                <article class="member-card">
+
+                    <img src="img/Woo Jin Lim.jpg"
+                         alt="임우진 사진"
+                         loading="lazy">
+
+                    <div class="member-info">
+
+                        <p class="member-role">
+                            M.S. Student
+                        </p>
+
+                        <h3 class="member-name">
+                            Woo Jin Lim
+                            <span class="kr-name">(임우진)</span>
+                        </h3>
+
+                        <p class="member-sub">
+                            2025.03 ~
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 황상권 -->
+
+                <article class="member-card">
+
+                    <img src="img/Sang Kwan Hwang.jpg"
+                         alt="황상권 사진"
+                         loading="lazy">
+
+                    <div class="member-info">
+
+                        <p class="member-role">
+                            M.S. Student
+                        </p>
+
+                        <h3 class="member-name">
+                            Sang Kwan Hwang
+                            <span class="kr-name">(황상권)</span>
+                        </h3>
+
+                        <p class="member-sub">
+                            2026.03 ~
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================
+             UNDERGRADUATE RESEARCHERS
+        ======================================== -->
+
+        <section class="members-section"
+                 aria-labelledby="undergrad-heading">
+
+            <p class="section-label">
+                OUR PEOPLE
+            </p>
+
+            <h2 class="section-heading"
+                id="undergrad-heading">
+                Undergraduate Researchers
+            </h2>
+
+
+            <div class="member-grid">
+
+
+                <!-- 권범준 -->
+
+                <article class="member-card">
+
+                    <img src="img/Bum Jun Kwon.jpg"
+                         alt="권범준 사진"
+                         loading="lazy">
+
+                    <div class="member-info">
+
+                        <p class="member-role">
+                            Undergraduate Researcher
+                        </p>
+
+                        <h3 class="member-name">
+                            Bum Jun Kwon
+                            <span class="kr-name">(권범준)</span>
+                        </h3>
+
+                        <p class="member-sub">
+                            2025.11 ~
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 류재형 -->
+
+                <article class="member-card">
+
+                    <img src="img/Jae Hyeong Ryu.jpg"
+                         alt="류재형 사진"
+                         loading="lazy">
+
+                    <div class="member-info">
+
+                        <p class="member-role">
+                            Undergraduate Researcher
+                        </p>
+
+                        <h3 class="member-name">
+                            Jae Hyeong Ryu
+                            <span class="kr-name">(류재형)</span>
+                        </h3>
+
+                        <p class="member-sub">
+                            2026.03 ~
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 최태훈 -->
+
+                <article class="member-card">
+
+                    <img src="img/Tae Hun Choi.jpg"
+                         alt="최태훈 사진"
+                         loading="lazy">
+
+                    <div class="member-info">
+
+                        <p class="member-role">
+                            Undergraduate Researcher
+                        </p>
+
+                        <h3 class="member-name">
+                            Tae Hun Choi
+                            <span class="kr-name">(최태훈)</span>
+                        </h3>
+
+                        <p class="member-sub">
+                            2026.03 ~
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 편도훈 -->
+
+                <article class="member-card">
+
+                    <img src="img/Do Hun Pyeon.jpg"
+                         alt="편도훈 사진"
+                         loading="lazy">
+
+                    <div class="member-info">
+
+                        <p class="member-role">
+                            Undergraduate Researcher
+                        </p>
+
+                        <h3 class="member-name">
+                            Do Hun Pyeon
+                            <span class="kr-name">(편도훈)</span>
+                        </h3>
+
+                        <p class="member-sub">
+                            2026.03 ~
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ========================================
+         FOOTER
+    ======================================== -->
+
+    <footer>
+
+        <div class="footer-inner">
+
+            <div>
+
+                <strong style="font-size: 1.1rem;">
+                    HANNAM UNIVERSITY
+                </strong>
+
+                <br>
+
+                <span>
+                    한남대학교
+                </span>
+
+            </div>
+
+
+            <p>
+
+                <strong>
+                    SMS Laboratory
+                </strong>
+
+                <br>
+
+                Smart Materials and Structures Laboratory
+
+                <br>
+
+                Daejeon, Republic of Korea
+
+            </p>
+
+
+            <p>
+                © 2025 SMS Laboratory
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gallery of SMS Laboratory, Hannam University">
+  <title>Gallery | SMS Laboratory</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .gallery-page { background: #fff; }
+    .gallery-page .gallery-banner { background: #102B46; padding: 48px 28px 45px; text-align: center; }
+    .gallery-page .gallery-banner .eyebrow { margin: 0 0 12px; color: #A8BFD2; font-size: .76rem; font-weight: 700; letter-spacing: .2em; }
+    .gallery-page .gallery-banner h1 { margin: 0; color: #fff; font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -.035em; line-height: 1.2; }
+    .gallery-page .gallery-banner .subtitle { margin: 15px 0 0; color: #D3DEE8; font-size: .95rem; }
+    .gallery-page .gallery-section { max-width: 1200px; margin: 0 auto; padding: 65px 28px 95px; }
+    .gallery-page .section-label { margin: 0 0 8px; font-size: .74rem; font-weight: 800; letter-spacing: .15em; color: #55718E; }
+    .gallery-page .section-heading { margin: 0 0 28px; padding: 0 0 17px 15px; border-left: 4px solid #176BA0; border-bottom: 1px solid #E5E7EB; color: #102B46; font-size: clamp(1.5rem, 2.5vw, 2rem); line-height: 1.3; }
+    .gallery-page .gallery-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 25px; }
+    .gallery-page .gallery-card { min-width: 0; overflow: hidden; background: #fff; border: 1px solid #E5E7EB; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,.04); transition: transform .2s ease, box-shadow .2s ease; }
+    .gallery-page .gallery-card:hover { transform: translateY(-4px); box-shadow: 0 12px 25px rgba(16,43,70,.12); }
+    .gallery-page .gallery-photo { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; background: #EEF2F6; }
+    .gallery-page .gallery-placeholder { display: flex; align-items: center; justify-content: center; flex-direction: column; width: 100%; aspect-ratio: 4 / 3; background: #EEF2F6; color: #72859A; font-size: .9rem; text-align: center; gap: 8px; }
+    .gallery-page .gallery-placeholder strong { font-size: 1rem; color: #536C85; }
+    .gallery-page .gallery-info { padding: 20px 20px 23px; }
+    .gallery-page .gallery-date { margin: 0 0 9px; color: #66809A; font-size: .8rem; font-weight: 700; letter-spacing: .025em; }
+    .gallery-page .gallery-title { margin: 0 0 10px; color: #102B46; font-size: 1.12rem; font-weight: 800; line-height: 1.4; }
+    .gallery-page .gallery-desc { margin: 0; color: #657588; font-size: .91rem; line-height: 1.7; }
+    @media (max-width: 900px) { .gallery-page .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 650px) { .gallery-page .gallery-banner { padding: 42px 20px 40px; } .gallery-page .gallery-section { padding: 45px 18px 65px; } .gallery-page .gallery-grid { grid-template-columns: 1fr; gap: 20px; } }
+  </style>
+</head>
+<body>
+<header>
+  <nav aria-label="주 메뉴">
+    <a href="index.html" class="logo" aria-label="SMS Laboratory Home">SMS <span style="font-weight:500;margin-left:8px;font-size:.8rem;letter-spacing:0;line-height:1.2;max-width:165px">Smart Materials and<br>Structures Laboratory</span></a>
+    <ul>
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="professor.html">PROFESSOR</a></li>
+      <li><a href="members.html">MEMBERS</a></li>
+      <li><a href="research.html">RESEARCH</a></li>
+      <li><a href="activities.html" class="active" aria-current="page">GALLERY</a></li>
+      <li><a href="contact.html">CONTACT</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="gallery-page">
+  <div class="gallery-banner">
+    <p class="eyebrow">SMS LABORATORY</p>
+    <h1>Gallery</h1>
+    <p class="subtitle">연구실 활동 및 주요 행사 기록</p>
+  </div>
+
+  <section class="gallery-section" aria-labelledby="gallery-heading">
+    <p class="section-label">LAB LIFE</p>
+    <h2 class="section-heading" id="gallery-heading">Lab Activities</h2>
+
+    <div class="gallery-grid">
+      <!-- ====================================================
+           사진 추가 방법
+           1. img/gallery/ 폴더를 만들고 사진을 저장합니다.
+           2. 아래 '사진이 들어갈 자리' div를 삭제합니다.
+           3. 그 자리에 다음 코드를 넣습니다.
+              <img class="gallery-photo" src="img/gallery/activity-01.jpg" alt="활동 사진 설명" loading="lazy">
+           4. 날짜, 제목, 설명을 실제 활동 내용으로 변경합니다.
+           5. 카드가 더 필요하면 <article> ... </article> 전체를 복사합니다.
+           ※ 사진 파일명과 확장자(.jpg/.png)를 정확히 맞춰 주세요.
+         ==================================================== -->
+
+      <!-- 갤러리 카드 1 -->
+      <article class="gallery-card">
+        <!-- 사진 등록 시 아래 div를 img 태그로 교체 -->
+        <div class="gallery-placeholder"><strong>PHOTO 01</strong><span>사진을 등록해 주세요</span></div>
+        <div class="gallery-info">
+          <p class="gallery-date">YYYY.MM.DD</p>
+          <h3 class="gallery-title">활동 제목을 입력해 주세요</h3>
+          <p class="gallery-desc">행사 장소 또는 활동 내용을 간단히 입력해 주세요.</p>
+        </div>
+      </article>
+
+      <!-- 갤러리 카드 2 -->
+      <article class="gallery-card">
+        <div class="gallery-placeholder"><strong>PHOTO 02</strong><span>사진을 등록해 주세요</span></div>
+        <div class="gallery-info">
+          <p class="gallery-date">YYYY.MM.DD</p>
+          <h3 class="gallery-title">활동 제목을 입력해 주세요</h3>
+          <p class="gallery-desc">행사 장소 또는 활동 내용을 간단히 입력해 주세요.</p>
+        </div>
+      </article>
+
+      <!-- 갤러리 카드 3 -->
+      <article class="gallery-card">
+        <div class="gallery-placeholder"><strong>PHOTO 03</strong><span>사진을 등록해 주세요</span></div>
+        <div class="gallery-info">
+          <p class="gallery-date">YYYY.MM.DD</p>
+          <h3 class="gallery-title">활동 제목을 입력해 주세요</h3>
+          <p class="gallery-desc">행사 장소 또는 활동 내용을 간단히 입력해 주세요.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div><strong style="font-size:1.1rem">HANNAM UNIVERSITY</strong><br><span>한남대학교</span></div>
+    <p><strong>SMS Laboratory</strong><br>Smart Materials and Structures Laboratory<br>Daejeon, Republic of Korea</p>
+    <p>© 2025 SMS Laboratory</p>
+  </div>
+</footer>
+</body>
+</html>
