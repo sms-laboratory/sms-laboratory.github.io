@@ -248,8 +248,30 @@
         }
 
         /* ========================================
-           ALUMNI (사진 없이 한 줄 목록)
+           ALUMNI (Ph.D. / M.S. / B.S. 구분, 작은 사진 + 한 줄)
         ======================================== */
+
+        .members-page .alumni-group + .alumni-group {
+            margin-top: 36px;
+        }
+
+        .members-page .alumni-heading {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            margin: 0 0 6px;
+            color: #176BA0;
+            font-size: 1.05rem;
+            font-weight: 800;
+            letter-spacing: .02em;
+        }
+
+        .members-page .alumni-heading span {
+            color: #7B8794;
+            font-size: .82rem;
+            font-weight: 600;
+            letter-spacing: 0;
+        }
 
         .members-page .alumni-list {
             display: grid;
@@ -261,15 +283,31 @@
         }
 
         .members-page .alumni-list li {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            align-items: baseline;
-            gap: 4px 16px;
-            padding: 16px 4px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 4px;
             border-bottom: 1px solid #E5E7EB;
         }
 
+        .members-page .alumni-list li > div {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .members-page .alumni-photo {
+            width: 54px;
+            height: 70px;              /* 증명사진 비율(3:4)에 가깝게 */
+            flex-shrink: 0;
+            border: 1px solid #E5E7EB;
+            border-radius: 4px;
+            object-fit: cover;
+            object-position: center top;
+            background: #F3F4F6;
+        }
+
         .members-page .alumni-name {
+            display: block;
             color: #102B46;
             font-size: 1.02rem;
             font-weight: 800;
@@ -283,7 +321,8 @@
         }
 
         .members-page .alumni-role {
-            grid-column: 1;
+            display: block;
+            margin-top: 3px;
             color: #66809A;
             font-size: .8rem;
             font-weight: 700;
@@ -291,15 +330,48 @@
         }
 
         .members-page .alumni-period {
-            grid-column: 2;
-            grid-row: 1 / span 2;
-            align-self: center;
+            flex-shrink: 0;
             color: #7B8794;
             font-size: .86rem;
         }
 
         @media (max-width: 650px) {
             .members-page .alumni-list { grid-template-columns: 1fr; }
+
+            /* 모바일: 기간을 이름·과정 아래로 */
+            .members-page .alumni-list li {
+                display: grid;
+                grid-template-columns: 54px 1fr;
+                column-gap: 16px;
+                align-items: center;
+            }
+            .members-page .alumni-photo { grid-row: span 2; }
+            .members-page .alumni-period {
+                grid-column: 2;
+                margin-top: 4px;
+                font-size: .82rem;
+            }
+        }
+
+        /* 사진이 아직 없는 구성원: 이니셜 표시 */
+        .members-page .member-photo-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 275px;
+            background: #EEF2F6;
+            color: #A3B3C4;
+            font-size: 2.6rem;
+            font-weight: 800;
+            letter-spacing: .06em;
+        }
+
+        @media (max-width: 650px) {
+            .members-page .member-photo-placeholder { height: 220px; }
+        }
+
+        @media (max-width: 390px) {
+            .members-page .member-photo-placeholder { height: 300px; }
         }
 
     </style>
@@ -420,7 +492,7 @@
                         </p>
 
                         <h3 class="member-name">
-                            Gun Ho Ha
+                            Gun Ho HA
                             <span class="kr-name">(하건호)</span>
                         </h3>
 
@@ -448,7 +520,7 @@
                         </p>
 
                         <h3 class="member-name">
-                            Sung Yu
+                            Sung YU
                             <span class="kr-name">(유 성)</span>
                         </h3>
 
@@ -459,6 +531,33 @@
                     </div>
 
                 </article>
+
+
+
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================
+             UNDERGRADUATE STUDENTS (현재 학부연구생)
+        ======================================== -->
+
+        <section class="members-section"
+                 aria-labelledby="undergrad-heading">
+
+            <p class="section-label">
+                OUR PEOPLE
+            </p>
+
+            <h2 class="section-heading"
+                id="undergrad-heading">
+                Undergraduate Students
+            </h2>
+
+
+            <div class="member-grid">
 
 
                 <!-- 임우진 -->
@@ -472,11 +571,11 @@
                     <div class="member-info">
 
                         <p class="member-role">
-                            M.S. Student
+                            Undergraduate Student
                         </p>
 
                         <h3 class="member-name">
-                            Woo Jin Lim
+                            Woo Jin LIM
                             <span class="kr-name">(임우진)</span>
                         </h3>
 
@@ -500,11 +599,11 @@
                     <div class="member-info">
 
                         <p class="member-role">
-                            M.S. Student
+                            Undergraduate Student
                         </p>
 
                         <h3 class="member-name">
-                            Sang Kwan Hwang
+                            Sang Kwan HWANG
                             <span class="kr-name">(황상권)</span>
                         </h3>
 
@@ -515,6 +614,84 @@
                     </div>
 
                 </article>
+
+                <!-- 신재영 (사진 준비되면 아래 div를 <img src="img/파일명.jpg" alt="신재영 사진" loading="lazy">로 바꾸세요) -->
+
+                <article class="member-card">
+
+                    <div class="member-photo-placeholder" aria-hidden="true">JS</div>
+
+                    <div class="member-info">
+
+                        <p class="member-role">
+                            Undergraduate Student
+                        </p>
+
+                        <h3 class="member-name">
+                            Jae Young SHIN
+                            <span class="kr-name">(신재영)</span>
+                        </h3>
+
+                        <p class="member-sub">
+                            2026.06 ~
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 한유종 (사진 준비되면 아래 div를 <img src="img/파일명.jpg" alt="한유종 사진" loading="lazy">로 바꾸세요) -->
+
+                <article class="member-card">
+
+                    <div class="member-photo-placeholder" aria-hidden="true">YH</div>
+
+                    <div class="member-info">
+
+                        <p class="member-role">
+                            Undergraduate Student
+                        </p>
+
+                        <h3 class="member-name">
+                            Yu Jong HAN
+                            <span class="kr-name">(한유종)</span>
+                        </h3>
+
+                        <p class="member-sub">
+                            2026.09 ~
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 이은영 (사진 준비되면 아래 div를 <img src="img/파일명.jpg" alt="이은영 사진" loading="lazy">로 바꾸세요) -->
+
+                <article class="member-card">
+
+                    <div class="member-photo-placeholder" aria-hidden="true">EL</div>
+
+                    <div class="member-info">
+
+                        <p class="member-role">
+                            Undergraduate Student
+                        </p>
+
+                        <h3 class="member-name">
+                            Eun Young LEE
+                            <span class="kr-name">(이은영)</span>
+                        </h3>
+
+                        <p class="member-sub">
+                            2026.10 ~
+                        </p>
+
+                    </div>
+
+                </article>
+
 
 
             </div>
@@ -539,33 +716,62 @@
                 Alumni
             </h2>
 
-            <ul class="alumni-list">
+            <!-- Ph.D. 졸업생이 생기면 아래 주석을 풀고 <li>를 추가하세요
+            <div class="alumni-group">
+                <h3 class="alumni-heading">Ph.D.</h3>
+                <ul class="alumni-list"></ul>
+            </div>
+            -->
 
-                <li>
-                    <span class="alumni-name">Bum Jun Kwon <span class="kr-name">(권범준)</span></span>
-                    <span class="alumni-role">Undergraduate Researcher</span>
-                    <span class="alumni-period">2025.11 ~</span>
-                </li>
+            <!-- M.S. 졸업생이 생기면 아래 주석을 풀고 <li>를 추가하세요
+            <div class="alumni-group">
+                <h3 class="alumni-heading">M.S.</h3>
+                <ul class="alumni-list"></ul>
+            </div>
+            -->
 
-                <li>
-                    <span class="alumni-name">Jae Hyeong Ryu <span class="kr-name">(류재형)</span></span>
-                    <span class="alumni-role">Undergraduate Researcher</span>
-                    <span class="alumni-period">2026.03 ~</span>
-                </li>
+            <div class="alumni-group">
+                <h3 class="alumni-heading">B.S. <span>Undergraduate Students</span></h3>
+                <ul class="alumni-list">
 
-                <li>
-                    <span class="alumni-name">Tae Hun Choi <span class="kr-name">(최태훈)</span></span>
-                    <span class="alumni-role">Undergraduate Researcher</span>
-                    <span class="alumni-period">2026.03 ~</span>
-                </li>
+                    <li>
+                        <img class="alumni-photo" src="img/Bum Jun Kwon.jpg" alt="권범준 사진" loading="lazy">
+                        <div>
+                            <span class="alumni-name">Bum Jun KWON <span class="kr-name">(권범준)</span></span>
+                            <span class="alumni-role">Undergraduate Student</span>
+                        </div>
+                        <span class="alumni-period">2025.11 ~ 2026.07</span>
+                    </li>
 
-                <li>
-                    <span class="alumni-name">Do Hun Pyeon <span class="kr-name">(편도훈)</span></span>
-                    <span class="alumni-role">Undergraduate Researcher</span>
-                    <span class="alumni-period">2026.03 ~</span>
-                </li>
+                    <li>
+                        <img class="alumni-photo" src="img/Jae Hyeong Ryu.jpg" alt="류재형 사진" loading="lazy">
+                        <div>
+                            <span class="alumni-name">Jae Hyeong RYU <span class="kr-name">(류재형)</span></span>
+                            <span class="alumni-role">Undergraduate Student</span>
+                        </div>
+                        <span class="alumni-period">2025.12 ~ 2026.05</span>
+                    </li>
 
-            </ul>
+                    <li>
+                        <img class="alumni-photo" src="img/Tae Hun Choi.jpg" alt="최태훈 사진" loading="lazy">
+                        <div>
+                            <span class="alumni-name">Tae Hun CHOI <span class="kr-name">(최태훈)</span></span>
+                            <span class="alumni-role">Undergraduate Student</span>
+                        </div>
+                        <span class="alumni-period">2026.03 ~ 2026.07</span>
+                    </li>
+
+                    <li>
+                        <img class="alumni-photo" src="img/Do Hun Pyeon.jpg" alt="편도훈 사진" loading="lazy">
+                        <div>
+                            <span class="alumni-name">Do Hun PYEON <span class="kr-name">(편도훈)</span></span>
+                            <span class="alumni-role">Undergraduate Student</span>
+                        </div>
+                        <span class="alumni-period">2026.03 ~ 2026.07</span>
+                    </li>
+
+                </ul>
+            </div>
 
         </section>
 
@@ -611,7 +817,7 @@
             <ul class="footer-contact">
                 <li><span>E-mail</span><a href="mailto:mkkim9112@hnu.kr">mkkim9112@hnu.kr</a></li>
                 <li><span>Tel</span><a href="tel:+82426297931">+82-42-629-7931</a></li>
-                <li><span>Scopus</span><a href="https://www.scopus.com/authid/detail.uri?authorId=56949225100" target="_blank" rel="noopener noreferrer">Min Kyoung Kim &#8599;</a></li>
+                <li><span>Scopus</span><a href="https://www.scopus.com/authid/detail.uri?authorId=56949225100" target="_blank" rel="noopener noreferrer">Min Kyoung KIM &#8599;</a></li>
             </ul>
         </div>
 
