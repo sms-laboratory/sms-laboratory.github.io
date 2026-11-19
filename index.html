@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="home.css?v=1">
+    <link rel="stylesheet" href="home.css?v=2">
   <script src="nav.js" defer></script>
 </head>
 
@@ -114,6 +114,39 @@
                 </figcaption>
             </figure>
         </div>
+    </section>
+
+
+    <!-- ==========================================
+         AT A GLANCE (숫자는 data-count 값을 바꾸면 됩니다)
+         Citations / h-index: Scopus 기준 (2026.11)
+         Publications: SCI(E) 33 + 국내 논문 10
+         Members: 현재 석사 2 + 학부연구생 5
+         ========================================== -->
+    <section class="home-stats" aria-label="SMS Lab at a glance">
+        <dl class="stats">
+            <div class="stat">
+                <dt>Citations</dt>
+                <dd><span class="stat-num" data-count="661">661</span></dd>
+                <dd class="stat-note">Scopus</dd>
+            </div>
+            <div class="stat">
+                <dt>h-index</dt>
+                <dd><span class="stat-num" data-count="15">15</span></dd>
+                <dd class="stat-note">Scopus</dd>
+            </div>
+            <div class="stat">
+                <dt>Publications</dt>
+                <dd><span class="stat-num" data-count="43">43</span></dd>
+                <dd class="stat-note">SCI(E) 33 &middot; Domestic 10</dd>
+            </div>
+            <div class="stat">
+                <dt>Members</dt>
+                <dd><span class="stat-num" data-count="7">7</span></dd>
+                <dd class="stat-note">M.S. 2 &middot; Undergraduate 5</dd>
+            </div>
+        </dl>
+        <p class="stats-source">Citation metrics from <a href="https://www.scopus.com/authid/detail.uri?authorId=56949225100" target="_blank" rel="noopener noreferrer">Scopus</a>, November 2026</p>
     </section>
 
 
@@ -253,6 +286,24 @@
 </footer>
 
 <script>
+// AT A GLANCE: 화면에 보이면 숫자가 0부터 올라갑니다 (한 번만)
+(function () {
+    var nums = document.querySelectorAll('.stat-num');
+    if (!nums.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+    nums.forEach(function (n) { n.textContent = '0'; });
+    var io = new IntersectionObserver(function (entries) {
+        if (!entries.some(function (e) { return e.isIntersecting; })) return;
+        io.disconnect();
+        var start = performance.now(), dur = 1400;
+        (function tick(now) {
+            var p = Math.min(1, (now - start) / dur), e = 1 - Math.pow(1 - p, 3);
+            nums.forEach(function (n) { n.textContent = Math.round(+n.dataset.count * e).toLocaleString('en-US'); });
+            if (p < 1) requestAnimationFrame(tick);
+        })(start);
+    }, { threshold: .4 });
+    io.observe(document.querySelector('.stats'));
+})();
+
 // HERO 그래프: 연구 분야 3가지를 번갈아 보여 줍니다
 (function () {
     var fig = document.querySelector('.signal');
