@@ -171,6 +171,13 @@
 @media (max-width: 650px) {
     .professor-page .cv-row { grid-template-columns: 1fr; gap: 4px; }
 }
+.professor-page .profile-info h2 { margin-bottom: 2px; }
+.professor-page .profile-ko { margin: 0 0 18px; color: #7B8794; font-size: 1rem; font-weight: 600; }
+.professor-page .profile-facts { margin: 0; }
+.professor-page .profile-facts > div { margin-bottom: 14px; }
+.professor-page .profile-facts dt { margin-bottom: 2px; color: #102B46; font-size: .82rem; font-weight: 800; letter-spacing: .02em; }
+.professor-page .profile-facts dd { margin: 0; color: #34465a; line-height: 1.6; }
+.professor-page .profile-facts .cv-ko { display: block; margin-top: 3px; color: #7B8794; font-size: .88rem; }
     </style>
   <script src="nav.js" defer></script>
 </head>
@@ -239,29 +246,31 @@
 
             <div class="profile-info">
 
-                <h2>김민경 교수 (Min Kyoung KIM)</h2>
+                <h2>Prof. Min Kyoung KIM</h2>
+                <p class="profile-ko">김민경 교수</p>
 
-                <p>
-                    <strong>Affiliation:</strong>
-                    한남대학교 건설환경공학과 (Hannam University)
-                </p>
-
-                <p>
-                    <strong>Research Fields:</strong>
-                    UHPFRC, SH-SFRC, 스마트 건설재료,
-                    자가감지 콘크리트, EIT
-                </p>
+                <dl class="profile-facts">
+                    <div>
+                        <dt>Affiliation</dt>
+                        <dd>
+                            Assistant Professor, Department of Civil and Environmental Engineering, Hannam University
+                            <span class="cv-ko">한남대학교 건설환경공학과 조교수</span>
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Research Fields</dt>
+                        <dd>
+                            UHPFRC, SH-SFRC, smart construction materials, self-sensing concrete, electrical impedance tomography (EIT)
+                            <span class="cv-ko">초고성능 섬유보강 콘크리트, 변형경화형 강섬유보강 콘크리트, 스마트 건설재료, 자가감지 콘크리트, 전기 임피던스 단층촬영</span>
+                        </dd>
+                    </div>
+                </dl>
 
                 <div class="contact-box">
 
                     <p>
                         <strong>Tel:</strong>
                         +82-42-629-7931
-                    </p>
-
-                    <p>
-                        <strong>Mobile:</strong>
-                        +82-10-4809-0961
                     </p>
 
                     <p>
