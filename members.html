@@ -383,6 +383,37 @@
             font-size: .8rem;
         }
 
+
+        /* Alumni: 사진이 없을 때 이니셜, 현재 소속 */
+        .members-page .alumni-list li > .alumni-initial {
+            flex: 0 0 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #A3B3C4;
+            font-size: .95rem;
+            font-weight: 800;
+            letter-spacing: .04em;
+            background: #EEF2F6;
+        }
+
+        .members-page .alumni-now {
+            display: block;
+            margin-top: 3px;
+            color: #176BA0;
+            font-size: .82rem;
+            font-weight: 600;
+        }
+
+
+        .members-page .alumni-now .kr-name {
+            display: inline;
+            margin: 0;
+            color: #66809A;
+            font-size: .78rem;
+            font-weight: 500;
+        }
+
     </style>
 </head>
 
@@ -574,7 +605,7 @@
 
                 <article class="member-card">
 
-                    <img src="img/Woo Jin Lim.jpg"
+                    <img src="img/Woo Jin Lim.jpg?v=2"
                          alt="임우진 사진"
                          loading="lazy">
 
@@ -745,7 +776,43 @@
             -->
 
             <div class="alumni-group">
-                <h3 class="alumni-heading">B.S. <span>Undergraduate Students</span></h3>
+                <h3 class="alumni-heading">B.S. <span>Graduated</span></h3>
+                <ul class="alumni-list">
+
+                    <li>
+                        <div class="alumni-photo alumni-initial" aria-hidden="true">JL</div>
+                        <div>
+                            <span class="alumni-name">Jae Hyeok LEE <span class="kr-name">(이재혁)</span></span>
+                            <span class="alumni-role">Undergraduate Student</span>
+                            <span class="alumni-now">Now: Dongil Engineering Consultants <span class="kr-name">(㈜동일기술공사)</span></span>
+                        </div>
+                        <span class="alumni-period"></span>
+                    </li>
+
+                    <li>
+                        <div class="alumni-photo alumni-initial" aria-hidden="true">HL</div>
+                        <div>
+                            <span class="alumni-name">Hyo Yeol LEE <span class="kr-name">(이효열)</span></span>
+                            <span class="alumni-role">Undergraduate Student</span>
+                            <span class="alumni-now">Now: M.S. Student, Gachon University <span class="kr-name">(가천대학교 석사과정)</span></span>
+                        </div>
+                        <span class="alumni-period"></span>
+                    </li>
+
+                    <li>
+                        <div class="alumni-photo alumni-initial" aria-hidden="true">JJ</div>
+                        <div>
+                            <span class="alumni-name">Ji Won JEONG <span class="kr-name">(정지원)</span></span>
+                            <span class="alumni-role">Undergraduate Student</span>
+                        </div>
+                        <span class="alumni-period"></span>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="alumni-group">
+                <h3 class="alumni-heading">Undergraduate <span>Former undergraduate researchers · still enrolled at university</span></h3>
                 <ul class="alumni-list">
 
                     <li>
