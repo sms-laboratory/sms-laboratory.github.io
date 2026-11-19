@@ -125,6 +125,52 @@
         padding: 42px 20px 40px;
     }
 }
+/* ==========================================
+   CV TIMELINE (Education / Experience / Service)
+   ========================================== */
+.professor-page .cv-section > h3 { margin-top: 3rem; font-size: 1.25rem; letter-spacing: -.01em; }
+.professor-page .cv-list { margin: 0 0 8px; padding: 0; list-style: none; }
+.professor-page .cv-row {
+    display: grid;
+    grid-template-columns: 170px minmax(0, 1fr);
+    gap: 24px;
+    margin: 0;
+    padding: 18px 0;
+    border-bottom: 1px solid #EEF2F6;
+}
+.professor-page .cv-row:last-child { border-bottom: 0; }
+.professor-page .cv-period {
+    padding-top: 2px;
+    color: #66809A;
+    font-size: .9rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+.professor-page .cv-title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 4px;
+    color: #102B46;
+    font-size: 1.04rem;
+    font-weight: 700;
+}
+.professor-page .cv-now {
+    padding: 2px 9px;
+    border-radius: 999px;
+    background: #E8F1F9;
+    color: #17639b;
+    font-size: .7rem;
+    font-weight: 700;
+}
+.professor-page .cv-org { margin: 0; color: #34465a; font-size: .95rem; line-height: 1.6; }
+.professor-page .cv-ko { margin: 3px 0 0; color: #7B8794; font-size: .88rem; }
+.professor-page .cv-extra { margin: 10px 0 0; padding-left: 12px; border-left: 2px solid #DCE5EF; color: #526579; font-size: .88rem; line-height: 1.65; }
+@media (max-width: 650px) {
+    .professor-page .cv-row { grid-template-columns: 1fr; gap: 4px; }
+}
     </style>
   <script src="nav.js" defer></script>
 </head>
@@ -249,80 +295,120 @@
 
 
         <!-- EDUCATION -->
-
-        <h3>EDUCATION</h3>
-
-        <ul>
-
-            <li>
-                <strong>Doctor of Philosophy &amp; Master of Science</strong>
-                (2014.03 – 2019.08)<br>
-                SEJONG University, Structural Engineering<br>
-                Dissertation:
-                <em>
-                    Electro-mechanical response of self-sensing
-                    fiber-reinforced cementitious composites (SSFRCs)
-                </em><br>
-                Advisor: Prof. Dong Joo Kim
+        <h3>Education</h3>
+        <ol class="cv-list">
+            <li class="cv-row">
+                <span class="cv-period">2014.03 – 2019.08</span>
+                <div class="cv-body">
+                    <h4 class="cv-title">Ph.D. &amp; M.S. in Structural Engineering</h4>
+                    <p class="cv-org">Sejong University, Department of Civil and Environmental Engineering</p>
+                    <p class="cv-ko">세종대학교 건설환경공학과 석·박사 통합과정</p>
+                    <p class="cv-extra">Dissertation: <em>Electro-mechanical response of self-sensing fiber-reinforced cementitious composites (SSFRCs)</em><br>Advisor: Prof. Dong Joo KIM</p>
+                </div>
             </li>
-
-            <li>
-                <strong>Bachelor of Science</strong>
-                (2010.03 – 2014.02)<br>
-                SEJONG University, Structural Engineering
+            <li class="cv-row">
+                <span class="cv-period">2010.03 – 2014.02</span>
+                <div class="cv-body">
+                    <h4 class="cv-title">B.S. in Structural Engineering</h4>
+                    <p class="cv-org">Sejong University, Department of Civil and Environmental Engineering</p>
+                    <p class="cv-ko">세종대학교 건설환경공학과</p>
+                </div>
             </li>
-
-        </ul>
-
+        </ol>
 
         <!-- EXPERIENCE -->
-
-        <h3>EXPERIENCE</h3>
-
-        <ul>
-
-            <li>
-                <strong>Assistant Professor</strong>
-                (2024.09 – Present)<br>
-                Hannam University
+        <h3>Experience</h3>
+        <ol class="cv-list">
+            <li class="cv-row">
+                <span class="cv-period">2024.09 – Present</span>
+                <div class="cv-body">
+                    <h4 class="cv-title">Assistant Professor <span class="cv-now">Current</span></h4>
+                    <p class="cv-org">Hannam University, Department of Civil and Environmental Engineering</p>
+                    <p class="cv-ko">한남대학교 건설환경공학과 조교수</p>
+                </div>
             </li>
-
-            <li>
-                <strong>Post-Doctoral Researcher</strong>
-                (2023.11 – 2024.08)<br>
-                KICT – Structural Engineering Research Institute
+            <li class="cv-row">
+                <span class="cv-period">2023.11 – 2024.08</span>
+                <div class="cv-body">
+                    <h4 class="cv-title">Post-Doctoral Researcher</h4>
+                    <p class="cv-org">Korea Institute of Civil Engineering and Building Technology (KICT), Structural Engineering Research Institute</p>
+                    <p class="cv-ko">한국건설기술연구원 구조연구본부 박사후연구원</p>
+                </div>
             </li>
-
-            <li>
-                <strong>Researcher</strong>
-                (2023.02 – 2023.10)<br>
-                State University of New York, Buffalo
+            <li class="cv-row">
+                <span class="cv-period">2023.02 – 2023.10</span>
+                <div class="cv-body">
+                    <h4 class="cv-title">Researcher</h4>
+                    <p class="cv-org">State University of New York at Buffalo, Department of Mechanical and Aerospace Engineering</p>
+                </div>
             </li>
-
-            <li>
-                <strong>Senior Researcher</strong>
-                (2022.04 – 2023.10)<br>
-                SEJONG University
+            <li class="cv-row">
+                <span class="cv-period">2022.04 – 2023.10</span>
+                <div class="cv-body">
+                    <h4 class="cv-title">Senior Researcher</h4>
+                    <p class="cv-org">Sejong University, Department of Civil and Environmental Engineering</p>
+                    <p class="cv-ko">세종대학교 건설환경공학과 선임연구원</p>
+                </div>
             </li>
-
-            <li>
-                <strong>Research Assistant Professor</strong>
-                (2021.03 – 2022.03)<br>
-                SEJONG University
+            <li class="cv-row">
+                <span class="cv-period">2021.03 – 2022.03</span>
+                <div class="cv-body">
+                    <h4 class="cv-title">Research Assistant Professor</h4>
+                    <p class="cv-org">Sejong University, Department of Civil and Environmental Engineering</p>
+                    <p class="cv-ko">세종대학교 건설환경공학과 연구조교수</p>
+                </div>
             </li>
-
-            <li>
-                <strong>Post-Doctoral Researcher</strong>
-                (2019.09 – 2021.02)<br>
-                SEJONG University
+            <li class="cv-row">
+                <span class="cv-period">2019.09 – 2021.02</span>
+                <div class="cv-body">
+                    <h4 class="cv-title">Post-Doctoral Researcher</h4>
+                    <p class="cv-org">Sejong University, Department of Civil and Environmental Engineering</p>
+                    <p class="cv-ko">세종대학교 건설환경공학과 박사후연구원</p>
+                </div>
             </li>
+        </ol>
 
-        </ul>
+        <!-- PROFESSIONAL SERVICE (학회·위원회 활동) -->
+        <h3>Professional Service</h3>
+        <ol class="cv-list">
+            <li class="cv-row">
+                <span class="cv-period">2026.10 – Present</span>
+                <div class="cv-body">
+                    <h4 class="cv-title">Member, Performance Evaluation Committee <span class="cv-now">Current</span></h4>
+                    <p class="cv-org">Seo-gu District Office, Daejeon Metropolitan City</p>
+                    <p class="cv-ko">대전광역시 서구 성과평가위원회 위원</p>
+                </div>
+            </li>
+            <li class="cv-row">
+                <span class="cv-period">2025.01 – Present</span>
+                <div class="cv-body">
+                    <h4 class="cv-title">Board of Directors <span class="cv-now">Current</span></h4>
+                    <p class="cv-org">Korea Institute for Structural Maintenance and Inspection (KSMI)</p>
+                    <p class="cv-ko">한국구조물진단유지관리공학회 이사</p>
+                </div>
+            </li>
+            <li class="cv-row">
+                <span class="cv-period">2025.01 – Present</span>
+                <div class="cv-body">
+                    <h4 class="cv-title">Member, English Journal Editorial Committee <span class="cv-now">Current</span></h4>
+                    <p class="cv-org">Korea Concrete Institute (KCI)</p>
+                    <p class="cv-ko">한국콘크리트학회 영문논문편집위원회 위원</p>
+                </div>
+            </li>
+            <li class="cv-row">
+                <span class="cv-period">2025.01 – Present</span>
+                <div class="cv-body">
+                    <h4 class="cv-title">Vice Chair, Korean Journal Editorial Committee <span class="cv-now">Current</span></h4>
+                    <p class="cv-org">Korean Recycled Construction Resources Institute (KOREC)</p>
+                    <p class="cv-ko">한국건설순환자원학회 국문논문편집위원회 부위원장</p>
+                </div>
+            </li>
+        </ol>
 
 
         <!-- RESEARCH INTERESTS -->
 
-        <h3>RESEARCH INTERESTS</h3>
+        <h3>Research Interests</h3>
 
         <ul>
 
