@@ -276,3 +276,8 @@
     .stat { padding: 22px 20px 20px; }
     .stats-source { text-align: left; }
 }
+
+@media (max-width: 650px) {
+    .stat-note .nb { display: block; }
+    .stat-note .sep { display: none; }
+}

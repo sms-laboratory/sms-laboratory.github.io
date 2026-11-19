@@ -24,6 +24,8 @@ body {
     font-family: 'Pretendard', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 16px;
     line-height: 1.65;
+    word-break: keep-all;          /* 국문: 낱말 중간에서 줄이 바뀌지 않게 */
+    overflow-wrap: break-word;     /* 아주 긴 단어(이메일 등)만 예외적으로 끊기 */
 }
 a { color: inherit; }
 img { max-width: 100%; }
@@ -411,3 +413,28 @@ footer address {
     .footer-col { padding-left: 0; border-left: 0; }
     .footer-bottom { width: calc(100% - 40px); padding: 18px 0; }
 }
+
+
+/* ==========================================================
+   줄바꿈 다듬기 (모바일 포함 전체)
+   ========================================================== */
+h1, h2, h3, h4 { text-wrap: balance; }
+p, li, dd { text-wrap: pretty; }
+/* 한 덩어리로 유지할 구절: 공간이 부족하면 덩어리 단위로 줄이 바뀝니다 */
+.nb { display: inline-block; }
+/* 쉼표로 나눈 구절을 모바일에서는 한 줄씩 */
+.lines > .nb { display: inline; }
+@media (max-width: 650px) {
+    .lines > .nb { display: block; }
+}
+
+/* ---------- 모바일 메뉴: 한 줄로 ---------- */
+@media (max-width: 650px) {
+    nav { gap: 10px; padding: 12px 12px 0; }
+    nav ul { flex-wrap: nowrap; justify-content: space-between; gap: 0; width: 100%; }
+    nav ul li a { padding: 8px 0 10px; font-size: .7rem; letter-spacing: 0; white-space: nowrap; }
+    nav .has-sub > a::after { width: 5px; height: 5px; margin-left: 4px; }
+    nav .sub-menu { left: 0; transform: translate(0, 6px); }
+    nav .has-sub:hover > .sub-menu, nav .has-sub:focus-within > .sub-menu, nav .has-sub.open > .sub-menu { transform: translate(0, 0); }
+}
+.text-link, .stat-note .nb { white-space: nowrap; }

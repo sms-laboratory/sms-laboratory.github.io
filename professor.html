@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professor | SMS Laboratory | Hannam University</title>
-    <link rel="stylesheet" href="style.css?v=20261120a">
+    <link rel="stylesheet" href="style.css?v=20261120b">
 
     <style>
         /* ==========================================
@@ -208,6 +208,14 @@
     .professor-page .contact-strip { grid-template-columns: 1fr; }
     .professor-page .contact-strip > div + div { padding-left: 0; border-left: 0; border-top: 1px solid #E6EBF1; }
 }
+.professor-page .cv-title { row-gap: 2px; }
+@media (max-width: 650px) {
+    .professor-page .cv-org,
+    .professor-page .profile-facts dd,
+    .professor-page .contact-strip dd { font-size: .86rem; }
+    .professor-page .br-desk { display: none; }
+    .professor-page .contact-strip dd .lines { margin-bottom: 2px; }
+}
     </style>
   <script src="nav.js" defer></script>
 </head>
@@ -258,7 +266,7 @@
     <div class="professor-banner">
         <p class="eyebrow">SMS LABORATORY</p>
         <h1>Professor</h1>
-        <p class="subtitle">지도교수 소개 · 학력 · 경력 · 학회 활동</p>
+        <p class="subtitle">교수 소개 · 학력 · 경력 · 학회 활동</p>
     </div>
 
 
@@ -283,14 +291,14 @@
                     <div>
                         <dt>Affiliation</dt>
                         <dd>
-                            Assistant Professor, Department of Civil and Environmental Engineering, HANNAM UNIVERSITY
+                            <span class="lines"><span class="nb">Assistant Professor,</span> <span class="nb">Department of Civil and Environmental Engineering,</span> <span class="nb">HANNAM UNIVERSITY</span></span>
                             <span class="cv-ko">한남대학교 건설환경공학과 조교수</span>
                         </dd>
                     </div>
                     <div>
                         <dt>Research Fields</dt>
                         <dd>
-                            UHPFRC, SH-SFRC, smart construction materials, self-sensing concrete, electrical impedance tomography (EIT)
+                            <span class="nb">UHPFRC,</span> <span class="nb">SH-SFRC,</span> <span class="nb">smart construction materials,</span> <span class="nb">self-sensing concrete,</span> <span class="nb">electrical impedance tomography (EIT)</span>
                             <span class="cv-ko">초고성능 섬유보강 콘크리트, 변형경화형 강섬유보강 콘크리트, 스마트 건설재료, 자가감지 콘크리트, 전기 임피던스 단층촬영</span>
                         </dd>
                     </div>
@@ -312,7 +320,7 @@
             </div>
             <div>
                 <dt>Office</dt>
-                <dd>Department of Civil and Environmental Engineering, HANNAM UNIVERSITY<br>70 Hannam-ro, Daedeok-gu, Daejeon 34430, Republic of Korea</dd>
+                <dd><span class="lines"><span class="nb">Department of Civil and Environmental Engineering,</span> <span class="nb">HANNAM UNIVERSITY</span></span><br class="br-desk"><span class="nb">70 Hannam-ro,</span> <span class="nb">Daedeok-gu,</span> <span class="nb">Daejeon 34430,</span> <span class="nb">Republic of Korea</span></dd>
             </div>
         </dl>
 
@@ -335,7 +343,7 @@
                 <span class="cv-period">2014.03 – 2019.08</span>
                 <div class="cv-body">
                     <h4 class="cv-title">Ph.D. &amp; M.S. in Structural Engineering</h4>
-                    <p class="cv-org">SEJONG UNIVERSITY, Department of Civil and Environmental Engineering</p>
+                    <p class="cv-org"><span class="lines"><span class="nb">SEJONG UNIVERSITY,</span> <span class="nb">Department of Civil and Environmental Engineering</span></span></p>
                     <p class="cv-ko">세종대학교 건설환경공학과 석·박사 통합과정</p>
                     <p class="cv-extra">Dissertation: <em>Electro-mechanical response of self-sensing fiber-reinforced cementitious composites (SSFRCs)</em><br>Advisor: Prof. Dong Joo KIM</p>
                 </div>
@@ -344,7 +352,7 @@
                 <span class="cv-period">2010.03 – 2014.02</span>
                 <div class="cv-body">
                     <h4 class="cv-title">B.S. in Civil and Environmental Engineering</h4>
-                    <p class="cv-org">SEJONG UNIVERSITY, Department of Civil and Environmental Engineering</p>
+                    <p class="cv-org"><span class="lines"><span class="nb">SEJONG UNIVERSITY,</span> <span class="nb">Department of Civil and Environmental Engineering</span></span></p>
                     <p class="cv-ko">세종대학교 건설환경공학과</p>
                 </div>
             </li>
@@ -357,7 +365,7 @@
                 <span class="cv-period">2024.09 – Present</span>
                 <div class="cv-body">
                     <h4 class="cv-title">Assistant Professor <span class="cv-now">Current</span></h4>
-                    <p class="cv-org">HANNAM UNIVERSITY, Department of Civil and Environmental Engineering</p>
+                    <p class="cv-org"><span class="lines"><span class="nb">HANNAM UNIVERSITY,</span> <span class="nb">Department of Civil and Environmental Engineering</span></span></p>
                     <p class="cv-ko">한남대학교 건설환경공학과 조교수</p>
                 </div>
             </li>
@@ -365,7 +373,7 @@
                 <span class="cv-period">2023.11 – 2024.08</span>
                 <div class="cv-body">
                     <h4 class="cv-title">Post-Doctoral Researcher</h4>
-                    <p class="cv-org">Korea Institute of Civil Engineering and Building Technology (KICT), Structural Engineering Research Institute</p>
+                    <p class="cv-org"><span class="lines"><span class="nb">Korea Institute of Civil Engineering and Building Technology (KICT),</span> <span class="nb">Structural Engineering Research Institute</span></span></p>
                     <p class="cv-ko">한국건설기술연구원 구조연구본부 박사후연구원</p>
                 </div>
             </li>
@@ -373,14 +381,14 @@
                 <span class="cv-period">2023.02 – 2023.10</span>
                 <div class="cv-body">
                     <h4 class="cv-title">Researcher</h4>
-                    <p class="cv-org">STATE UNIVERSITY OF NEW YORK AT BUFFALO, Department of Mechanical and Aerospace Engineering</p>
+                    <p class="cv-org"><span class="lines"><span class="nb">STATE UNIVERSITY OF NEW YORK AT BUFFALO,</span> <span class="nb">Department of Mechanical and Aerospace Engineering</span></span></p>
                 </div>
             </li>
             <li class="cv-row">
                 <span class="cv-period">2022.04 – 2023.10</span>
                 <div class="cv-body">
                     <h4 class="cv-title">Senior Researcher</h4>
-                    <p class="cv-org">SEJONG UNIVERSITY, Department of Civil and Environmental Engineering</p>
+                    <p class="cv-org"><span class="lines"><span class="nb">SEJONG UNIVERSITY,</span> <span class="nb">Department of Civil and Environmental Engineering</span></span></p>
                     <p class="cv-ko">세종대학교 건설환경공학과 선임연구원</p>
                 </div>
             </li>
@@ -388,7 +396,7 @@
                 <span class="cv-period">2021.03 – 2022.03</span>
                 <div class="cv-body">
                     <h4 class="cv-title">Research Assistant Professor</h4>
-                    <p class="cv-org">SEJONG UNIVERSITY, Department of Civil and Environmental Engineering</p>
+                    <p class="cv-org"><span class="lines"><span class="nb">SEJONG UNIVERSITY,</span> <span class="nb">Department of Civil and Environmental Engineering</span></span></p>
                     <p class="cv-ko">세종대학교 건설환경공학과 연구조교수</p>
                 </div>
             </li>
@@ -396,7 +404,7 @@
                 <span class="cv-period">2019.09 – 2021.02</span>
                 <div class="cv-body">
                     <h4 class="cv-title">Post-Doctoral Researcher</h4>
-                    <p class="cv-org">SEJONG UNIVERSITY, Department of Civil and Environmental Engineering</p>
+                    <p class="cv-org"><span class="lines"><span class="nb">SEJONG UNIVERSITY,</span> <span class="nb">Department of Civil and Environmental Engineering</span></span></p>
                     <p class="cv-ko">세종대학교 건설환경공학과 박사후연구원</p>
                 </div>
             </li>
@@ -408,8 +416,8 @@
             <li class="cv-row">
                 <span class="cv-period">2026.10 – Present</span>
                 <div class="cv-body">
-                    <h4 class="cv-title">Member, Performance Evaluation Committee <span class="cv-now">Current</span></h4>
-                    <p class="cv-org">Seo-gu District Office, Daejeon Metropolitan City</p>
+                    <h4 class="cv-title"><span class="nb">Member,</span> <span class="nb">Performance Evaluation Committee</span> <span class="cv-now">Current</span></h4>
+                    <p class="cv-org"><span class="lines"><span class="nb">Seo-gu District Office,</span> <span class="nb">Daejeon Metropolitan City</span></span></p>
                     <p class="cv-ko">대전광역시 서구 성과평가위원회 위원</p>
                 </div>
             </li>
@@ -424,7 +432,7 @@
             <li class="cv-row">
                 <span class="cv-period">2025.01 – Present</span>
                 <div class="cv-body">
-                    <h4 class="cv-title">Member, English Journal Editorial Committee <span class="cv-now">Current</span></h4>
+                    <h4 class="cv-title"><span class="nb">Member,</span> <span class="nb">English Journal Editorial Committee</span> <span class="cv-now">Current</span></h4>
                     <p class="cv-org">Korea Concrete Institute (KCI)</p>
                     <p class="cv-ko">한국콘크리트학회 영문논문편집위원회 위원</p>
                 </div>
@@ -432,7 +440,7 @@
             <li class="cv-row">
                 <span class="cv-period">2025.01 – Present</span>
                 <div class="cv-body">
-                    <h4 class="cv-title">Vice Chair, Korean Journal Editorial Committee <span class="cv-now">Current</span></h4>
+                    <h4 class="cv-title"><span class="nb">Vice Chair,</span> <span class="nb">Korean Journal Editorial Committee</span> <span class="cv-now">Current</span></h4>
                     <p class="cv-org">Korean Recycled Construction Resources Institute (KOREC)</p>
                     <p class="cv-ko">한국건설순환자원학회 국문논문편집위원회 부위원장</p>
                 </div>
