@@ -247,6 +247,61 @@
 
         }
 
+        /* ========================================
+           ALUMNI (사진 없이 한 줄 목록)
+        ======================================== */
+
+        .members-page .alumni-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0 40px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .members-page .alumni-list li {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: baseline;
+            gap: 4px 16px;
+            padding: 16px 4px;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .members-page .alumni-name {
+            color: #102B46;
+            font-size: 1.02rem;
+            font-weight: 800;
+        }
+
+        .members-page .alumni-name .kr-name {
+            display: inline;
+            margin: 0 0 0 4px;
+            font-size: .92rem;
+            font-weight: 600;
+        }
+
+        .members-page .alumni-role {
+            grid-column: 1;
+            color: #66809A;
+            font-size: .8rem;
+            font-weight: 700;
+            letter-spacing: .03em;
+        }
+
+        .members-page .alumni-period {
+            grid-column: 2;
+            grid-row: 1 / span 2;
+            align-self: center;
+            color: #7B8794;
+            font-size: .86rem;
+        }
+
+        @media (max-width: 650px) {
+            .members-page .alumni-list { grid-template-columns: 1fr; }
+        }
+
     </style>
 </head>
 
@@ -468,138 +523,49 @@
 
 
         <!-- ========================================
-             UNDERGRADUATE RESEARCHERS
+             ALUMNI
+             (이전 구성원: 이름 / 과정 / 기간)
         ======================================== -->
 
         <section class="members-section"
-                 aria-labelledby="undergrad-heading">
+                 aria-labelledby="alumni-heading">
 
             <p class="section-label">
-                OUR PEOPLE
+                FORMER MEMBERS
             </p>
 
             <h2 class="section-heading"
-                id="undergrad-heading">
-                Undergraduate Researchers
+                id="alumni-heading">
+                Alumni
             </h2>
 
+            <ul class="alumni-list">
 
-            <div class="member-grid">
+                <li>
+                    <span class="alumni-name">Bum Jun Kwon <span class="kr-name">(권범준)</span></span>
+                    <span class="alumni-role">Undergraduate Researcher</span>
+                    <span class="alumni-period">2025.11 ~</span>
+                </li>
 
+                <li>
+                    <span class="alumni-name">Jae Hyeong Ryu <span class="kr-name">(류재형)</span></span>
+                    <span class="alumni-role">Undergraduate Researcher</span>
+                    <span class="alumni-period">2026.03 ~</span>
+                </li>
 
-                <!-- 권범준 -->
+                <li>
+                    <span class="alumni-name">Tae Hun Choi <span class="kr-name">(최태훈)</span></span>
+                    <span class="alumni-role">Undergraduate Researcher</span>
+                    <span class="alumni-period">2026.03 ~</span>
+                </li>
 
-                <article class="member-card">
+                <li>
+                    <span class="alumni-name">Do Hun Pyeon <span class="kr-name">(편도훈)</span></span>
+                    <span class="alumni-role">Undergraduate Researcher</span>
+                    <span class="alumni-period">2026.03 ~</span>
+                </li>
 
-                    <img src="img/Bum Jun Kwon.jpg"
-                         alt="권범준 사진"
-                         loading="lazy">
-
-                    <div class="member-info">
-
-                        <p class="member-role">
-                            Undergraduate Researcher
-                        </p>
-
-                        <h3 class="member-name">
-                            Bum Jun Kwon
-                            <span class="kr-name">(권범준)</span>
-                        </h3>
-
-                        <p class="member-sub">
-                            2025.11 ~
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <!-- 류재형 -->
-
-                <article class="member-card">
-
-                    <img src="img/Jae Hyeong Ryu.jpg"
-                         alt="류재형 사진"
-                         loading="lazy">
-
-                    <div class="member-info">
-
-                        <p class="member-role">
-                            Undergraduate Researcher
-                        </p>
-
-                        <h3 class="member-name">
-                            Jae Hyeong Ryu
-                            <span class="kr-name">(류재형)</span>
-                        </h3>
-
-                        <p class="member-sub">
-                            2026.03 ~
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <!-- 최태훈 -->
-
-                <article class="member-card">
-
-                    <img src="img/Tae Hun Choi.jpg"
-                         alt="최태훈 사진"
-                         loading="lazy">
-
-                    <div class="member-info">
-
-                        <p class="member-role">
-                            Undergraduate Researcher
-                        </p>
-
-                        <h3 class="member-name">
-                            Tae Hun Choi
-                            <span class="kr-name">(최태훈)</span>
-                        </h3>
-
-                        <p class="member-sub">
-                            2026.03 ~
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <!-- 편도훈 -->
-
-                <article class="member-card">
-
-                    <img src="img/Do Hun Pyeon.jpg"
-                         alt="편도훈 사진"
-                         loading="lazy">
-
-                    <div class="member-info">
-
-                        <p class="member-role">
-                            Undergraduate Researcher
-                        </p>
-
-                        <h3 class="member-name">
-                            Do Hun Pyeon
-                            <span class="kr-name">(편도훈)</span>
-                        </h3>
-
-                        <p class="member-sub">
-                            2026.03 ~
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-            </div>
+            </ul>
 
         </section>
 
