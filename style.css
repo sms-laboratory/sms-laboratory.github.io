@@ -93,6 +93,63 @@ nav ul li a {
 nav ul li a:hover,
 nav ul li a.active { color: var(--blue); border-bottom-color: var(--blue); }
 
+/* RESEARCH 하위 메뉴 (Publications / Projects) */
+nav .has-sub { position: relative; }
+nav .has-sub > a::after {
+    content: "";
+    display: inline-block;
+    width: 6px; height: 6px;
+    margin: 0 0 3px 7px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform .2s;
+}
+nav .sub-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    z-index: 1100;
+    min-width: 170px;
+    margin: 0;
+    padding: 8px 0;
+    list-style: none;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-top: 2px solid var(--blue);
+    box-shadow: 0 12px 28px rgba(13, 39, 68, .12);
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, 6px);
+    transition: opacity .18s, transform .18s, visibility .18s;
+}
+nav .has-sub:hover > .sub-menu,
+nav .has-sub:focus-within > .sub-menu,
+nav .has-sub.open > .sub-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+}
+nav .has-sub:hover > a::after,
+nav .has-sub.open > a::after { transform: rotate(225deg); margin-bottom: -1px; }
+nav ul.sub-menu { display: block; }
+nav .sub-menu li a {
+    display: block;
+    padding: 10px 20px;
+    border-bottom: 0;
+    color: var(--navy);
+    font-size: .88rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    white-space: nowrap;
+}
+nav .sub-menu li a:hover,
+nav .sub-menu li a.current {
+    color: var(--blue);
+    background: #F3F7FB;
+    font-weight: 800;
+}
+
 /* HOME HERO: provide a high-resolution image at img/bridge.webp */
 .hero {
     position: relative;

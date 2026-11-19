@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Gallery of SMS Laboratory, Hannam University">
   <title>Gallery | SMS Laboratory</title>
-  <link rel="stylesheet" href="style.css?v=20261119b">
+  <link rel="stylesheet" href="style.css?v=20261119c">
   <style>
     .gallery-page { background: #fff; }
     .gallery-page .gallery-banner { background: #102B46; padding: 48px 28px 45px; text-align: center; }
@@ -28,6 +28,7 @@
     @media (max-width: 900px) { .gallery-page .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     @media (max-width: 650px) { .gallery-page .gallery-banner { padding: 42px 20px 40px; } .gallery-page .gallery-section { padding: 45px 18px 65px; } .gallery-page .gallery-grid { grid-template-columns: 1fr; gap: 20px; } }
   </style>
+  <script src="nav.js" defer></script>
 </head>
 <body>
 <header>
@@ -40,7 +41,13 @@
       <li><a href="index.html">HOME</a></li>
       <li><a href="professor.html">PROFESSOR</a></li>
       <li><a href="members.html">MEMBERS</a></li>
-      <li><a href="research.html">RESEARCH</a></li>
+      <li class="has-sub">
+          <a href="research.html" aria-haspopup="true">RESEARCH</a>
+          <ul class="sub-menu">
+              <li><a href="publications.html">Publications</a></li>
+              <li><a href="projects.html">Projects</a></li>
+          </ul>
+      </li>
       <li><a href="gallery.html" class="active" aria-current="page">GALLERY</a></li>
       <li><a href="contact.html">CONTACT</a></li>
     </ul>
