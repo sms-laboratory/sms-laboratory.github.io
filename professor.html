@@ -177,7 +177,37 @@
 .professor-page .profile-facts > div { margin-bottom: 14px; }
 .professor-page .profile-facts dt { margin-bottom: 2px; color: #102B46; font-size: .82rem; font-weight: 800; letter-spacing: .02em; }
 .professor-page .profile-facts dd { margin: 0; color: #34465a; line-height: 1.6; }
-.professor-page .profile-facts .cv-ko { display: block; margin-top: 3px; color: #7B8794; font-size: .88rem; }
+.professor-page .profile-facts .cv-ko { word-break: keep-all; display: block; margin-top: 3px; color: #7B8794; font-size: .88rem; }
+/* 프로필: 사진 높이를 오른쪽 정보와 맞춤 + 연락처는 아래 가로 띠 */
+.professor-page .profile-wrap {
+    display: grid;
+    grid-template-columns: 230px minmax(0, 1fr);
+    gap: 40px;
+    align-items: stretch;
+}
+.professor-page .profile-photo { width: auto; height: auto; min-height: 280px; border-radius: 14px; }
+.professor-page .profile-photo img { height: 100%; object-position: center 15%; }
+.professor-page .profile-info { align-self: center; min-width: 0; }
+.professor-page .profile-facts > div:last-child { margin-bottom: 0; }
+.professor-page .contact-strip {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 2.4fr;
+    margin: 32px 0 0;
+    border-top: 2px solid #102B46;
+    border-bottom: 1px solid #DCE5EF;
+}
+.professor-page .contact-strip > div { padding: 18px 22px 18px 0; }
+.professor-page .contact-strip > div + div { padding-left: 22px; border-left: 1px solid #E6EBF1; }
+.professor-page .contact-strip dt { margin-bottom: 4px; color: #66809A; font-size: .78rem; font-weight: 700; }
+.professor-page .contact-strip dd { margin: 0; color: #102B46; font-size: .95rem; line-height: 1.6; overflow-wrap: anywhere; }
+.professor-page .contact-strip a { color: inherit; text-decoration: none; border-bottom: 1px solid #C9D6E3; }
+.professor-page .contact-strip a:hover { color: #17639b; border-color: #17639b; }
+@media (max-width: 760px) {
+    .professor-page .profile-wrap { grid-template-columns: 1fr; gap: 24px; }
+    .professor-page .profile-photo { width: 200px; min-height: 0; aspect-ratio: 3 / 4; }
+    .professor-page .contact-strip { grid-template-columns: 1fr; }
+    .professor-page .contact-strip > div + div { padding-left: 0; border-left: 0; border-top: 1px solid #E6EBF1; }
+}
     </style>
   <script src="nav.js" defer></script>
 </head>
@@ -266,30 +296,25 @@
                     </div>
                 </dl>
 
-                <div class="contact-box">
-
-                    <p>
-                        <strong>Tel:</strong>
-                        +82-42-629-7931
-                    </p>
-
-                    <p>
-                        <strong>E-mail:</strong>
-                        mkkim9112@hnu.kr
-                    </p>
-
-                    <p>
-                        <strong>Office:</strong>
-                        Department of Civil and Environmental Engineering,<br>
-                        70 Hannam-ro, Daedeok-gu,
-                        Daejeon 34430, Republic of Korea
-                    </p>
-
-                </div>
 
             </div>
 
         </div>
+
+        <dl class="contact-strip">
+            <div>
+                <dt>Tel</dt>
+                <dd><a href="tel:+82426297931">+82-42-629-7931</a></dd>
+            </div>
+            <div>
+                <dt>E-mail</dt>
+                <dd><a href="mailto:mkkim9112@hnu.kr">mkkim9112@hnu.kr</a></dd>
+            </div>
+            <div>
+                <dt>Office</dt>
+                <dd>Department of Civil and Environmental Engineering, HANNAM UNIVERSITY<br>70 Hannam-ro, Daedeok-gu, Daejeon 34430, Republic of Korea</dd>
+            </div>
+        </dl>
 
     </section>
 
