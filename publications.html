@@ -19,6 +19,17 @@
     .sub-page .jump a { display:inline-block; padding:7px 15px; border:1px solid #D5DFEA; border-radius:999px; color:#17639b; font-size:.84rem; font-weight:700; text-decoration:none; transition:background .15s,color .15s,border-color .15s; }
     .sub-page .jump a:hover { background:#F1F6FB; }
     .sub-page .jump a.is-active { background:#102B46; border-color:#102B46; color:#fff; }
+    .sub-page .role-filter { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:-.3rem 0 1.4rem; }
+    .sub-page .role-filter[hidden] { display:none; }
+    .sub-page .role-filter button { border:1px solid transparent; cursor:pointer; font-family:inherit; font-size:.76rem; padding:5px 12px; transition:background .15s,color .15s,box-shadow .15s; }
+    .sub-page .role-filter button .count { opacity:.75; font-weight:800; }
+    .sub-page .role-filter .tag-first:hover { border-color:#9EC3E3; }
+    .sub-page .role-filter .tag-ca:hover { border-color:#E7B3B9; }
+    .sub-page .role-filter .tag-first[aria-pressed="true"] { background:#17639b; color:#fff; }
+    .sub-page .role-filter .tag-ca[aria-pressed="true"] { background:#A8323E; color:#fff; }
+    .sub-page .role-filter button:disabled { opacity:.4; cursor:default; border-color:transparent; }
+    .sub-page .role-filter .filter-hint { color:#A0AAB5; font-size:.74rem; }
+    .sub-page .paper[hidden], .sub-page .year-group[hidden] { display:none; }
     .sub-page .pub-panel > h3:first-child { margin-top:1.4rem; }
     .sub-page .pub-panel { animation:pubFade .25s ease; }
     @keyframes pubFade { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
@@ -34,7 +45,7 @@
     /* ---------- SCI(E) paper list ---------- */
     .sub-page .pub-note { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:-.3rem 0 1.6rem; color:#7B8794; font-size:.82rem; }
     .sub-page .year-group { display:grid; grid-template-columns:130px minmax(0,1fr); gap:0 24px; padding:6px 0 0; }
-    .sub-page .year-group + .year-group { margin-top:14px; padding-top:22px; border-top:1px solid #EDF1F5; }
+    .sub-page .year-group:not([hidden]) ~ .year-group:not([hidden]) { margin-top:14px; padding-top:22px; border-top:1px solid #EDF1F5; }
     .sub-page .year-label { position:sticky; top:96px; align-self:start; padding-top:14px; }
     .sub-page .year-label span { display:block; color:#102B46; font-size:1.65rem; font-weight:800; letter-spacing:-.02em; line-height:1; }
     .sub-page .year-label small { display:block; margin-top:7px; white-space:nowrap; color:#94A3B4; font-size:.74rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
@@ -111,7 +122,11 @@
       <a href="#domestic-conf" id="tab-domestic-conf" role="tab" aria-controls="domestic-conf" aria-selected="false">Domestic Conferences (19)</a>
       <a href="#awards" id="tab-awards" role="tab" aria-controls="awards" aria-selected="false">Awards (3)</a>
     </div>
-    <p class="pub-note"><span class="tag tag-first">First author</span> <span class="tag tag-ca">Corresponding</span></p>
+    <div class="role-filter" aria-label="Filter by author role">
+      <button type="button" class="tag tag-first" data-role="tag-first" aria-pressed="false">First author <span class="count"></span></button>
+      <button type="button" class="tag tag-ca" data-role="tag-ca" aria-pressed="false">Corresponding <span class="count"></span></button>
+      <span class="filter-hint">Click to filter</span>
+    </div>
     <div class="pub-list">
       <div class="pub-panel" id="sci" role="tabpanel" aria-labelledby="tab-sci">
         <h3>SCI(E) Journal Papers</h3>
@@ -1079,7 +1094,45 @@
       t.setAttribute('aria-selected', on ? 'true' : 'false');
     });
     if (push) history.replaceState(null, '', '#' + id);
+    setupFilter(document.getElementById(id));
   }
+
+  // First author / Corresponding 필터
+  var filter = document.querySelector('.role-filter');
+  var buttons = filter.querySelectorAll('button');
+  var current = null;
+  function applyFilter(panel, role) {
+    panel.querySelectorAll('.paper').forEach(function (p) {
+      p.hidden = role ? !p.querySelector('.paper-tags .' + role) : false;
+    });
+    panel.querySelectorAll('.year-group').forEach(function (g) {
+      var n = g.querySelectorAll('.paper:not([hidden])').length;
+      g.hidden = n === 0;
+      var small = g.querySelector('.year-label small');
+      if (!small.dataset.unit) small.dataset.unit = small.textContent.replace(/^\d+\s*/, '').replace(/s$/, '');
+      small.textContent = n + ' ' + small.dataset.unit + (n > 1 ? 's' : '');
+    });
+    buttons.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.role === role ? 'true' : 'false'); });
+  }
+  function setupFilter(panel) {
+    if (current && current !== panel) applyFilter(current, null);
+    current = panel;
+    var total = 0;
+    buttons.forEach(function (b) {
+      var n = panel.querySelectorAll('.paper-tags .' + b.dataset.role).length;
+      b.querySelector('.count').textContent = '(' + n + ')';
+      b.disabled = n === 0;
+      total += n;
+    });
+    filter.hidden = total === 0;
+    applyFilter(panel, null);
+  }
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var on = b.getAttribute('aria-pressed') === 'true';
+      applyFilter(current, on ? null : b.dataset.role);
+    });
+  });
   tabs.forEach(function (t) {
     t.addEventListener('click', function (e) {
       e.preventDefault();
