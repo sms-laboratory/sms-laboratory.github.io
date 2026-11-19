@@ -70,6 +70,13 @@ nav .logo .logo-text {
     letter-spacing: 0;
     line-height: 1.3;
 }
+nav .logo .logo-univ {
+    display: block;
+    margin-top: 2px;
+    color: #8A96A5;
+    font-size: .72rem;
+    font-weight: 500;
+}
 nav ul {
     display: flex;
     align-items: center;
