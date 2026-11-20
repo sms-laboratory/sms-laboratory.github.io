@@ -438,3 +438,9 @@ p, li, dd { text-wrap: pretty; }
     nav .has-sub:hover > .sub-menu, nav .has-sub:focus-within > .sub-menu, nav .has-sub.open > .sub-menu { transform: translate(0, 0); }
 }
 .text-link, .stat-note .nb { white-space: nowrap; }
+
+/* 방문자 수 (푸터 Contact 아래) */
+.footer-contact .visitor-row[hidden] { display: none; }
+.footer-contact .visitor-count { color: #f3f7fb; font-size: inherit; font-weight: 400; letter-spacing: 0; text-transform: none; flex: 1 1 auto; }
+.footer-contact .visitor-count b { font-weight: 700; font-variant-numeric: tabular-nums; }
+.footer-contact .visitor-count i { font-style: normal; color: rgba(243, 247, 251, .6); }
