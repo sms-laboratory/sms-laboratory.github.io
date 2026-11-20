@@ -468,3 +468,6 @@ p, li, dd { text-wrap: pretty; }
 .v-total { padding-left: 12px; border-left: 1px solid rgba(255, 255, 255, .14); }
 @media (prefers-reduced-motion: reduce) { .v-live { animation: none; } }
 @media (max-width: 650px) { .visitor-row { gap: 10px; } }
+
+/* 데스크톱에서만 줄바꿈 (모바일은 구절 단위로 자연스럽게) */
+@media (max-width: 650px) { .br-desk { display: none; } }

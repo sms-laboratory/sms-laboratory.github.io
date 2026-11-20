@@ -47,7 +47,7 @@
     letter-spacing: -.035em;
 }
 .hero-lede {
-    max-width: 34em;
+    max-width: 40em;
     margin: 0 0 34px;
     color: #C9D6E8;
     font-size: 1.02rem;
@@ -298,7 +298,7 @@
 /* 영문 + 국문 병기 */
 .hero-lede { margin-bottom: 10px; }
 .hero-lede-ko {
-    max-width: 38em;
+    max-width: 44em;
     margin: 0 0 32px;
     color: #8FA4C2;
     font-size: .9rem;
