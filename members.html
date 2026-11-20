@@ -3,12 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="site-build" content="20261120110258">
+    <meta name="site-build" content="20261120111941">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Members of SMS Laboratory, Hannam University">
 
     <title>Members | SMS Laboratory</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=20261120g">
 
     <style>
@@ -421,6 +424,51 @@
             font-weight: 500;
         }
 
+        /* ==========================================================
+           NEW STYLE (메인 · Research와 같은 톤)
+           ========================================================== */
+        .members-page { --ink:#0D2341; --crimson:#D23A4E; --blue:#2F63D8; --display:'Bricolage Grotesque','Pretendard','Noto Sans KR',sans-serif; }
+        .members-page .m-head { display:flex; align-items:baseline; flex-wrap:wrap; gap:4px 14px; margin:0 0 30px; padding-bottom:16px; border-bottom:2px solid var(--ink); }
+        .members-page .m-head h2 { margin:0; padding:0; border:0; color:var(--ink); font-family:var(--display); font-size:clamp(1.8rem,3vw,2.5rem); font-weight:800; letter-spacing:-.03em; line-height:1.1; }
+        .members-page .m-head-ko { margin:0; color:#7B8794; font-size:.98rem; font-weight:600; }
+        .members-page .m-count { margin-left:auto; color:var(--crimson); font-family:var(--display); font-size:1.6rem; font-weight:800; line-height:1; }
+
+        .members-page .member-grid { gap:34px 26px; }
+        .members-page .member-card { border:0; border-radius:0; box-shadow:none; background:transparent; overflow:visible; }
+        .members-page .member-card:hover { transform:none; box-shadow:none; }
+        .members-page .member-card img,
+        .members-page .member-photo-placeholder { height:auto; aspect-ratio:3 / 4; border-radius:16px; background:#EEF2F6; transition:transform .45s ease, box-shadow .45s ease; }
+        .members-page .member-card:hover img { transform:translateY(-4px); box-shadow:0 18px 34px -18px rgba(13,35,65,.45); }
+        .members-page .member-info, .members-page .member-info * { text-align:left; }
+        .members-page .member-info { padding:16px 2px 0; }
+        .members-page .member-role { display:inline-block; margin:0 0 10px; padding:3px 10px; border-radius:999px; background:#EEF2F7; color:#2C4A66; font-size:.7rem; letter-spacing:.01em; white-space:nowrap; }
+        .members-page .member-name { color:var(--ink); font-family:var(--display); font-size:1.32rem; font-weight:800; letter-spacing:-.02em; line-height:1.2; }
+        .members-page .member-name .kr-name { display:block; margin-top:4px; color:#7B8794; font-family:'Pretendard','Noto Sans KR',sans-serif; font-size:.92rem; font-weight:600; letter-spacing:0; }
+        .members-page .member-sub { margin:10px 0 0; padding-top:10px; border-top:1px solid #E6EBF1; color:#66809A; font-size:.84rem; font-variant-numeric:tabular-nums; }
+        .members-page .member-history { color:#A0AAB5; }
+
+        .members-page .alumni-heading { font-family:var(--display); font-size:1.2rem; color:var(--ink); }
+        .members-page .alumni-heading span { font-family:'Pretendard','Noto Sans KR',sans-serif; }
+        .members-page .alumni-name { font-family:var(--display); font-weight:800; letter-spacing:-.01em; }
+        .members-page .alumni-name .kr-name { font-family:'Pretendard','Noto Sans KR',sans-serif; }
+
+        .members-page .m-join { display:flex; align-items:center; justify-content:space-between; gap:24px; max-width:calc(1200px - 56px); margin:10px auto 90px; padding:40px 44px; box-sizing:border-box; width:calc(100% - 56px); border-radius:22px; color:#fff;
+            background: radial-gradient(600px 240px at 90% 0%, rgba(47,99,216,.45), transparent 70%), var(--ink); }
+        .members-page .m-join h2 { margin:0 0 8px; padding:0; border:0; color:#fff; font-family:var(--display); font-size:clamp(1.6rem,2.6vw,2.2rem); font-weight:800; letter-spacing:-.025em; }
+        .members-page .m-join p { margin:0; color:#C9D6E8; line-height:1.7; }
+        .members-page .m-join .ko { margin-top:4px; color:#8FA4C2; font-size:.9rem; }
+        .members-page .m-join-btn { flex-shrink:0; padding:13px 22px; border-radius:999px; background:#fff; color:var(--ink); font-weight:700; text-decoration:none; transition:background .2s; }
+        .members-page .m-join-btn:hover { background:#DCE6F7; }
+        .members-page .m-join-btn:focus-visible { outline:3px solid #8CB4FF; outline-offset:3px; }
+
+        @media (max-width: 760px) {
+            .members-page .member-grid { gap:26px 14px; }
+            .members-page .member-name { font-size:1.08rem; }
+            .members-page .member-role { font-size:.62rem; padding:2px 8px; }
+            .members-page .m-join { flex-direction:column; align-items:flex-start; width:calc(100% - 36px); margin:0 auto 60px; padding:30px 24px; }
+        }
+        @media (prefers-reduced-motion: reduce) { .members-page .member-card img { transition:none; } }
+
     </style>
   <script src="nav.js?v=5" defer></script>
 </head>
@@ -517,14 +565,11 @@
         <section class="members-section"
                  aria-labelledby="masters-heading">
 
-            <p class="section-label">
-                GRADUATE STUDENTS
-            </p>
-
-            <h2 class="section-heading"
-                id="masters-heading">
-                Master's Students
-            </h2>
+            <header class="m-head">
+                <h2 id="masters-heading">Master's Students</h2>
+                <p class="m-head-ko">석사과정</p>
+                <span class="m-count">2</span>
+            </header>
 
 
             <div class="member-grid">
@@ -579,7 +624,7 @@
 
                         <p class="member-sub">
                             2025.03 ~
-                            <span class="member-history">B.S. Researcher 2024.09 ~ 2025.02</span>
+                            <span class="member-history"><span class="nb">B.S. Researcher</span> <span class="nb">2024.09 ~ 2025.02</span></span>
                         </p>
 
                     </div>
@@ -601,14 +646,11 @@
         <section class="members-section"
                  aria-labelledby="undergrad-heading">
 
-            <p class="section-label">
-                UNDERGRADUATE RESEARCH
-            </p>
-
-            <h2 class="section-heading"
-                id="undergrad-heading">
-                Undergraduate Students
-            </h2>
+            <header class="m-head">
+                <h2 id="undergrad-heading">Undergraduate Students</h2>
+                <p class="m-head-ko">학부연구생</p>
+                <span class="m-count">5</span>
+            </header>
 
 
             <div class="member-grid">
@@ -767,14 +809,11 @@
         <section class="members-section"
                  aria-labelledby="alumni-heading">
 
-            <p class="section-label">
-                FORMER MEMBERS
-            </p>
-
-            <h2 class="section-heading"
-                id="alumni-heading">
-                Alumni
-            </h2>
+            <header class="m-head">
+                <h2 id="alumni-heading">Alumni</h2>
+                <p class="m-head-ko">졸업 및 이전 구성원</p>
+                <span class="m-count">7</span>
+            </header>
 
             <!-- Ph.D. 졸업생이 생기면 아래 주석을 풀고 <li>를 추가하세요
             <div class="alumni-group">
@@ -870,6 +909,16 @@
             </div>
 
         </section>
+
+        <!-- JOIN US -->
+        <aside class="m-join" aria-labelledby="join-title">
+            <div>
+                <h2 id="join-title">Join SMS Lab</h2>
+                <p><span class="nb">We welcome undergraduate researchers</span> <span class="nb">and graduate students</span> <span class="nb">who are curious about smart materials.</span></p>
+                <p class="ko"><span class="nb">스마트 건설재료에 관심 있는</span> <span class="nb">학부연구생과 대학원생을 기다립니다.</span></p>
+            </div>
+            <a class="m-join-btn" href="mailto:mkkim9112@hnu.kr">Contact Prof. KIM</a>
+        </aside>
 
     </main>
 

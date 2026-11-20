@@ -2,10 +2,13 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-    <meta name="site-build" content="20261120110258">
+    <meta name="site-build" content="20261120111941">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Contact SMS Laboratory at Hannam University">
   <title>Contact | SMS Laboratory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=20261120g">
   <style>
     .contact-page { background:#fff; }
@@ -41,6 +44,60 @@
       .contact-page .contact-card, .contact-page .location-box { padding:23px 20px; }
       .contact-page .inquiry { padding:22px 20px; }
     }
+    /* ==========================================================
+       NEW STYLE
+       ========================================================== */
+    .contact-page { --ink:#0D2341; --crimson:#D23A4E; --blue:#2F63D8; --display:'Bricolage Grotesque','Pretendard','Noto Sans KR',sans-serif; }
+    .c-hero, .c-info, .c-location { max-width:1200px; margin:0 auto; padding-left:28px; padding-right:28px; }
+    .c-hero { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:40px; align-items:end; padding-top:76px; padding-bottom:40px; }
+    .c-hero h2 { margin:0 0 16px; padding:0; border:0; color:var(--ink); font-family:var(--display); font-size:clamp(2.2rem,4.4vw,3.6rem); font-weight:800; letter-spacing:-.035em; line-height:1.02; }
+    .c-hero p { margin:0; color:#3F5167; font-size:1.02rem; line-height:1.7; }
+    .c-hero .ko { margin-top:4px; color:#8592A3; font-size:.9rem; }
+    .c-mail { position:relative; display:block; padding:26px 28px; border-radius:20px; color:#fff; text-decoration:none; overflow:hidden;
+      background: radial-gradient(420px 200px at 100% 0%, rgba(47,99,216,.55), transparent 70%), var(--ink); transition:transform .25s ease, box-shadow .25s ease; }
+    .c-mail::after { content:""; position:absolute; right:24px; top:24px; width:12px; height:12px; border-top:2px solid #fff; border-right:2px solid #fff; transform:rotate(45deg); transition:transform .25s ease; }
+    .c-mail:hover { transform:translateY(-3px); box-shadow:0 22px 40px -22px rgba(13,35,65,.6); }
+    .c-mail:hover::after { transform:translateX(4px) rotate(45deg); }
+    .c-mail:focus-visible { outline:3px solid #8CB4FF; outline-offset:3px; }
+    .c-mail-label { display:block; margin-bottom:8px; color:#9FB4D3; font-size:.84rem; font-weight:600; }
+    .c-mail-addr { display:block; font-family:var(--display); font-size:clamp(1.4rem,2.4vw,1.9rem); font-weight:800; letter-spacing:-.02em; }
+
+    .c-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); margin:0; border-top:2px solid var(--ink); border-bottom:1px solid #DCE5EF; }
+    .c-item { padding:22px 22px 22px 0; }
+    .c-item + .c-item { padding-left:22px; border-left:1px solid #E6EBF1; }
+    .c-item dt { margin-bottom:6px; color:#66809A; font-size:.78rem; font-weight:700; }
+    .c-item dd { margin:0; color:var(--ink); font-size:1rem; font-weight:600; line-height:1.5; }
+    .c-item dd a { color:inherit; text-decoration:none; border-bottom:1px solid #C9D6E3; }
+    .c-item dd a:hover { color:var(--blue); border-color:var(--blue); }
+    .c-item .ko { display:block; margin-top:3px; color:#8592A3; font-size:.84rem; font-weight:500; }
+
+    .c-location { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.3fr); gap:44px; align-items:stretch; padding-top:72px; padding-bottom:100px; }
+    .c-location h2 { margin:0 0 18px; padding:0; border:0; color:var(--ink); font-family:var(--display); font-size:clamp(1.8rem,3vw,2.5rem); font-weight:800; letter-spacing:-.03em; }
+    .c-addr-en { margin:0 0 12px; color:#2E4258; line-height:1.75; }
+    .c-addr-ko { margin:0 0 26px; color:#7B8794; font-size:.92rem; line-height:1.7; }
+    .c-map-links { display:flex; flex-wrap:wrap; gap:8px; }
+    .c-map-links a { padding:8px 15px; border:1px solid #D5DFEA; border-radius:999px; color:var(--ink); font-size:.84rem; font-weight:700; text-decoration:none; transition:background .2s,border-color .2s; }
+    .c-map-links a:hover { background:#F1F6FB; border-color:#9FB4D3; }
+    .c-map { position:relative; min-height:340px; border-radius:20px; overflow:hidden; background:#EEF2F6; }
+    .c-map::before { content:""; position:absolute; left:0; top:0; z-index:1; width:100%; height:4px; background:var(--crimson); }
+    .c-map iframe { position:absolute; inset:0; width:100%; height:100%; border:0; filter:saturate(.85); }
+
+    @media (max-width: 900px) {
+      .c-hero, .c-location { grid-template-columns:1fr; gap:28px; }
+      .c-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .c-item:nth-child(3) { padding-left:0; border-left:0; }
+      .c-item:nth-child(n+3) { border-top:1px solid #E6EBF1; }
+    }
+    @media (max-width: 650px) {
+      .c-hero, .c-info, .c-location { padding-left:20px; padding-right:20px; }
+      .c-hero { padding-top:48px; padding-bottom:28px; }
+      .c-grid { grid-template-columns:1fr; }
+      .c-item, .c-item + .c-item { padding:16px 0; border-left:0; }
+      .c-item + .c-item { border-top:1px solid #E6EBF1; }
+      .c-location { padding-top:52px; padding-bottom:70px; }
+      .c-map { min-height:280px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .c-mail, .c-mail::after { transition:none; } }
   </style>
   <script src="nav.js?v=5" defer></script>
 </head>
@@ -74,46 +131,53 @@
     <h1>Contact</h1>
     <p class="subtitle">연구실 연락처 및 위치 안내</p>
   </div>
-  <section class="contact-section" aria-labelledby="contact-heading">
-    <p class="section-label">GET IN TOUCH</p>
-    <h2 class="section-heading" id="contact-heading">Contact Information</h2>
-    <div class="contact-grid">
-      <div class="contact-card">
-        <h3>Laboratory</h3>
-        <dl>
-          <dt>Name</dt>
-          <dd><span class="nb">Smart Materials and Structures Laboratory</span> <span class="nb">(SMS Lab)</span></dd>
-          <dt>University</dt>
-          <dd>Hannam University (한남대학교)</dd>
-          <dt>Department</dt>
-          <dd><span class="nb">Department of Civil and Environmental Engineering</span> <span class="nb">(건설환경공학과)</span></dd>
-        </dl>
+
+  <section class="c-hero" aria-labelledby="contact-heading">
+    <div class="c-hero-text">
+      <h2 id="contact-heading">Let&rsquo;s talk research.</h2>
+      <p><span class="nb">Questions about collaboration,</span> <span class="nb">graduate admission</span> <span class="nb">or undergraduate research?</span> <span class="nb">Send us an e-mail.</span></p>
+      <p class="ko"><span class="nb">공동연구, 대학원 진학,</span> <span class="nb">학부연구생 참여 문의는</span> <span class="nb">이메일로 연락해 주세요.</span></p>
+    </div>
+    <a class="c-mail" href="mailto:mkkim9112@hnu.kr">
+      <span class="c-mail-label">E-mail Prof. KIM</span>
+      <span class="c-mail-addr">mkkim9112@hnu.kr</span>
+    </a>
+  </section>
+
+  <section class="c-info" aria-label="Contact details">
+    <dl class="c-grid">
+      <div class="c-item">
+        <dt>Professor</dt>
+        <dd>Prof. Min Kyoung KIM<span class="ko">김민경 교수</span></dd>
       </div>
-      <div class="contact-card">
-        <h3>Professor</h3>
-        <dl>
-          <dt>Name</dt>
-          <dd>Prof. Min Kyoung KIM (김민경 교수)</dd>
-          <dt>E-mail</dt>
-          <dd><a href="mailto:mkkim9112@hnu.kr">mkkim9112@hnu.kr</a></dd>
-          <dt>Tel</dt>
-          <dd><a href="tel:+82426297931">+82-42-629-7931</a></dd>
-        </dl>
+      <div class="c-item">
+        <dt>Tel</dt>
+        <dd><a href="tel:+82426297931">+82-42-629-7931</a></dd>
+      </div>
+      <div class="c-item">
+        <dt>Laboratory</dt>
+        <dd><span class="nb">Smart Materials and</span> <span class="nb">Structures Laboratory</span><span class="ko">SMS Lab, Room 1014 &middot; 1014호</span></dd>
+      </div>
+      <div class="c-item">
+        <dt>Professor&rsquo;s office</dt>
+        <dd>Room 1004<span class="ko">교수 연구실 1004호</span></dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="c-location" aria-labelledby="location-heading">
+    <div class="c-loc-text">
+      <h2 id="location-heading">Find us</h2>
+      <p class="c-addr-en"><span class="nb">College of Engineering (Bldg. 09), 10th floor,</span><br><span class="nb">Department of Civil and Environmental Engineering,</span><br><span class="nb">HANNAM UNIVERSITY,</span> <span class="nb">70 Hannam-ro, Daedeok-gu,</span> <span class="nb">Daejeon 34430, Republic of Korea</span></p>
+      <p class="c-addr-ko"><span class="nb">대전광역시 대덕구 한남로 70 (34430)</span><br><span class="nb">한남대학교 공과대학 09번 건물 10층</span></p>
+      <div class="c-map-links">
+        <a href="https://map.naver.com/p/search/%ED%95%9C%EB%82%A8%EB%8C%80%ED%95%99%EA%B5%90%20%EA%B3%B5%EA%B3%BC%EB%8C%80%ED%95%99" target="_blank" rel="noopener noreferrer">Naver Map</a>
+        <a href="https://map.kakao.com/?q=%ED%95%9C%EB%82%A8%EB%8C%80%ED%95%99%EA%B5%90%20%EA%B3%B5%EA%B3%BC%EB%8C%80%ED%95%99" target="_blank" rel="noopener noreferrer">Kakao Map</a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Hannam+University+College+of+Engineering+Daejeon" target="_blank" rel="noopener noreferrer">Google Maps</a>
       </div>
     </div>
-    <div class="location-block">
-      <p class="section-label">FIND US</p>
-      <h2 class="section-heading">Location</h2>
-      <div class="location-box">
-        <p class="address"><span class="lines"><span class="nb">한남대학교</span> <span class="nb">대전광역시 대덕구 한남로 70 (34430)</span></span></p>
-        <p><span class="nb">Hannam University,</span> <span class="nb">70 Hannam-ro,</span> <span class="nb">Daedeok-gu,</span> <span class="nb">Daejeon 34430,</span> <span class="nb">Republic of Korea</span></p>
-        <p><strong>SMS 연구실:</strong> <span class="nb">공과대학 09번 건물,</span> <span class="nb">10층 14호 (1014호)</span></p>
-        <p><strong>교수님 연구실:</strong> <span class="nb">공과대학 09번 건물,</span> <span class="nb">10층 04호 (1004호)</span></p>
-      </div>
-    </div>
-    <div class="inquiry">
-      <h3>Research &amp; Graduate Inquiries</h3>
-      <p>공동연구 및 대학원 진학 관련 문의는 위 이메일로 연락해 주시기 바랍니다.</p>
+    <div class="c-map">
+      <iframe title="한남대학교 위치 지도" src="https://www.google.com/maps?q=%ED%95%9C%EB%82%A8%EB%8C%80%ED%95%99%EA%B5%90%20%EA%B3%B5%EA%B3%BC%EB%8C%80%ED%95%99&amp;hl=ko&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </section>
 </main>
