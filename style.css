@@ -585,29 +585,46 @@ body .page-banner .subtitle {
     font-size: 1rem !important;
     font-weight: 560;
 }
-body .page-banner .pb-signal {
+body .page-banner .pb-art {
     position: absolute; z-index: 0;
-    right: max(0px, calc((100% - 1240px) / 2)); top: 50%;
-    width: min(560px, 52%); height: 70%;
+    right: max(12px, calc((100% - 1240px) / 2)); top: 50%;
+    width: min(560px, 50%); height: 78%;
     transform: translateY(-50%);
-    pointer-events: none;
+    pointer-events: none; overflow: visible;
+    font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
 }
-.pb-signal path { fill: none; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
-.pb-signal .pb-a { stroke: #D23A4E; stroke-width: 2.4; }
-.pb-signal .pb-b { stroke: rgba(159, 180, 211, .55); stroke-width: 1.6; }
-.pb-signal .pb-dot { fill: #D23A4E; }
-.pb-signal.is-drawing path { stroke-dasharray: var(--len); stroke-dashoffset: var(--len); animation: pbDraw 1.8s cubic-bezier(.4, .1, .2, 1) forwards; }
-.pb-signal.is-drawing .pb-b { animation-delay: .15s; }
-.pb-signal.is-drawing .pb-dot { opacity: 0; animation: pbDot .4s ease 1.7s forwards; }
+.pb-art path:not([fill]) { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.pb-art .pbm-draw { stroke-dasharray: var(--len); stroke-dashoffset: var(--len); }
+.pb-art .pbm-grow-y { transform-box: fill-box; transform-origin: 50% 100%; transform: scaleY(0); }
+.pb-art .pbm-grow-x { transform-box: fill-box; transform-origin: 0 50%; transform: scaleX(0); }
+.pb-art .pbm-pop { transform-box: fill-box; transform-origin: center; transform: scale(0); }
+.pb-art .pbm-fade { opacity: 0; }
+.pb-art .pbm-drop { opacity: 0; transform: translateY(-50px); }
+.pb-art .pbm-ripple { opacity: 0; transform-box: fill-box; transform-origin: center; }
+.pb-art.is-on .pbm-draw { animation: pbDraw 1.5s var(--d, 0s) cubic-bezier(.4, .1, .2, 1) forwards; }
+.pb-art.is-on .pbm-grow-y { animation: pbGrow .7s var(--d, 0s) cubic-bezier(.2, .9, .25, 1.15) forwards; }
+.pb-art.is-on .pbm-grow-x { animation: pbGrow 1s var(--d, 0s) cubic-bezier(.6, 0, .2, 1) forwards; }
+.pb-art.is-on .pbm-pop { animation: pbPop .5s var(--d, 0s) cubic-bezier(.3, 1.6, .5, 1) forwards; }
+.pb-art.is-on .pbm-fade { animation: pbFade .6s var(--d, 0s) ease forwards; }
+.pb-art.is-on .pbm-drop { animation: pbDrop .7s var(--d, 0s) cubic-bezier(.3, 1.5, .5, 1) forwards; }
+.pb-art.is-on .pbm-ripple { animation: pbRipple 1.4s var(--d, 0s) ease-out 3; }
 @keyframes pbDraw { to { stroke-dashoffset: 0; } }
-@keyframes pbDot { to { opacity: 1; } }
+@keyframes pbGrow { to { transform: none; } }
+@keyframes pbPop { to { transform: none; } }
+@keyframes pbFade { to { opacity: 1; } }
+@keyframes pbDrop { to { opacity: 1; transform: none; } }
+@keyframes pbRipple { 0% { opacity: .9; transform: scale(.4); } 100% { opacity: 0; transform: scale(2.4); } }
 @media (max-width: 760px) {
     body .page-banner { padding: 44px 20px 40px !important; }
-    body .page-banner .pb-signal { width: 70%; height: 55%; opacity: .45; }
+    body .page-banner .pb-art { width: 78%; height: 60%; opacity: .4; }
 }
 @media (prefers-reduced-motion: reduce) {
-    .pb-signal.is-drawing path, .pb-signal.is-drawing .pb-dot { animation: none; stroke-dashoffset: 0; opacity: 1; }
+    .pb-art.is-on * { animation: none !important; }
+    .pb-art .pbm-draw { stroke-dashoffset: 0; }
+    .pb-art .pbm-grow-y, .pb-art .pbm-grow-x, .pb-art .pbm-pop, .pb-art .pbm-drop { transform: none; opacity: 1; }
+    .pb-art .pbm-fade { opacity: 1; }
 }
+
 
 /* 보조 한글 텍스트는 얇아 보이지 않도록 Medium(500)으로 */
 body .kr-name, body .cv-ko, body .hero-lede-ko, body .alumni-period, body .member-history, body .profile-fields li span { font-weight: 560; }
