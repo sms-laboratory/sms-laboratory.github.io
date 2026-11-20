@@ -439,8 +439,23 @@ p, li, dd { text-wrap: pretty; }
 }
 .text-link, .stat-note .nb { white-space: nowrap; }
 
-/* 방문자 수 (푸터 Contact 아래) */
-.footer-contact .visitor-row[hidden] { display: none; }
-.footer-contact .visitor-count { color: #f3f7fb; font-size: inherit; font-weight: 400; letter-spacing: 0; text-transform: none; flex: 1 1 auto; }
-.footer-contact .visitor-count b { font-weight: 700; font-variant-numeric: tabular-nums; }
-.footer-contact .visitor-count i { font-style: normal; color: rgba(243, 247, 251, .6); }
+/* 방문자 수 (푸터 맨 아래 줄, 오른쪽) */
+.footer-bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; }
+.visitor-row { display: flex; align-items: center; gap: 8px; margin: 0; }
+.visitor-row[hidden] { display: none; }
+.visitor-label {
+    margin-right: 4px;
+    color: rgba(243, 247, 251, .45);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+.visitor-stat {
+    padding: 4px 11px;
+    border: 1px solid rgba(255, 255, 255, .14);
+    border-radius: 999px;
+    color: rgba(243, 247, 251, .65);
+    font-size: .78rem;
+}
+.visitor-stat b { margin-left: 3px; color: #fff; font-weight: 700; font-variant-numeric: tabular-nums; }
