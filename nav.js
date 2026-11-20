@@ -96,3 +96,41 @@ document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('DOMContentLoaded', setH);
     window.addEventListener('resize', setH);
 })();
+
+
+// ==========================================================
+// 서브 페이지 배너: 오른쪽 신호 그래프 선 (처음 한 번 그려짐)
+// ==========================================================
+(function () {
+    function shape(seed) {                       // 페이지마다 조금씩 다른 곡선
+        var a = '', b = '', N = 90, W = 600, H = 200;
+        for (var i = 0; i <= N; i++) {
+            var u = i / N, x = u * W;
+            var env = Math.sin(u * Math.PI);
+            var ya = H * .55 - env * (Math.sin(u * (9 + seed) + seed) * 46 + Math.sin(u * 23 + seed * 2) * 10);
+            var yb = H * .62 - env * (Math.sin(u * (9 + seed) + seed - .5) * 30);
+            a += (i ? 'L' : 'M') + x.toFixed(1) + ' ' + ya.toFixed(1);
+            b += (i ? 'L' : 'M') + x.toFixed(1) + ' ' + yb.toFixed(1);
+        }
+        return [a, b, W, H * .55 - Math.sin(Math.PI) * 0];
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+        var banner = document.querySelector('.page-banner');
+        if (!banner) return;
+        var seed = (location.pathname.length % 5) + 1;
+        var d = shape(seed);
+        var ns = 'http://www.w3.org/2000/svg';
+        var svg = document.createElementNS(ns, 'svg');
+        svg.setAttribute('class', 'pb-signal');
+        svg.setAttribute('viewBox', '0 0 600 200');
+        svg.setAttribute('preserveAspectRatio', 'none');
+        svg.setAttribute('aria-hidden', 'true');
+        svg.innerHTML = '<path class="pb-b" d="' + d[1] + '"/><path class="pb-a" d="' + d[0] + '"/>';
+        banner.appendChild(svg);
+        svg.querySelectorAll('path').forEach(function (p) {
+            var L = Math.ceil(p.getTotalLength ? p.getTotalLength() : 1200);
+            p.style.setProperty('--len', L);
+        });
+        requestAnimationFrame(function () { svg.classList.add('is-drawing'); });
+    });
+})();

@@ -2,10 +2,14 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="site-build" content="20261120143007">
+    <meta name="site-build" content="20261120144036">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professor | SMS Laboratory | Hannam University</title>
-    <link rel="stylesheet" href="style.css?v=20261120i">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link rel="stylesheet" href="style.css?v=20261120l">
 
     <style>
         /* ==========================================
@@ -217,8 +221,37 @@
     .professor-page .br-desk { display: none; }
     .professor-page .contact-strip dd .lines { margin-bottom: 2px; }
 }
+/* ---------- 프로필 상단 (새 디자인) ---------- */
+.professor-page .profile-wrap { grid-template-columns: 260px minmax(0, 1fr); gap: 48px; }
+.professor-page .profile-photo { position: relative; overflow: hidden; border-radius: 20px; box-shadow: 0 24px 50px -28px rgba(13, 35, 65, .55); }
+.professor-page .profile-photo::before { content: ""; position: absolute; left: 0; top: 0; z-index: 1; width: 100%; height: 4px; background: #D23A4E; }
+.professor-page .profile-role { display: inline-block; margin: 0 0 10px; padding: 4px 12px; border-radius: 999px; background: #E8F1F9; color: #17639b; font-size: .78rem; font-weight: 700; }
+.professor-page .profile-info h2 { margin: 0; padding: 0; border: 0; color: #0D2341; font-family: 'Bricolage Grotesque', 'Pretendard Variable', sans-serif; font-size: clamp(2.4rem, 4.4vw, 3.6rem); font-weight: 800; letter-spacing: -.04em; line-height: 1.02; }
+.professor-page .profile-ko { margin: 8px 0 18px; }
+.professor-page .profile-affil { margin: 0 0 20px; color: #2E4258; font-size: 1rem; line-height: 1.6; }
+.professor-page .profile-affil .cv-ko { display: block; margin-top: 3px; color: #7B8794; font-size: .88rem; }
+.professor-page .profile-fields { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 24px; padding: 0; list-style: none; }
+.professor-page .profile-fields li { display: inline-flex; flex-direction: column; padding: 8px 14px 7px; border: 1px solid #DCE5EF; border-radius: 12px; color: #102B46; font-size: .86rem; font-weight: 700; line-height: 1.3; transition: border-color .2s, background .2s; }
+.professor-page .profile-fields li span { color: #8592A3; font-size: .72rem; font-weight: 500; }
+.professor-page .profile-fields li:hover { border-color: #2F63D8; background: #F5F8FD; }
+.professor-page .profile-metrics { display: flex; flex-wrap: wrap; align-items: stretch; gap: 10px; }
+.professor-page .pm { display: flex; flex-direction: column; justify-content: center; min-width: 108px; padding: 12px 16px; border-radius: 14px; background: #0D2341; color: #fff; text-decoration: none; transition: transform .2s, background .2s; }
+.professor-page .pm:first-child { background: #2F63D8; }
+.professor-page .pm:hover { transform: translateY(-2px); }
+.professor-page .pm b { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.7rem; font-weight: 800; line-height: 1; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.professor-page .pm span { margin-top: 4px; color: #C9D6E8; font-size: .74rem; font-weight: 600; }
+.professor-page .pm-links { display: flex; flex-direction: column; justify-content: center; gap: 6px; margin-left: 6px; }
+.professor-page .pm-links a { color: #17639b; font-size: .86rem; font-weight: 700; text-decoration: none; border-bottom: 2px solid rgba(23, 99, 155, .2); }
+.professor-page .pm-links a:hover { border-color: #17639b; }
+.professor-page .pm:focus-visible, .professor-page .pm-links a:focus-visible { outline: 3px solid #8CB4FF; outline-offset: 3px; }
+@media (max-width: 760px) {
+    .professor-page .profile-wrap { grid-template-columns: 1fr; gap: 26px; }
+    .professor-page .pm { min-width: 0; flex: 1 1 28%; padding: 10px 12px; }
+    .professor-page .pm-links { flex-direction: row; justify-content: flex-start; margin: 4px 0 0; flex-basis: 100%; gap: 16px; }
+    .professor-page .profile-photo { max-width: 240px; }
+}
     </style>
-  <script src="nav.js?v=5" defer></script>
+  <script src="nav.js?v=6" defer></script>
 </head>
 
 <body>
@@ -265,8 +298,8 @@
 
 <main class="professor-page">
 
-    <div class="professor-banner">
-        <p class="eyebrow">SMS LABORATORY</p>
+    <div class="professor-banner page-banner">
+        <nav class="eyebrow crumbs" aria-label="Breadcrumb"><a href="index.html">SMS Lab</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Professor</span></nav>
         <h1>Professor</h1>
         <p class="subtitle">교수 소개 · 학력 · 경력 · 학회 활동</p>
     </div>
@@ -286,26 +319,32 @@
 
             <div class="profile-info">
 
-                <h2>Prof. Min Kyoung KIM</h2>
+                <p class="profile-role">Assistant Professor</p>
+                <h2>Min Kyoung KIM</h2>
                 <p class="profile-ko">김민경 교수</p>
 
-                <dl class="profile-facts">
-                    <div>
-                        <dt>Affiliation</dt>
-                        <dd>
-                            <span class="lines"><span class="nb">Assistant Professor,</span> <span class="nb">Department of Civil and Environmental Engineering,</span> <span class="nb">HANNAM UNIVERSITY</span></span>
-                            <span class="cv-ko">한남대학교 건설환경공학과 조교수</span>
-                        </dd>
-                    </div>
-                    <div>
-                        <dt>Research Fields</dt>
-                        <dd>
-                            <span class="nb">UHPFRC,</span> <span class="nb">SH-SFRC,</span> <span class="nb">smart construction materials,</span> <span class="nb">self-sensing concrete,</span> <span class="nb">electrical impedance tomography (EIT)</span>
-                            <span class="cv-ko">초고성능 섬유보강 콘크리트, 변형경화형 강섬유보강 콘크리트, 스마트 건설재료, 자가감지 콘크리트, 전기 임피던스 단층촬영</span>
-                        </dd>
-                    </div>
-                </dl>
+                <p class="profile-affil">
+                    <span class="lines"><span class="nb">Department of Civil and Environmental Engineering,</span> <span class="nb">HANNAM UNIVERSITY</span></span>
+                    <span class="cv-ko">한남대학교 건설환경공학과 조교수</span>
+                </p>
 
+                <ul class="profile-fields" aria-label="Research fields">
+                    <li>Self-sensing concrete<span>자가감지 콘크리트</span></li>
+                    <li>UHPFRC<span>초고성능 섬유보강 콘크리트</span></li>
+                    <li>SH-SFRC<span>변형경화형 강섬유보강 콘크리트</span></li>
+                    <li>Smart construction materials<span>스마트 건설재료</span></li>
+                    <li>EIT<span>전기 임피던스 단층촬영</span></li>
+                </ul>
+
+                <div class="profile-metrics">
+                    <a class="pm" href="https://www.scopus.com/authid/detail.uri?authorId=56949225100" target="_blank" rel="noopener noreferrer"><b>661</b><span>Citations</span></a>
+                    <a class="pm" href="https://www.scopus.com/authid/detail.uri?authorId=56949225100" target="_blank" rel="noopener noreferrer"><b>15</b><span>h-index</span></a>
+                    <a class="pm" href="publications.html"><b>43</b><span>Papers</span></a>
+                    <div class="pm-links">
+                        <a href="https://www.scopus.com/authid/detail.uri?authorId=56949225100" target="_blank" rel="noopener noreferrer">Scopus</a>
+                        <a href="https://orcid.org/0000-0003-4502-253X" target="_blank" rel="noopener noreferrer">ORCID</a>
+                    </div>
+                </div>
 
             </div>
 

@@ -21,7 +21,7 @@ body {
     margin: 0;
     color: var(--text);
     background: var(--white);
-    font-family: 'Pretendard', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Pretendard Variable', 'Pretendard', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 16px;
     line-height: 1.65;
     word-break: keep-all;          /* 국문: 낱말 중간에서 줄이 바뀌지 않게 */
@@ -533,4 +533,77 @@ nav.section-tabs {
 }
 @media (max-width: 360px) {
     nav ul li a { font-size: .62rem; }
+}
+
+
+/* ==========================================================
+   SUB-PAGE BANNER (모든 서브 페이지 공통)
+   - 왼쪽 정렬 큰 제목 + 경로 표시
+   - 오른쪽에 신호 그래프 선이 처음 한 번 그려집니다 (nav.js)
+   ========================================================== */
+body .page-banner {
+    position: relative;
+    overflow: hidden;
+    padding: 64px max(28px, calc((100% - 1184px) / 2)) 58px !important;
+    text-align: left !important;
+    background:
+        radial-gradient(700px 320px at 88% 10%, rgba(47, 99, 216, .32), transparent 65%),
+        linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px) 0 0 / 100% 40px,
+        linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px) 0 0 / 60px 100%,
+        #0D2341 !important;
+}
+body .page-banner > * { position: relative; z-index: 1; }
+body .page-banner .crumbs {
+    position: relative !important; top: auto !important;
+    display: flex !important; flex-direction: row !important; flex-wrap: wrap !important; align-items: center !important; justify-content: flex-start !important; gap: 8px !important; text-align: left !important;
+    width: auto !important; max-width: none !important;
+    margin: 0 0 18px !important; padding: 0 !important;
+    background: none !important; border: 0 !important; box-shadow: none !important; backdrop-filter: none !important;
+    color: #9FB4D3;
+    font-size: .86rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+}
+body .page-banner .crumbs a { color: #9FB4D3; text-decoration: none; border-bottom: 1px solid transparent; transition: color .2s, border-color .2s; }
+body .page-banner .crumbs a:hover { color: #fff; border-color: rgba(255, 255, 255, .5); }
+body .page-banner .crumbs .sep { color: #4F6788; }
+body .page-banner .crumbs [aria-current] { color: #fff; }
+body .page-banner h1 {
+    margin: 0 !important;
+    color: #fff !important;
+    font-family: 'Bricolage Grotesque', 'Pretendard Variable', 'Pretendard', sans-serif !important;
+    font-size: clamp(2.8rem, 6vw, 4.8rem) !important;
+    font-weight: 800 !important;
+    letter-spacing: -.045em !important;
+    line-height: 1 !important;
+}
+body .page-banner .subtitle {
+    margin: 16px 0 0 !important;
+    color: #C9D6E8 !important;
+    font-size: 1rem !important;
+    font-weight: 500;
+}
+body .page-banner .pb-signal {
+    position: absolute; z-index: 0;
+    right: max(0px, calc((100% - 1240px) / 2)); top: 50%;
+    width: min(560px, 52%); height: 70%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+.pb-signal path { fill: none; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.pb-signal .pb-a { stroke: #D23A4E; stroke-width: 2.4; }
+.pb-signal .pb-b { stroke: rgba(159, 180, 211, .55); stroke-width: 1.6; }
+.pb-signal .pb-dot { fill: #D23A4E; }
+.pb-signal.is-drawing path { stroke-dasharray: var(--len); stroke-dashoffset: var(--len); animation: pbDraw 1.8s cubic-bezier(.4, .1, .2, 1) forwards; }
+.pb-signal.is-drawing .pb-b { animation-delay: .15s; }
+.pb-signal.is-drawing .pb-dot { opacity: 0; animation: pbDot .4s ease 1.7s forwards; }
+@keyframes pbDraw { to { stroke-dashoffset: 0; } }
+@keyframes pbDot { to { opacity: 1; } }
+@media (max-width: 760px) {
+    body .page-banner { padding: 44px 20px 40px !important; }
+    body .page-banner .pb-signal { width: 70%; height: 55%; opacity: .45; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .pb-signal.is-drawing path, .pb-signal.is-drawing .pb-dot { animation: none; stroke-dashoffset: 0; opacity: 1; }
 }
