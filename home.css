@@ -159,7 +159,7 @@
 .home-recent {
     max-width: calc(var(--content) - 56px) !important;
     margin: 0 auto !important;
-    padding: 80px 28px 40px !important;
+    padding: 80px 28px 110px !important;
 }
 .recent-head { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; margin-bottom: 18px; }
 .text-link {
@@ -208,7 +208,8 @@
 @media (max-width: 650px) {
     .home-hero h1 { font-size: 2.55rem; }
     .themes { grid-template-columns: 1fr; gap: 36px; }
-    .home-themes, .home-recent { padding: 64px 20px 24px !important; }
+    .home-themes { padding: 64px 20px 24px !important; }
+    .home-recent { padding: 64px 20px 72px !important; }
     .recent-list li { grid-template-columns: 1fr; gap: 6px; }
     .home-pi { grid-template-columns: 1fr; gap: 28px; padding: 56px 20px 80px !important; }
     .pi-photo { width: 160px; }
