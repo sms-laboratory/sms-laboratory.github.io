@@ -2,30 +2,71 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-    <meta name="site-build" content="20261120104027">
+    <meta name="site-build" content="20261120104520">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Research interests of SMS Laboratory, Hannam University">
   <title>Research | SMS Laboratory</title>
   <link rel="stylesheet" href="style.css?v=20261120f">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&display=swap" rel="stylesheet">
   <style>
-    .research-page { background:#fff; }
+    .research-page { --ink:#0D2341; --crimson:#D23A4E; --blue:#2F63D8; --display:'Bricolage Grotesque','Pretendard','Noto Sans KR',sans-serif; background:#fff; }
     .research-page .research-banner { background:#102B46; padding:48px 28px 45px; text-align:center; }
     .research-page .research-banner .eyebrow { margin:0 0 12px; color:#A8BFD2; font-size:.76rem; letter-spacing:.2em; font-weight:700; }
     .research-page .research-banner h1 { margin:0; color:#fff; font-size:clamp(2.2rem,4vw,3rem); font-weight:800; letter-spacing:-.035em; line-height:1.2; }
     .research-page .research-banner .subtitle { margin:15px 0 0; color:#D3DEE8; font-size:.95rem; }
-    .research-page .research-content { max-width:1200px; margin:0 auto; padding:70px 28px 100px; }
-    .research-page .section-label { margin:0 0 8px; color:#55718E; font-size:.74rem; letter-spacing:.15em; font-weight:800; }
-    .research-page .section-heading { margin:0 0 16px; padding:0 0 17px 15px; border-left:4px solid #176BA0; border-bottom:1px solid #E5E7EB; color:#102B46; font-size:clamp(1.5rem,2.5vw,2rem); line-height:1.3; }
-    .research-page .intro { max-width:900px; margin:0 0 34px; color:#526579; line-height:1.85; font-size:1rem; }
-    .research-page .research-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; }
-    .research-page .research-card { min-width:0; background:#fff; border:1px solid #E2E8EF; border-top:4px solid #176BA0; padding:30px 26px 32px; box-shadow:0 5px 18px rgba(13,39,68,.055); transition:transform .2s ease,box-shadow .2s ease; }
-    .research-page .research-card:hover { transform:translateY(-4px); box-shadow:0 12px 25px rgba(13,39,68,.11); }
-    .research-page .research-number { margin:0 0 19px; color:#7390A9; font-size:.82rem; font-weight:800; letter-spacing:.1em; }
-    .research-page .research-card h3 { margin:0 0 9px; color:#102B46; font-size:1.22rem; line-height:1.4; }
-    .research-page .research-card .ko-title { margin:0 0 20px; color:#5F7993; font-size:.9rem; font-weight:700; }
-    .research-page .research-card .description { margin:0; color:#45596E; font-size:.94rem; line-height:1.85; overflow-wrap:break-word; }
-    @media(max-width:900px) { .research-page .research-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
-    @media(max-width:650px) { .research-page .research-banner { padding:42px 20px 40px; } .research-page .research-content { padding:46px 18px 65px; } .research-page .research-grid { grid-template-columns:1fr; gap:18px; } .research-page .research-card { padding:25px 22px 27px; } }
+
+    /* intro */
+    .research-intro { max-width:1200px; margin:0 auto; padding:72px 28px 24px; text-align:center; }
+    .intro-en { margin:0 auto 10px; max-width:30em; color:var(--ink); font-family:var(--display); font-size:clamp(1.5rem,2.6vw,2.2rem); font-weight:700; line-height:1.3; letter-spacing:-.02em; }
+    .intro-ko { margin:0 auto 30px; color:#7B8794; font-size:.98rem; }
+    .research-page .chapter-nav { display:inline-flex; flex-direction:row; justify-content:center; gap:6px; padding:6px !important; margin:0; border-radius:999px; background:#EEF2F7; box-shadow:none; position:static; width:auto; }
+    .chapter-nav a { padding:8px 20px; border-radius:999px; color:var(--ink); font-family:var(--display); font-size:1rem; font-weight:700; text-decoration:none; transition:background .2s,color .2s; }
+    .chapter-nav a:hover, .chapter-nav a:focus-visible { background:var(--ink); color:#fff; outline:none; }
+
+    /* chapters */
+    .chapter { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:56px; align-items:center; max-width:1200px; margin:0 auto; padding:64px 28px; scroll-margin-top:90px; }
+    .chapter + .chapter { border-top:1px solid #E8EDF3; }
+    .chapter:nth-of-type(even) .chapter-visual { order:2; }
+    .chapter-visual { position:relative; margin:0; overflow:hidden; border-radius:22px; aspect-ratio:5 / 4; background:var(--ink); }
+    .chapter-visual::before { content:""; position:absolute; left:0; top:0; z-index:2; width:100%; height:4px; background:var(--crimson); }
+    .chapter-visual img { width:100%; height:100%; object-fit:cover; transition:transform .8s ease; }
+    .chapter-visual:hover img { transform:scale(1.03); }
+    .chapter-visual::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(13,35,65,0) 45%,rgba(9,25,48,.85) 100%); }
+    .chapter-verb { position:absolute; left:30px; bottom:22px; z-index:1; color:#fff; font-family:var(--display); font-size:clamp(3.2rem,6vw,5.2rem); font-weight:800; letter-spacing:-.045em; line-height:1; }
+    .chapter-text h2 { margin:0; padding:0; border:0; color:var(--ink); font-family:var(--display); font-size:clamp(1.7rem,2.8vw,2.3rem); font-weight:800; letter-spacing:-.025em; line-height:1.15; }
+    .chapter-ko-title { margin:6px 0 20px; color:#7B8794; font-size:1rem; font-weight:600; }
+    .chapter-en { margin:0 0 8px; color:#2E4258; font-size:1.02rem; line-height:1.75; }
+    .chapter-kr { margin:0 0 26px; color:#7B8794; font-size:.9rem; line-height:1.75; }
+    .chapter-text h3 { margin:0 0 10px; color:var(--ink); font-size:.95rem; font-weight:800; }
+    .topics { margin:0 0 22px; padding:0; list-style:none; border-top:1px solid #E3E8EE; }
+    .topics li { position:relative; padding:12px 0 12px 22px; border-bottom:1px solid #E3E8EE; }
+    .topics li::before { content:""; position:absolute; left:2px; top:20px; width:8px; height:8px; border-radius:2px; background:var(--crimson); transform:rotate(45deg); }
+    .t-en { display:block; color:#102B46; font-size:.95rem; font-weight:600; line-height:1.5; }
+    .t-ko { display:block; margin-top:2px; color:#8592A3; font-size:.84rem; }
+    .chapter-tags { display:flex; flex-wrap:wrap; gap:6px; margin:0; padding:0; list-style:none; }
+    .chapter-tags li { padding:5px 12px; border-radius:999px; background:#EEF2F7; color:#2C4A66; font-size:.76rem; font-weight:700; }
+
+    /* outro */
+    .research-outro { display:flex; justify-content:center; gap:28px; padding:20px 28px 100px; }
+    .outro-link { color:var(--blue); font-weight:700; text-decoration:none; border-bottom:2px solid rgba(47,99,216,.25); padding-bottom:2px; }
+    .outro-link:hover { border-color:var(--blue); }
+
+    @media(max-width:900px) {
+      .chapter { grid-template-columns:1fr; gap:28px; padding:48px 24px; }
+      .chapter:nth-of-type(even) .chapter-visual { order:0; }
+      .chapter-visual { aspect-ratio:16 / 10; }
+    }
+    @media(max-width:650px) {
+      .research-page .research-banner { padding:42px 20px 40px; }
+      .research-intro { padding:48px 20px 8px; }
+      .chapter { padding:40px 20px; }
+      .chapter-verb { left:20px; bottom:16px; }
+      .chapter-nav a { padding:7px 16px; font-size:.92rem; }
+      .research-outro { flex-direction:column; align-items:center; gap:16px; padding-bottom:70px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .chapter-visual img { transition:none; } }
   </style>
   <script src="nav.js?v=4" defer></script>
 </head>
@@ -58,31 +99,87 @@
     <h1>Research</h1>
     <p class="subtitle">연구 분야 소개</p>
   </div>
-  <section class="research-content" aria-labelledby="research-heading">
-    <p class="section-label">OUR RESEARCH</p>
-    <h2 class="section-heading" id="research-heading">Research Interests</h2>
-    <p class="intro">SMS Laboratory는 콘크리트의 역학적·전기적 특성을 기반으로 구조물의 상태를 평가하는 기술과 지속가능한 스마트 건설재료를 연구합니다.</p>
-    <div class="research-grid">
-      <article class="research-card">
-        <p class="research-number">01 / RESEARCH AREA</p>
-        <h3>Self-Sensing Concrete</h3>
-        <p class="ko-title">자가감지 콘크리트</p>
-        <p class="description">콘크리트의 전기저항 및 정전용량 변화를 활용하여 외부 하중과 변형에 따른 전기적 응답을 분석합니다. 재료 구성과 전극 조건에 따른 감지 성능을 평가하고, 측정 신호의 안정성과 신뢰성을 높이는 기술을 연구합니다.</p>
-      </article>
-      <article class="research-card">
-        <p class="research-number">02 / RESEARCH AREA</p>
-        <h3>Structural Health Monitoring</h3>
-        <p class="ko-title">구조물 상태 모니터링</p>
-        <p class="description">전기적 측정 및 임피던스 기반 분석 기술을 활용하여 콘크리트와 구조물의 상태 변화를 평가합니다. 하중과 환경 조건에 따른 전기적 응답 특성을 분석하고, 구조물의 상태 평가에 적용할 수 있는 측정 기술을 연구합니다.</p>
-      </article>
-      <article class="research-card">
-        <p class="research-number">03 / RESEARCH AREA</p>
-        <h3>Sustainable Smart Construction Materials</h3>
-        <p class="ko-title">친환경 스마트 건설재료</p>
-        <p class="description">슬래그 및 산업부산물 등 대체 재료를 활용하여 환경 부담을 줄이는 고성능 건설재료를 연구합니다. 배합 조건에 따른 역학적·내구적 특성과 전기적 특성을 함께 평가하여 기능성과 지속가능성을 갖춘 재료의 개발을 목표로 합니다.</p>
-      </article>
+
+  <div class="research-intro">
+    <p class="intro-en"><span class="nb">From the mix to the field:</span> <span class="nb">we make materials,</span> <span class="nb">teach them to sense,</span> <span class="nb">and restore the structures</span> <span class="nb">that depend on them.</span></p>
+    <p class="intro-ko"><span class="nb">배합에서 현장까지,</span> <span class="nb">재료를 만들고,</span> <span class="nb">스스로 감지하게 하고,</span> <span class="nb">구조물을 되살립니다.</span></p>
+    <nav class="chapter-nav" aria-label="Research areas">
+      <a href="#make">Make</a>
+      <a href="#sense">Sense</a>
+      <a href="#restore">Restore</a>
+    </nav>
+  </div>
+
+  <!-- MAKE -->
+  <section class="chapter" id="make" aria-labelledby="make-title">
+    <figure class="chapter-visual">
+      <img src="img/research-1.png" alt="콘크리트 큐브 압축 시험" loading="lazy">
+      <figcaption class="chapter-verb" aria-hidden="true">Make</figcaption>
+    </figure>
+    <div class="chapter-text">
+      <h2 id="make-title">Smart construction materials</h2>
+      <p class="chapter-ko-title">스마트 건설재료</p>
+      <p class="chapter-en"><span class="nb">We design cement&#8209;based composites</span> <span class="nb">that are stronger, tougher and more functional,</span> <span class="nb">from ultra&#8209;high&#8209;performance concrete</span> <span class="nb">to strain&#8209;hardening fiber&#8209;reinforced composites.</span></p>
+      <p class="chapter-kr"><span class="nb">초고성능 콘크리트부터</span> <span class="nb">변형경화형 섬유보강 복합재료까지,</span> <span class="nb">더 강하고 질기며</span> <span class="nb">기능성을 갖춘 시멘트 복합재료를 설계합니다.</span></p>
+      <h3>What we study</h3>
+      <ul class="topics">
+                    <li><span class="t-en">Tensile and strain-hardening behavior of UHPC and SH-FRCC</span><span class="t-ko">UHPC·SH-FRCC의 인장 및 변형경화 거동</span></li>
+                    <li><span class="t-en">Fiber pullout and shape-memory-alloy fibers</span><span class="t-ko">섬유 인발 거동과 형상기억합금 섬유</span></li>
+                    <li><span class="t-en">Self-healing with super absorbent polymer and PVA fibers</span><span class="t-ko">고흡수성 수지·PVA 섬유를 활용한 균열 자기치유</span></li>
+                    <li><span class="t-en">Conductive fillers and nano functional fillers</span><span class="t-ko">전도성 필러와 나노 기능성 필러</span></li>
+      </ul>
+      <ul class="chapter-tags"><li>UHPC</li><li>SH-FRCC</li><li>SMA fiber</li><li>SAP</li></ul>
     </div>
   </section>
+
+  <!-- SENSE -->
+  <section class="chapter" id="sense" aria-labelledby="sense-title">
+    <figure class="chapter-visual">
+      <img src="img/research-2.png" alt="콘크리트 전기적 응답 측정" loading="lazy">
+      <figcaption class="chapter-verb" aria-hidden="true">Sense</figcaption>
+    </figure>
+    <div class="chapter-text">
+      <h2 id="sense-title">Electrical response &amp; sensing</h2>
+      <p class="chapter-ko-title">전기적 응답과 자가감지</p>
+      <p class="chapter-en"><span class="nb">We teach concrete to report on itself.</span> <span class="nb">By reading changes in resistance, capacitance and impedance,</span> <span class="nb">a structure can tell us about its stress, cracks</span> <span class="nb">and surrounding environment without added sensors.</span></p>
+      <p class="chapter-kr"><span class="nb">콘크리트가 스스로 상태를 알려 주도록 합니다.</span> <span class="nb">전기저항, 정전용량, 임피던스의 변화를 읽어</span> <span class="nb">별도의 센서 없이</span> <span class="nb">구조물의 응력, 균열, 주변 환경을 파악합니다.</span></p>
+      <h3>What we study</h3>
+      <ul class="topics">
+                    <li><span class="t-en">Self-sensing under cyclic and monotonic loading</span><span class="t-ko">반복·단조 하중 하의 자가감지 거동</span></li>
+                    <li><span class="t-en">Electrode materials, geometry and measurement frequency</span><span class="t-ko">전극 재료·형상과 측정 주파수의 영향</span></li>
+                    <li><span class="t-en">Monitoring in seawater and chloride-rich environments</span><span class="t-ko">해수 및 염분 환경에서의 상태 모니터링</span></li>
+                    <li><span class="t-en">Electrical impedance tomography for rebar and damage detection</span><span class="t-ko">전기 임피던스 단층촬영을 이용한 철근·손상 탐지</span></li>
+      </ul>
+      <ul class="chapter-tags"><li>Resistance</li><li>Capacitance</li><li>Impedance</li><li>EIT</li></ul>
+    </div>
+  </section>
+
+  <!-- RESTORE -->
+  <section class="chapter" id="restore" aria-labelledby="restore-title">
+    <figure class="chapter-visual">
+      <img src="img/research-3.png" alt="친환경·보수 건설재료" loading="lazy">
+      <figcaption class="chapter-verb" aria-hidden="true">Restore</figcaption>
+    </figure>
+    <div class="chapter-text">
+      <h2 id="restore-title">Sustainable &amp; repair materials</h2>
+      <p class="chapter-ko-title">친환경·보수 재료</p>
+      <p class="chapter-en"><span class="nb">We cut the carbon footprint of binders</span> <span class="nb">and bring aging structures back into service,</span> <span class="nb">developing repair materials</span> <span class="nb">and the quality standards that keep them reliable on site.</span></p>
+      <p class="chapter-kr"><span class="nb">결합재의 탄소 배출을 줄이고</span> <span class="nb">노후 구조물을 다시 쓸 수 있게 합니다.</span> <span class="nb">보수재료를 개발하고</span> <span class="nb">현장에서 믿고 쓸 수 있는 품질 기준을 함께 만듭니다.</span></p>
+      <h3>What we study</h3>
+      <ul class="topics">
+                    <li><span class="t-en">Durability of slag-based zero-cement binders</span><span class="t-ko">슬래그 기반 무시멘트 결합재의 내구성</span></li>
+                    <li><span class="t-en">Mix design of polymer cement mortar and concrete (PCM, PCC)</span><span class="t-ko">폴리머 시멘트 모르타르·콘크리트(PCM·PCC) 배합 설계</span></li>
+                    <li><span class="t-en">Optimal water–powder ratio for plastering and injection</span><span class="t-ko">미장용·압입타설용 최적 물-분체비</span></li>
+                    <li><span class="t-en">Field quality criteria for section repair works</span><span class="t-ko">단면복구공사 현장 품질 기준</span></li>
+      </ul>
+      <ul class="chapter-tags"><li>Zero&#8209;cement</li><li>PCM</li><li>PCC</li><li>Section repair</li></ul>
+    </div>
+  </section>
+
+  <div class="research-outro">
+    <a class="outro-link" href="publications.html">See our publications</a>
+    <a class="outro-link" href="projects.html">See our projects</a>
+  </div>
 </main>
 <footer>
     <div class="footer-inner">
