@@ -431,3 +431,13 @@
 @media (prefers-reduced-motion: reduce) {
     .lane, .lane-img, .lane-more, .lane::before, .lane-shade { transition: none; }
 }
+
+/* 아주 작은 화면(320px) 대응 */
+.hero-copy, .signal { min-width: 0; }
+@media (max-width: 360px) {
+    .home-hero h1 { font-size: 2.15rem; }
+}
+@media (max-width: 360px) {
+    .signal-tabs button { padding: 5px 8px; font-size: .7rem; }
+    .recent-head { flex-wrap: wrap; }
+}

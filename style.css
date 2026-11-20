@@ -531,3 +531,6 @@ nav.section-tabs {
     .footer-contact li { gap: 10px; }
     .footer-contact span { flex-basis: 58px; }
 }
+@media (max-width: 360px) {
+    nav ul li a { font-size: .62rem; }
+}
