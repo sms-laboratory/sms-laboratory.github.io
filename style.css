@@ -524,3 +524,10 @@ nav.section-tabs {
     .section-tabs a span { font-size: .9rem; }
     .section-tabs a::after { left: 8px; right: 8px; }
 }
+
+/* 푸터 연락처: 값은 한 줄로 (휴대폰 글자 크기 설정이 커도 줄바꿈되지 않게) */
+.footer-contact li > a { white-space: nowrap; }
+@media (max-width: 650px) {
+    .footer-contact li { gap: 10px; }
+    .footer-contact span { flex-basis: 58px; }
+}
