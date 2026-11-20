@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-    <meta name="site-build" content="20261120105445">
+    <meta name="site-build" content="20261120105712">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Research projects of SMS Laboratory, Hannam University">
   <title>Projects | SMS Laboratory</title>
@@ -35,7 +35,8 @@
     .period-length { color: #8592A3; font-size: .82rem; }
     .project-status { align-self: flex-start; margin-top: 8px; padding: 3px 10px; border-radius: 999px; font-size: .72rem; font-weight: 700; }
     .project-status:empty { display: none; }
-    .project-status.is-ongoing { background: #E7F7EF; color: #1D7A4E; }
+    .project-status.is-ongoing { display: inline-flex; align-items: center; gap: 6px; background: #E7F7EF; color: #1D7A4E; }
+    .project-status.is-ongoing::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #2DBE78; }
     .project-status.is-done { background: #EEF2F7; color: #55718E; }
     .project-title { margin: 0 0 6px; color: #102B46; font-size: 1.12rem; font-weight: 700; line-height: 1.5; }
     .project-title-ko { margin: 0 0 18px; color: #5F7993; font-size: .95rem; line-height: 1.6; }
@@ -107,11 +108,29 @@
     <h2 class="section-heading" id="page-heading">Projects</h2>
     <!-- ==========================================================
          과제 추가 방법: 아래 <article class="project"> 한 덩어리를 복사해서 내용만 바꾸면 됩니다.
-         - data-start / data-end : 연구기간 (YYYY-MM). 진행 중 표시는 오늘 날짜와 비교해 자동으로 붙습니다.
+         - data-start / data-end : 연구기간 (YYYY-MM). 진행 중 표시는 오늘 날짜와 비교해 자동으로 붙습니다. 종료일을 비워 두면 진행 중으로 표시됩니다.
          - 단계 막대(.phase)의 style="flex: 개월수" 로 길이를 정합니다.
          ========================================================== -->
     <div class="project-group">
       <h3 class="project-group-title">Principal Investigator <span>연구책임자</span></h3>
+
+      <article class="project" data-start="2026-03" data-end="">
+        <div class="project-period">
+          <span class="period-range">2026.03 – Present</span>
+          <span class="period-length">Since March 2026</span>
+          <span class="project-status"></span>
+        </div>
+        <div class="project-body">
+          <h4 class="project-title">Development of smart diagnostic technology for internal degradation and strength reduction in structures using self&#8209;sensing signal interpretation</h4>
+          <p class="project-title-ko">자기감지 신호해석을 활용한 구조물 내부 열화 및 강도저하 스마트 진단기술 개발</p>
+          <dl class="project-meta">
+            <div><dt>Program</dt><dd>Early Career Research (Type B), Basic Research Program <span class="ko">신진연구(유형B), 기초연구사업</span></dd></div>
+            <div><dt>Funded by</dt><dd>Ministry of Science and ICT <span class="ko">과학기술정보통신부</span></dd></div>
+            <div><dt>Role</dt><dd>Principal Investigator <span class="ko">연구책임자</span></dd></div>
+          </dl>
+          <ul class="project-tags"><li>Self&#8209;sensing signal</li><li>Internal degradation</li><li>Strength reduction</li><li>Smart diagnosis</li></ul>
+        </div>
+      </article>
 
       <article class="project" data-start="2021-03" data-end="2026-02">
         <div class="project-period">
@@ -195,8 +214,8 @@
   document.querySelectorAll('.project').forEach(function (p) {
     var e = (p.dataset.end || '').split('-'), end = (+e[0]) * 12 + (+e[1] - 1);
     var tag = p.querySelector('.project-status');
-    if (!tag || !e[0]) return;
-    var on = ym <= end;
+    if (!tag) return;
+    var on = !e[0] || ym <= end;          // 종료일이 비어 있으면 진행 중
     tag.textContent = on ? 'Ongoing' : 'Completed';
     tag.classList.add(on ? 'is-ongoing' : 'is-done');
   });
