@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-    <meta name="site-build" content="20261120104738">
+    <meta name="site-build" content="20261120105445">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Research projects of SMS Laboratory, Hannam University">
   <title>Projects | SMS Laboratory</title>
@@ -24,6 +24,43 @@
     .sub-page .pub-list li { margin-bottom:12px; color:#34465a; line-height:1.6; }
     .sub-page .empty-note { margin:24px 0 0; padding:26px 24px; border:1px dashed #C9D6E3; border-radius:6px; background:#F7FAFC; color:#5F7993; }
     @media(max-width:650px) { .sub-page .sub-banner { padding:42px 20px 40px; } .sub-page .sub-content { padding:46px 18px 65px; } }
+
+    /* ---------- Projects ---------- */
+    .project-group + .project-group { margin-top: 56px; }
+    .project-group-title { display: flex; align-items: baseline; gap: 10px; margin: 2rem 0 0; padding-bottom: 12px; border-bottom: 2px solid #102B46; color: #102B46; font-size: 1.15rem; font-weight: 800; }
+    .project-group-title span { color: #8592A3; font-size: .85rem; font-weight: 600; }
+    .project { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 32px; padding: 30px 0; border-bottom: 1px solid #E6EBF1; }
+    .project-period { display: flex; flex-direction: column; gap: 4px; padding-top: 3px; }
+    .period-range { color: #102B46; font-size: .98rem; font-weight: 800; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .period-length { color: #8592A3; font-size: .82rem; }
+    .project-status { align-self: flex-start; margin-top: 8px; padding: 3px 10px; border-radius: 999px; font-size: .72rem; font-weight: 700; }
+    .project-status:empty { display: none; }
+    .project-status.is-ongoing { background: #E7F7EF; color: #1D7A4E; }
+    .project-status.is-done { background: #EEF2F7; color: #55718E; }
+    .project-title { margin: 0 0 6px; color: #102B46; font-size: 1.12rem; font-weight: 700; line-height: 1.5; }
+    .project-title-ko { margin: 0 0 18px; color: #5F7993; font-size: .95rem; line-height: 1.6; }
+    .project-meta { display: grid; gap: 8px; margin: 0 0 20px; }
+    .project-meta > div { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; }
+    .project-meta dt { color: #8592A3; font-size: .78rem; font-weight: 700; padding-top: 2px; }
+    .project-meta dd { margin: 0; color: #34465a; font-size: .92rem; line-height: 1.55; }
+    .project-meta .ko { display: block; color: #8A97A8; font-size: .84rem; }
+    .project-phases { display: flex; gap: 4px; margin: 0 0 16px; }
+    .phase { position: relative; min-width: 0; padding: 9px 12px 8px; border-radius: 6px; background: #EEF2F7; color: #55718E; font-size: .76rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .phase b { margin-right: 6px; color: #102B46; }
+    .phase:first-child { background: #102B46; color: #C9D6E8; }
+    .phase:first-child b { color: #fff; }
+    .phase + .phase { background: #2F63D8; color: #DCE6F7; }
+    .phase + .phase b { color: #fff; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+    .project-tags li { padding: 4px 11px; border-radius: 999px; background: #F3F6FA; color: #2C4A66; font-size: .74rem; font-weight: 700; }
+    @media (max-width: 760px) {
+      .project { grid-template-columns: 1fr; gap: 12px; }
+      .project-period { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+      .project-status { margin-top: 0; }
+      .project-meta > div { grid-template-columns: 1fr; gap: 2px; }
+      .project-phases { flex-direction: column; }
+      .phase { flex: none !important; white-space: normal; }
+    }
   </style>
   <script src="nav.js?v=5" defer></script>
 </head>
@@ -68,13 +105,35 @@
   <section class="sub-content" aria-labelledby="page-heading">
     <p class="section-label">RESEARCH PROJECTS</p>
     <h2 class="section-heading" id="page-heading">Projects</h2>
-    <div class="pub-list">
-      <!-- 과제 추가 예시:
-      <ul>
-        <li><strong>과제명 (영문 과제명)</strong><br>지원기관 · 2025.03 – 2027.02 · 연구책임자</li>
-      </ul>
-      -->
-      <p class="empty-note">연구과제 목록을 준비 중입니다.</p>
+    <!-- ==========================================================
+         과제 추가 방법: 아래 <article class="project"> 한 덩어리를 복사해서 내용만 바꾸면 됩니다.
+         - data-start / data-end : 연구기간 (YYYY-MM). 진행 중 표시는 오늘 날짜와 비교해 자동으로 붙습니다.
+         - 단계 막대(.phase)의 style="flex: 개월수" 로 길이를 정합니다.
+         ========================================================== -->
+    <div class="project-group">
+      <h3 class="project-group-title">Principal Investigator <span>연구책임자</span></h3>
+
+      <article class="project" data-start="2021-03" data-end="2026-02">
+        <div class="project-period">
+          <span class="period-range">2021.03 – 2026.02</span>
+          <span class="period-length">60 months</span>
+          <span class="project-status"></span>
+        </div>
+        <div class="project-body">
+          <h4 class="project-title">Innovative repairing, rehabilitation and monitoring method for deteriorated concrete infrastructure by using smart UHPC with self&#8209;sensing capacity</h4>
+          <p class="project-title-ko">스마트 UHPC를 이용한 구조물 보수보강 공법 및 스마트 시설 안전관리 기술 개발</p>
+          <dl class="project-meta">
+            <div><dt>Program</dt><dd>Sejong Science Fellowship (Domestic Track), Basic Research Program <span class="ko">세종과학펠로우십(국내트랙), 기초연구사업</span></dd></div>
+            <div><dt>Funded by</dt><dd>Ministry of Science and ICT <span class="ko">과학기술정보통신부</span></dd></div>
+            <div><dt>Role</dt><dd>Principal Investigator <span class="ko">연구책임자</span></dd></div>
+          </dl>
+          <div class="project-phases" aria-label="Project phases">
+            <span class="phase" style="flex: 36"><b>Phase 1</b> 2021.03 – 2024.02</span>
+            <span class="phase" style="flex: 24"><b>Phase 2</b> 2024.03 – 2026.02</span>
+          </div>
+          <ul class="project-tags"><li>Smart UHPC</li><li>Self&#8209;sensing</li><li>Repair &amp; rehabilitation</li><li>Infrastructure monitoring</li></ul>
+        </div>
+      </article>
     </div>
   </section>
 </main>
@@ -129,5 +188,19 @@
         </p>
     </div>
 </footer>
+<script>
+// 진행 상태(진행 중 / 종료)를 오늘 날짜로 자동 표시
+(function () {
+  var now = new Date(), ym = now.getFullYear() * 12 + now.getMonth();
+  document.querySelectorAll('.project').forEach(function (p) {
+    var e = (p.dataset.end || '').split('-'), end = (+e[0]) * 12 + (+e[1] - 1);
+    var tag = p.querySelector('.project-status');
+    if (!tag || !e[0]) return;
+    var on = ym <= end;
+    tag.textContent = on ? 'Ongoing' : 'Completed';
+    tag.classList.add(on ? 'is-ongoing' : 'is-done');
+  });
+})();
+</script>
 </body>
 </html>
