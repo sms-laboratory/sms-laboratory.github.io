@@ -294,3 +294,21 @@
     .signal-tabs { gap: 4px; }
     .signal-tabs button { padding: 5px 10px; font-size: .76rem; }
 }
+
+/* 영문 + 국문 병기 */
+.hero-lede { margin-bottom: 10px; }
+.hero-lede-ko {
+    max-width: 38em;
+    margin: 0 0 32px;
+    color: #8FA4C2;
+    font-size: .9rem;
+    line-height: 1.75;
+    word-break: keep-all;
+}
+.themes-head .ko, .theme .ko {
+    margin-top: 6px;
+    color: #8A97A8;
+    font-size: .86rem;
+    line-height: 1.7;
+}
+.themes-head p:not(.ko) { color: #3F5167; }
