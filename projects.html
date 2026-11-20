@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-    <meta name="site-build" content="20261120105712">
+    <meta name="site-build" content="20261120105844">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Research projects of SMS Laboratory, Hannam University">
   <title>Projects | SMS Laboratory</title>
@@ -52,6 +52,10 @@
     .phase:first-child b { color: #fff; }
     .phase + .phase { background: #2F63D8; color: #DCE6F7; }
     .phase + .phase b { color: #fff; }
+    .project-progress { display: flex; align-items: center; gap: 12px; margin: 0 0 16px; }
+    .project-progress .bar { position: relative; flex: 1; height: 8px; border-radius: 999px; background: #EEF2F7; overflow: hidden; }
+    .project-progress .bar i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 999px; background: linear-gradient(90deg, #2F63D8, #2DBE78); }
+    .project-progress .label { color: #55718E; font-size: .78rem; font-weight: 700; white-space: nowrap; }
     .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
     .project-tags li { padding: 4px 11px; border-radius: 999px; background: #F3F6FA; color: #2C4A66; font-size: .74rem; font-weight: 700; }
     @media (max-width: 760px) {
@@ -114,10 +118,10 @@
     <div class="project-group">
       <h3 class="project-group-title">Principal Investigator <span>연구책임자</span></h3>
 
-      <article class="project" data-start="2026-03" data-end="">
+      <article class="project" data-start="2026-03" data-end="2031-02">
         <div class="project-period">
-          <span class="period-range">2026.03 – Present</span>
-          <span class="period-length">Since March 2026</span>
+          <span class="period-range">2026.03 – 2031.02</span>
+          <span class="period-length">60 months</span>
           <span class="project-status"></span>
         </div>
         <div class="project-body">
@@ -128,6 +132,7 @@
             <div><dt>Funded by</dt><dd>Ministry of Science and ICT <span class="ko">과학기술정보통신부</span></dd></div>
             <div><dt>Role</dt><dd>Principal Investigator <span class="ko">연구책임자</span></dd></div>
           </dl>
+          <div class="project-progress" aria-hidden="true"><span class="bar"><i></i></span><span class="label"></span></div>
           <ul class="project-tags"><li>Self&#8209;sensing signal</li><li>Internal degradation</li><li>Strength reduction</li><li>Smart diagnosis</li></ul>
         </div>
       </article>
@@ -217,6 +222,15 @@
     if (!tag) return;
     var on = !e[0] || ym <= end;          // 종료일이 비어 있으면 진행 중
     tag.textContent = on ? 'Ongoing' : 'Completed';
+    // 진행 막대: 시작~종료 중 지금 위치
+    var bar = p.querySelector('.project-progress');
+    var st = (p.dataset.start || '').split('-');
+    if (bar && st[0] && e[0]) {
+      var start = (+st[0]) * 12 + (+st[1] - 1), total = end - start + 1, done = Math.min(total, Math.max(0, ym - start + 1));
+      bar.querySelector('i').style.width = (done / total * 100).toFixed(1) + '%';
+      var year = Math.min(Math.ceil(done / 12) || 1, Math.ceil(total / 12));
+      bar.querySelector('.label').textContent = 'Year ' + year + ' of ' + Math.ceil(total / 12);
+    }
     tag.classList.add(on ? 'is-ongoing' : 'is-done');
   });
 })();
