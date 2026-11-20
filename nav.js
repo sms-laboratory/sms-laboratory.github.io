@@ -36,22 +36,30 @@ document.addEventListener('DOMContentLoaded', function () {
     s.setAttribute('data-goatcounter', base + '/count');
     document.head.appendChild(s);
 
-    function today() {
-        var d = new Date(Date.now() + 9 * 3600 * 1000);   // 한국 시간 기준 날짜
+    function day(offset) {                                  // 한국 시간 기준 날짜 (offset일 전)
+        var d = new Date(Date.now() + 9 * 3600 * 1000 - offset * 86400000);
         return d.toISOString().slice(0, 10);
     }
     function get(q) {
         return fetch(base + '/counter/TOTAL.json' + q).then(function (r) {
             if (!r.ok) throw new Error(r.status);
             return r.json();
-        }).then(function (j) { return j.count_unique || j.count; });
+        }).then(function (j) { return parseInt(String(j.count_unique || j.count).replace(/\D/g, ''), 10) || 0; });
     }
     document.addEventListener('DOMContentLoaded', function () {
         var row = document.querySelector('.visitor-row');
         if (!row || !window.fetch) return;
-        Promise.all([get('?start=' + today()), get('')]).then(function (v) {
-            row.querySelector('[data-visitors="today"]').textContent = v[0];
-            row.querySelector('[data-visitors="total"]').textContent = v[1];
+        var days = [6, 5, 4, 3, 2, 1, 0];                       // 최근 7일
+        var reqs = days.map(function (o) { return get('?start=' + day(o) + '&end=' + day(o)); });
+        reqs.push(get(''));
+        Promise.all(reqs).then(function (v) {
+            var week = v.slice(0, 7), total = v[7], max = Math.max.apply(null, week.concat([1]));
+            row.querySelector('[data-visitors="today"]').textContent = week[6].toLocaleString('en-US');
+            row.querySelector('[data-visitors="total"]').textContent = total.toLocaleString('en-US');
+            row.querySelector('.v-spark').innerHTML = week.map(function (n, i) {
+                return '<i style="height:' + Math.max(12, Math.round(n / max * 100)) + '%" title="' + day(days[i]) + ': ' + n + '"></i>';
+            }).join('');
+            row.querySelector('.v-spark').setAttribute('title', 'Last 7 days');
             row.hidden = false;
         }).catch(function () {});
     });

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Research projects of SMS Laboratory, Hannam University">
   <title>Projects | SMS Laboratory</title>
-  <link rel="stylesheet" href="style.css?v=20261120d">
+  <link rel="stylesheet" href="style.css?v=20261120e">
   <style>
     .sub-page { background:#fff; }
     .sub-page .sub-banner { background:#102B46; padding:48px 28px 45px; text-align:center; }
@@ -24,7 +24,7 @@
     .sub-page .empty-note { margin:24px 0 0; padding:26px 24px; border:1px dashed #C9D6E3; border-radius:6px; background:#F7FAFC; color:#5F7993; }
     @media(max-width:650px) { .sub-page .sub-banner { padding:42px 20px 40px; } .sub-page .sub-content { padding:46px 18px 65px; } }
   </style>
-  <script src="nav.js?v=2" defer></script>
+  <script src="nav.js?v=3" defer></script>
 </head>
 <body>
 <header>
@@ -111,10 +111,11 @@
 
     <div class="footer-bottom">
         <span>&copy; 2024 SMS Laboratory. All rights reserved.</span>
-        <p class="visitor-row" hidden>
-            <span class="visitor-label">Visitors</span>
-            <span class="visitor-stat">Today <b data-visitors="today">–</b></span>
-            <span class="visitor-stat">Total <b data-visitors="total">–</b></span>
+        <p class="visitor-row" hidden aria-label="Website visitors">
+            <span class="v-live" aria-hidden="true"></span>
+            <span class="v-today"><b data-visitors="today">–</b> visitors today</span>
+            <span class="v-spark" aria-hidden="true"></span>
+            <span class="v-total"><b data-visitors="total">–</b> since launch</span>
         </p>
     </div>
 </footer>

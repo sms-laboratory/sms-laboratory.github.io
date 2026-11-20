@@ -8,7 +8,7 @@
 
     <title>Members | SMS Laboratory</title>
 
-    <link rel="stylesheet" href="style.css?v=20261120d">
+    <link rel="stylesheet" href="style.css?v=20261120e">
 
     <style>
 
@@ -421,7 +421,7 @@
         }
 
     </style>
-  <script src="nav.js?v=2" defer></script>
+  <script src="nav.js?v=3" defer></script>
 </head>
 
 
@@ -917,10 +917,11 @@
 
     <div class="footer-bottom">
         <span>&copy; 2024 SMS Laboratory. All rights reserved.</span>
-        <p class="visitor-row" hidden>
-            <span class="visitor-label">Visitors</span>
-            <span class="visitor-stat">Today <b data-visitors="today">–</b></span>
-            <span class="visitor-stat">Total <b data-visitors="total">–</b></span>
+        <p class="visitor-row" hidden aria-label="Website visitors">
+            <span class="v-live" aria-hidden="true"></span>
+            <span class="v-today"><b data-visitors="today">–</b> visitors today</span>
+            <span class="v-spark" aria-hidden="true"></span>
+            <span class="v-total"><b data-visitors="total">–</b> since launch</span>
         </p>
     </div>
 </footer>
