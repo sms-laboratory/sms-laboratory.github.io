@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="site-build" content="20261120111941">
+    <meta name="site-build" content="20261120112303">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Members of SMS Laboratory, Hannam University">
 
@@ -428,7 +428,10 @@
            NEW STYLE (메인 · Research와 같은 톤)
            ========================================================== */
         .members-page { --ink:#0D2341; --crimson:#D23A4E; --blue:#2F63D8; --display:'Bricolage Grotesque','Pretendard','Noto Sans KR',sans-serif; }
-        .members-page .m-head { display:flex; align-items:baseline; flex-wrap:wrap; gap:4px 14px; margin:0 0 30px; padding-bottom:16px; border-bottom:2px solid var(--ink); }
+        .members-page .m-head { display:grid; grid-template-columns:1fr auto; grid-template-areas:"title count" "ko count"; align-items:end; column-gap:14px; row-gap:6px; margin:0 0 30px; padding-bottom:16px; border-bottom:2px solid var(--ink); }
+        .members-page .m-head h2 { grid-area:title; }
+        .members-page .m-head-ko { grid-area:ko; }
+        .members-page .m-head .m-count { grid-area:count; align-self:end; margin-left:0; }
         .members-page .m-head h2 { margin:0; padding:0; border:0; color:var(--ink); font-family:var(--display); font-size:clamp(1.8rem,3vw,2.5rem); font-weight:800; letter-spacing:-.03em; line-height:1.1; }
         .members-page .m-head-ko { margin:0; color:#7B8794; font-size:.98rem; font-weight:600; }
         .members-page .m-count { margin-left:auto; color:var(--crimson); font-family:var(--display); font-size:1.6rem; font-weight:800; line-height:1; }
@@ -565,11 +568,11 @@
         <section class="members-section"
                  aria-labelledby="masters-heading">
 
-            <header class="m-head">
+            <div class="m-head">
                 <h2 id="masters-heading">Master's Students</h2>
                 <p class="m-head-ko">석사과정</p>
                 <span class="m-count">2</span>
-            </header>
+            </div>
 
 
             <div class="member-grid">
@@ -646,11 +649,11 @@
         <section class="members-section"
                  aria-labelledby="undergrad-heading">
 
-            <header class="m-head">
+            <div class="m-head">
                 <h2 id="undergrad-heading">Undergraduate Students</h2>
                 <p class="m-head-ko">학부연구생</p>
                 <span class="m-count">5</span>
-            </header>
+            </div>
 
 
             <div class="member-grid">
@@ -809,11 +812,11 @@
         <section class="members-section"
                  aria-labelledby="alumni-heading">
 
-            <header class="m-head">
+            <div class="m-head">
                 <h2 id="alumni-heading">Alumni</h2>
                 <p class="m-head-ko">졸업 및 이전 구성원</p>
                 <span class="m-count">7</span>
-            </header>
+            </div>
 
             <!-- Ph.D. 졸업생이 생기면 아래 주석을 풀고 <li>를 추가하세요
             <div class="alumni-group">
