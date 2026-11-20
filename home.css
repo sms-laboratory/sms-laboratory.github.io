@@ -312,3 +312,122 @@
     line-height: 1.7;
 }
 .themes-head p:not(.ko) { color: #3F5167; }
+
+
+/* ---------- WHAT WE WORK ON : Make → Sense → Restore ---------- */
+.lanes {
+    display: flex;
+    gap: 14px;
+    height: 500px;
+}
+.lane {
+    position: relative;
+    flex: 1 1 0;
+    min-width: 0;
+    overflow: hidden;
+    border-radius: 18px;
+    background: var(--ink);
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    transition: flex-grow .55s cubic-bezier(.2, .7, .2, 1);
+}
+.lane.is-open { flex-grow: 2.4; cursor: default; }
+.lane:focus-visible { box-shadow: 0 0 0 3px #8CB4FF; }
+.lane-img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: saturate(.85);
+    transform: scale(1.06);
+    transition: transform .8s ease, filter .5s ease;
+}
+.lane.is-open .lane-img { transform: scale(1); filter: saturate(1); }
+.lane-shade {
+    position: absolute; inset: 0;
+    background:
+        linear-gradient(180deg, rgba(13, 35, 65, .05) 0%, rgba(13, 35, 65, .55) 45%, rgba(9, 25, 48, .96) 100%);
+    transition: background .5s ease;
+}
+.lane:not(.is-open) .lane-shade { background: linear-gradient(180deg, rgba(13, 35, 65, .35), rgba(9, 25, 48, .92)); }
+/* 펼친 칸 위쪽 빨간 선 */
+.lane::before {
+    content: "";
+    position: absolute; left: 0; top: 0; z-index: 2;
+    width: 0; height: 4px;
+    background: var(--crimson);
+    transition: width .55s ease;
+}
+.lane.is-open::before { width: 100%; }
+.lane-body {
+    position: absolute; left: 0; right: 0; bottom: 0; z-index: 1;
+    padding: 30px 30px 32px;
+}
+.lane-verb {
+    margin: 0 0 6px;
+    font-family: var(--display);
+    font-size: clamp(2.4rem, 4vw, 3.4rem);
+    font-weight: 800;
+    letter-spacing: -.04em;
+    line-height: 1;
+    color: rgba(255, 255, 255, .92);
+}
+.lane-title { margin: 0; color: #C9D6E8; font-size: 1.02rem; font-weight: 600; letter-spacing: -.005em; white-space: nowrap; }
+.lane.is-open .lane-title { color: #fff; font-size: 1.15rem; }
+.lane-more {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: grid-template-rows .55s ease, opacity .35s ease;
+}
+.lane-more-in { min-height: 0; overflow: hidden; }
+.lane.is-open .lane-more { grid-template-rows: 1fr; opacity: 1; transition-delay: 0s, .15s; }
+.lane-more { overflow: hidden; }
+.lane-en { margin: 14px 0 6px; max-width: 34em; color: #E4ECF7; font-size: .95rem; line-height: 1.65; }
+.lane-ko { margin: 0 0 16px; max-width: 38em; color: #9FB4D3; font-size: .85rem; line-height: 1.65; word-break: keep-all; }
+.lane-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 18px; padding: 0; list-style: none; }
+.lane-tags li {
+    padding: 4px 11px;
+    border: 1px solid rgba(255, 255, 255, .22);
+    border-radius: 999px;
+    color: #E4ECF7;
+    font-size: .74rem;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+    background: rgba(255, 255, 255, .06);
+}
+.lane-link {
+    display: inline-block;
+    color: #fff;
+    font-size: .88rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 2px solid var(--crimson);
+    padding-bottom: 2px;
+}
+.lane-link:hover { color: #FFD3D9; }
+.lane-link:focus-visible { outline: 3px solid #8CB4FF; outline-offset: 3px; }
+
+/* 접힌 칸: 동사와 제목만 */
+.lane:not(.is-open) .lane-title { font-size: .9rem; white-space: normal; }
+.lane-verb { white-space: nowrap; transition: font-size .45s ease; }
+.lane:not(.is-open) .lane-verb { font-size: clamp(2rem, 3vw, 2.6rem); }
+
+@media (max-width: 980px) {
+    .lanes { height: 460px; }
+    .lane-body { padding: 24px; }
+}
+@media (max-width: 760px) {
+    .lanes { flex-direction: column; height: auto; gap: 16px; }
+    .lane, .lane.is-open { flex: none; cursor: default; }
+    .lane::before { width: 100%; }
+    .lane-img { position: relative; display: block; height: 200px; transform: none; filter: none; }
+    .lane .lane-shade { inset: 0 0 auto 0; height: 200px; background: linear-gradient(180deg, rgba(13, 35, 65, 0) 40%, rgba(13, 35, 65, .9) 100%) !important; }
+    .lane-body { position: relative; margin-top: -64px; padding: 0 22px 26px; }
+    .lane .lane-verb { font-size: 2.6rem; }
+    .lane .lane-more { grid-template-rows: 1fr; opacity: 1; }
+    .lane .lane-title { color: #fff; font-size: 1.08rem; white-space: normal; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .lane, .lane-img, .lane-more, .lane::before, .lane-shade { transition: none; }
+}

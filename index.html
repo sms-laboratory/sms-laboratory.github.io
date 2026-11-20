@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="site-build" content="20261120103802">
+    <meta name="site-build" content="20261120104027">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="home.css?v=9">
+    <link rel="stylesheet" href="home.css?v=12">
   <script src="nav.js?v=4" defer></script>
 </head>
 
@@ -165,30 +165,58 @@
         <div class="themes-head">
             <h2 id="themes-title">What we work on</h2>
             <div>
-                <p><span class="nb">We make the materials,</span> <span class="nb">interpret the signals they give off,</span> <span class="nb">and bring them to the field</span> <span class="nb">in a sustainable way.</span></p>
-                <p class="ko"><span class="nb">재료를 만들고,</span> <span class="nb">그 재료가 보내는 신호를 해석하고,</span> <span class="nb">지속가능한 방식으로 현장에 적용합니다.</span></p>
+                <p><span class="nb">From the mix to the field:</span> <span class="nb">we make materials,</span> <span class="nb">teach them to sense,</span> <span class="nb">and restore the structures</span> <span class="nb">that depend on them.</span></p>
+                <p class="ko"><span class="nb">배합에서 현장까지,</span> <span class="nb">재료를 만들고,</span> <span class="nb">스스로 감지하게 하고,</span> <span class="nb">구조물을 되살립니다.</span></p>
             </div>
         </div>
 
-        <div class="themes">
-            <a class="theme" href="research.html">
-                <img src="img/research-1.png" alt="콘크리트 큐브 압축 시험" loading="lazy">
-                <h3>Smart construction materials</h3>
-                <p><span class="nb">Strong, functional materials</span> <span class="nb">such as UHPC and</span> <span class="nb">fiber-reinforced cementitious composites.</span></p>
-                <p class="ko"><span class="nb">UHPC, 섬유보강 시멘트 복합재료처럼</span> <span class="nb">강하고 기능성을 갖춘 건설재료를 개발합니다.</span></p>
-            </a>
-            <a class="theme" href="research.html">
-                <img src="img/research-2.png" alt="콘크리트 전기적 응답 측정" loading="lazy">
-                <h3>Electrical response &amp; sensing</h3>
-                <p><span class="nb">Concrete that senses its own stress,</span> <span class="nb">damage and environment</span> <span class="nb">through resistance, capacitance and impedance.</span></p>
-                <p class="ko"><span class="nb">저항과 정전용량, 임피던스로</span> <span class="nb">콘크리트의 응력과 손상, 환경 변화를</span> <span class="nb">스스로 감지합니다.</span></p>
-            </a>
-            <a class="theme" href="research.html">
-                <img src="img/research-3.png" alt="친환경·보수 건설재료" loading="lazy">
-                <h3>Sustainable &amp; repair materials</h3>
-                <p><span class="nb">Low-carbon, slag-based zero-cement binders,</span> <span class="nb">and polymer cement mortar and concrete</span> <span class="nb">(PCM, PCC) for section repair,</span> <span class="nb">from mix design to quality standards.</span></p>
-                <p class="ko"><span class="nb">슬래그 기반 무시멘트 결합재로 탄소를 줄이고,</span> <span class="nb">폴리머 시멘트 모르타르·콘크리트(PCM·PCC)로</span> <span class="nb">단면복구용 보수재료의</span> <span class="nb">배합과 품질 기준을 연구합니다.</span></p>
-            </a>
+        <!-- 세 갈래 연구: 재료를 만들고(Make) → 스스로 감지하게 하고(Sense) → 되살린다(Restore)
+             PC: 마우스를 올리거나 누른 칸이 넓게 펼쳐집니다. 모바일: 세 칸이 모두 펼쳐진 채로 쌓입니다. -->
+        <div class="lanes">
+            <article class="lane is-open" data-lane="make" tabindex="0">
+                <img class="lane-img" src="img/research-1.png" alt="콘크리트 큐브 압축 시험" loading="lazy">
+                <div class="lane-shade" aria-hidden="true"></div>
+                <div class="lane-body">
+                    <p class="lane-verb">Make</p>
+                    <h3 class="lane-title">Smart construction materials</h3>
+                    <div class="lane-more"><div class="lane-more-in">
+                        <p class="lane-en"><span class="nb">Strong, functional materials</span> <span class="nb">such as UHPC and</span> <span class="nb">fiber-reinforced cementitious composites.</span></p>
+                        <p class="lane-ko"><span class="nb">UHPC, 섬유보강 시멘트 복합재료처럼</span> <span class="nb">강하고 기능성을 갖춘 건설재료를 개발합니다.</span></p>
+                        <ul class="lane-tags"><li>UHPC</li><li>SH-FRCC</li><li>Fiber reinforcement</li></ul>
+                        <a class="lane-link" href="research.html">See the research</a>
+                    </div></div>
+                </div>
+            </article>
+
+            <article class="lane" data-lane="sense" tabindex="0">
+                <img class="lane-img" src="img/research-2.png" alt="콘크리트 전기적 응답 측정" loading="lazy">
+                <div class="lane-shade" aria-hidden="true"></div>
+                <div class="lane-body">
+                    <p class="lane-verb">Sense</p>
+                    <h3 class="lane-title">Electrical response &amp; sensing</h3>
+                    <div class="lane-more"><div class="lane-more-in">
+                        <p class="lane-en"><span class="nb">Concrete that senses its own stress,</span> <span class="nb">damage and environment</span> <span class="nb">through resistance, capacitance and impedance.</span></p>
+                        <p class="lane-ko"><span class="nb">저항과 정전용량, 임피던스로</span> <span class="nb">콘크리트의 응력과 손상, 환경 변화를</span> <span class="nb">스스로 감지합니다.</span></p>
+                        <ul class="lane-tags"><li>Resistance</li><li>Capacitance</li><li>EIT</li></ul>
+                        <a class="lane-link" href="research.html">See the research</a>
+                    </div></div>
+                </div>
+            </article>
+
+            <article class="lane" data-lane="restore" tabindex="0">
+                <img class="lane-img" src="img/research-3.png" alt="친환경·보수 건설재료" loading="lazy">
+                <div class="lane-shade" aria-hidden="true"></div>
+                <div class="lane-body">
+                    <p class="lane-verb">Restore</p>
+                    <h3 class="lane-title">Sustainable &amp; repair materials</h3>
+                    <div class="lane-more"><div class="lane-more-in">
+                        <p class="lane-en"><span class="nb">Low-carbon, slag-based zero‑cement binders,</span> <span class="nb">and polymer cement mortar and concrete</span> <span class="nb">(PCM, PCC) for section repair,</span> <span class="nb">from mix design to quality standards.</span></p>
+                        <p class="lane-ko"><span class="nb">슬래그 기반 무시멘트 결합재로 탄소를 줄이고,</span> <span class="nb">폴리머 시멘트 모르타르·콘크리트(PCM·PCC)로</span> <span class="nb">단면복구용 보수재료의</span> <span class="nb">배합과 품질 기준을 연구합니다.</span></p>
+                        <ul class="lane-tags"><li>Zero-cement</li><li>PCM</li><li>PCC</li></ul>
+                        <a class="lane-link" href="research.html">See the research</a>
+                    </div></div>
+                </div>
+            </article>
         </div>
     </section>
 
@@ -302,6 +330,17 @@
         })(start);
     }, { threshold: .4 });
     io.observe(document.querySelector('.stats'));
+})();
+
+// WHAT WE WORK ON: 마우스를 올리거나 누른 칸을 펼칩니다
+(function () {
+    var lanes = document.querySelectorAll('.lane');
+    function open(l) { lanes.forEach(function (x) { x.classList.toggle('is-open', x === l); }); }
+    lanes.forEach(function (l) {
+        l.addEventListener('mouseenter', function () { open(l); });
+        l.addEventListener('focus', function () { open(l); });
+        l.addEventListener('click', function () { open(l); });
+    });
 })();
 
 // HERO 그래프: 연구 분야 4가지를 번갈아 보여 줍니다
