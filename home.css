@@ -441,3 +441,57 @@
     .signal-tabs button { padding: 5px 8px; font-size: .7rem; }
     .recent-head { flex-wrap: wrap; }
 }
+
+/* ---------- WHAT'S NEW : 소식 + 최신 논문 ---------- */
+.home-new { max-width: calc(var(--content) - 56px) !important; margin: 0 auto !important; padding: 88px 28px 110px !important; }
+.new-head { margin-bottom: 30px; }
+.new-head h2 { margin: 0; }
+.new-head-ko { margin: 6px 0 0; color: #7B8794; font-size: .98rem; font-weight: 600; }
+.new-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 40px; align-items: start; }
+.col-title { margin: 0; color: var(--ink); font-family: var(--display); font-size: 1.25rem; font-weight: 800; letter-spacing: -.01em; }
+
+/* News timeline */
+.news .col-title { padding-bottom: 14px; border-bottom: 2px solid var(--ink); }
+.news-list { position: relative; margin: 0; padding: 0; list-style: none; }
+.news-item { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 18px; padding: 20px 0; border-bottom: 1px solid #E6EBF1; }
+.news-date { padding-top: 3px; color: var(--ink); font-family: var(--display); font-size: 1.02rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.news-tag { display: inline-block; margin-bottom: 6px; padding: 2px 10px; border-radius: 999px; font-size: .7rem; font-weight: 700; letter-spacing: .01em; }
+.tag-award   { background: #FDF1E6; color: #B4570F; }
+.tag-project { background: #E8F1F9; color: #17639b; }
+.tag-member  { background: #E7F7EF; color: #1D7A4E; }
+.tag-paper   { background: #F1ECFB; color: #6A3FB5; }
+.tag-event   { background: #FBEFF1; color: #A8323E; }
+.news-title { margin: 0; color: var(--ink); font-size: 1rem; font-weight: 600; line-height: 1.5; }
+.news-ko { margin: 3px 0 0; color: #8592A3; font-size: .86rem; }
+
+/* Latest papers card */
+.recent-pubs { position: relative; padding: 26px 26px 22px; border-radius: 20px; background: #F4F7FB; }
+.recent-pubs::before { content: ""; position: absolute; left: 26px; right: 26px; top: 0; height: 3px; border-radius: 0 0 3px 3px; background: var(--crimson); }
+.rp-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 6px; }
+.rp-count { color: #66809A; font-size: .8rem; white-space: nowrap; }
+.rp-count b { color: var(--ink); font-weight: 800; }
+.rp-list { margin: 0; padding: 0; list-style: none; }
+.rp-list li { padding: 16px 0; border-bottom: 1px solid #DCE4EE; }
+.rp-year { display: block; margin-bottom: 4px; color: var(--crimson); font-family: var(--display); font-size: .9rem; font-weight: 800; }
+.rp-title { margin: 0 0 4px; color: var(--ink); font-size: .95rem; font-weight: 700; line-height: 1.45; }
+.rp-meta { margin: 0; color: #66809A; font-size: .82rem; line-height: 1.5; }
+.rp-meta strong, .rp-meta sup { color: var(--blue); }
+.rp-all { display: flex; flex-direction: column; gap: 2px; margin-top: 18px; padding: 14px 44px 14px 18px; position: relative; border-radius: 14px; background: var(--ink); color: #fff; text-decoration: none; transition: background .2s; }
+.rp-all::after { content: ""; position: absolute; right: 20px; top: 50%; width: 9px; height: 9px; margin-top: -5px; border-top: 2px solid #fff; border-right: 2px solid #fff; transform: rotate(45deg); transition: transform .2s; }
+.rp-all:hover { background: #163458; }
+.rp-all:hover::after { transform: translateX(3px) rotate(45deg); }
+.rp-all span { font-weight: 700; font-size: .95rem; }
+.rp-all small { color: #9FB4D3; font-size: .76rem; }
+.rp-all:focus-visible { outline: 3px solid #8CB4FF; outline-offset: 3px; }
+
+@media (max-width: 900px) {
+    .new-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 650px) {
+    .home-new { padding: 64px 20px 72px !important; }
+    .news-item { display: block; padding: 18px 0; }
+    .news-date { display: inline-block; margin-right: 10px; }
+    .news-item > div { display: inline; }
+    .recent-pubs { padding: 22px 18px 18px; }
+    .recent-pubs::before { left: 18px; right: 18px; }
+}
