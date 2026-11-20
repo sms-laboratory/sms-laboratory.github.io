@@ -495,3 +495,22 @@
     .recent-pubs { padding: 22px 18px 18px; }
     .recent-pubs::before { left: 18px; right: 18px; }
 }
+
+/* News와 Latest papers 높이 맞춤 (PC) */
+@media (min-width: 901px) {
+    .new-grid { align-items: stretch; }
+    .news { display: flex; flex-direction: column; padding-top: 26px; }
+    .news-list { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .news-item:last-child { border-bottom: 0; padding-bottom: 0; }
+    .recent-pubs { display: flex; flex-direction: column; }
+    .rp-list { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .rp-list li:last-child { border-bottom: 0; }
+    .rp-all { margin-top: 12px; }
+    .news .col-title, .rp-head { min-height: 44px; box-sizing: border-box; }
+    .rp-head { margin-bottom: 0; padding-bottom: 14px; border-bottom: 2px solid var(--ink); align-items: flex-end; }
+    .news .col-title { display: flex; align-items: flex-end; }
+}
+@media (min-width: 901px) {
+    .rp-list { justify-content: stretch; }
+    .rp-list li { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+}
