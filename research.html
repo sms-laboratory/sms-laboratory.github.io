@@ -2,11 +2,11 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-    <meta name="site-build" content="20261120104520">
+    <meta name="site-build" content="20261120104738">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Research interests of SMS Laboratory, Hannam University">
   <title>Research | SMS Laboratory</title>
-  <link rel="stylesheet" href="style.css?v=20261120f">
+  <link rel="stylesheet" href="style.css?v=20261120g">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&display=swap" rel="stylesheet">
@@ -26,7 +26,7 @@
     .chapter-nav a:hover, .chapter-nav a:focus-visible { background:var(--ink); color:#fff; outline:none; }
 
     /* chapters */
-    .chapter { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:56px; align-items:center; max-width:1200px; margin:0 auto; padding:64px 28px; scroll-margin-top:90px; }
+    .chapter { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:56px; align-items:center; max-width:1200px; margin:0 auto; padding:64px 28px; scroll-margin-top:calc(var(--header-h, 80px) + 80px); }
     .chapter + .chapter { border-top:1px solid #E8EDF3; }
     .chapter:nth-of-type(even) .chapter-visual { order:2; }
     .chapter-visual { position:relative; margin:0; overflow:hidden; border-radius:22px; aspect-ratio:5 / 4; background:var(--ink); }
@@ -68,7 +68,7 @@
     }
     @media (prefers-reduced-motion: reduce) { .chapter-visual img { transition:none; } }
   </style>
-  <script src="nav.js?v=4" defer></script>
+  <script src="nav.js?v=5" defer></script>
 </head>
 <body>
 <header>
@@ -98,6 +98,15 @@
     <p class="eyebrow">SMS LABORATORY</p>
     <h1>Research</h1>
     <p class="subtitle">연구 분야 소개</p>
+  </div>
+
+  <!-- RESEARCH 하위 탭 (Overview / Publications / Projects) -->
+  <div class="section-tabs-wrap">
+    <nav class="section-tabs" aria-label="Research sections">
+      <a href="research.html" aria-current="page" class="is-current"><span>Overview</span><small>연구 분야</small></a>
+      <a href="publications.html"><span>Publications</span><small>연구 실적</small></a>
+      <a href="projects.html"><span>Projects</span><small>연구 과제</small></a>
+    </nav>
   </div>
 
   <div class="research-intro">

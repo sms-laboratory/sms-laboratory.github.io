@@ -86,3 +86,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }).catch(function () {});
     });
 })();
+
+// 상단 메뉴 높이를 CSS 변수로 (Research 하위 탭이 메뉴 바로 아래에 붙도록)
+(function () {
+    function setH() {
+        var h = document.querySelector('header');
+        if (h) document.documentElement.style.setProperty('--header-h', h.offsetHeight + 'px');
+    }
+    document.addEventListener('DOMContentLoaded', setH);
+    window.addEventListener('resize', setH);
+})();
