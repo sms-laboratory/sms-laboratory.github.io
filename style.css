@@ -23,6 +23,7 @@ body {
     background: var(--white);
     font-family: 'Pretendard Variable', 'Pretendard', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: 16px;
+    font-weight: 500;              /* Pretendard Medium: 400은 화면에서 얇아 보임 */
     line-height: 1.65;
     word-break: keep-all;          /* 국문: 낱말 중간에서 줄이 바뀌지 않게 */
     overflow-wrap: break-word;     /* 아주 긴 단어(이메일 등)만 예외적으로 끊기 */
@@ -77,7 +78,7 @@ nav .logo .logo-univ {
     margin-top: 2px;
     color: #8A96A5;
     font-size: .72rem;
-    font-weight: 500;
+    font-weight: 560;
 }
 nav ul {
     display: flex;
@@ -253,7 +254,7 @@ section h2, h2 {
 .profile-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .profile-info { flex: 1; min-width: 260px; }
 .member-name { margin: 0 0 5px; color: var(--navy); font-size: 1.1rem; font-weight: 700; text-align: center; }
-.kr-name { display: block; margin-top: 2px; color: #475569; font-size: .95rem; font-weight: 500; }
+.kr-name { display: block; margin-top: 2px; color: #475569; font-size: .95rem; font-weight: 560; }
 
 /* TABLES */
 .table { width: 100%; border-collapse: collapse; }
@@ -504,7 +505,7 @@ nav.section-tabs {
     transition: color .2s;
 }
 .section-tabs a span { font-size: .98rem; font-weight: 800; letter-spacing: -.01em; }
-.section-tabs a small { font-size: .74rem; font-weight: 500; color: #9AA6B4; }
+.section-tabs a small { font-size: .74rem; font-weight: 560; color: #9AA6B4; }
 .section-tabs a::after {
     content: "";
     position: absolute; left: 22px; right: 22px; bottom: -1px;
@@ -582,7 +583,7 @@ body .page-banner .subtitle {
     margin: 16px 0 0 !important;
     color: #C9D6E8 !important;
     font-size: 1rem !important;
-    font-weight: 500;
+    font-weight: 560;
 }
 body .page-banner .pb-signal {
     position: absolute; z-index: 0;
@@ -607,3 +608,6 @@ body .page-banner .pb-signal {
 @media (prefers-reduced-motion: reduce) {
     .pb-signal.is-drawing path, .pb-signal.is-drawing .pb-dot { animation: none; stroke-dashoffset: 0; opacity: 1; }
 }
+
+/* 보조 한글 텍스트는 얇아 보이지 않도록 Medium(500)으로 */
+body .kr-name, body .cv-ko, body .hero-lede-ko, body .alumni-period, body .member-history, body .profile-fields li span { font-weight: 560; }
