@@ -96,10 +96,10 @@
 
             <figure class="signal" aria-label="연구 분야별 대표 그래프">
                 <div class="signal-tabs" role="tablist" aria-label="연구 분야">
-                    <button type="button" role="tab" aria-selected="true" data-mode="0">Materials</button>
-                    <button type="button" role="tab" aria-selected="false" data-mode="1">Sensing</button>
-                    <button type="button" role="tab" aria-selected="false" data-mode="2">Durability</button>
-                    <button type="button" role="tab" aria-selected="false" data-mode="3">Repair</button>
+                    <button type="button" role="tab" aria-selected="true" data-mode="0">Sensing</button>
+                    <button type="button" role="tab" aria-selected="false" data-mode="1">Materials</button>
+                    <button type="button" role="tab" aria-selected="false" data-mode="2">Repair</button>
+                    <button type="button" role="tab" aria-selected="false" data-mode="3">Durability</button>
                 </div>
                 <svg class="signal-plot" viewBox="0 0 600 320" preserveAspectRatio="none" aria-hidden="true">
                     <g class="grid"></g>
@@ -310,6 +310,13 @@
     function tri(p) { var c = p % 1; return c < .5 ? c * 2 : 2 - c * 2; }
     // 각 모드: 0~1 범위 값을 돌려주는 두 곡선
     var modes = [
+        {   // 자기감지: 반복 압축 하중과 전기저항 변화율
+            title: 'Self-sensing response under cyclic compression',
+            a: 'Electrical resistance change, ΔR/R₀', b: 'Compressive load',
+            fa: function (u, t, k) { var p = u * 3 + t; return .97 - tri(p) * (.26 + k * .16) + Math.sin(p * 37) * .01 + Math.sin(p * 83) * .006; },
+            fb: function (u, t, k) { return .04 + tri(u * 3 + t) * (.28 + k * .16); },
+            moving: true
+        },
         {   // 고성능 섬유보강 시멘트 복합재료의 인장 거동
             title: 'Tensile behavior of fiber-reinforced cementitious composites',
             a: 'Strain-hardening composite', b: 'Plain mortar',
@@ -320,20 +327,6 @@
                 return Math.max(0, base - crack);
             },
             fb: function (u) { return u < .08 ? u / .08 * .5 : Math.max(0, .5 - (u - .08) * 9); },
-            moving: false
-        },
-        {   // 자기감지: 반복 압축 하중과 전기저항 변화율
-            title: 'Self-sensing response under cyclic compression',
-            a: 'Electrical resistance change, ΔR/R₀', b: 'Compressive load',
-            fa: function (u, t, k) { var p = u * 3 + t; return .97 - tri(p) * (.26 + k * .16) + Math.sin(p * 37) * .01 + Math.sin(p * 83) * .006; },
-            fb: function (u, t, k) { return .04 + tri(u * 3 + t) * (.28 + k * .16); },
-            moving: true
-        },
-        {   // 내구성: 깊이에 따른 염화물 농도
-            title: 'Chloride ingress with depth from the surface',
-            a: 'Slag-based binder', b: 'Ordinary Portland cement',
-            fa: function (u) { return .9 * Math.exp(-u * 7.5) + .03; },
-            fb: function (u) { return .9 * Math.exp(-u * 2.6) + .05; },
             moving: false
         },
         {   // 보수재료: PCM의 물-분체비(W/P)에 따른 부착성(적층 높이)과 충전성(충전 질량)
@@ -347,6 +340,13 @@
                 { u: .5, curve: 'fa', label: '18% · plastering', side: 'left' },
                 { u: 1,  curve: 'fb', label: '20% · injection', side: 'below' }
             ],
+            moving: false
+        },
+        {   // 내구성: 깊이에 따른 염화물 농도
+            title: 'Chloride ingress with depth from the surface',
+            a: 'Slag-based binder', b: 'Ordinary Portland cement',
+            fa: function (u) { return .9 * Math.exp(-u * 7.5) + .03; },
+            fb: function (u) { return .9 * Math.exp(-u * 2.6) + .05; },
             moving: false
         }
     ];
