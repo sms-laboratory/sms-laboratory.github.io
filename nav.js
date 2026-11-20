@@ -1,3 +1,25 @@
+// ==========================================================
+// 최신 버전 확인: 브라우저에 예전 페이지가 남아 있으면 한 번 새로고침합니다.
+// (PC 브라우저가 이전 화면을 오래 기억하는 문제 방지)
+// ==========================================================
+(function () {
+    var meta = document.querySelector('meta[name="site-build"]');
+    if (!meta || !window.fetch || location.protocol === 'file:') return;
+    var mine = meta.content, key = 'sms-build-reload';
+    fetch(location.pathname + '?b=' + Date.now(), { cache: 'no-store' })
+        .then(function (r) { return r.ok ? r.text() : ''; })
+        .then(function (html) {
+            var m = html.match(/name="site-build" content="([^"]+)"/);
+            if (!m || m[1] === mine) return;
+            try {
+                if (sessionStorage.getItem(key) === m[1]) return;   // 무한 새로고침 방지
+                sessionStorage.setItem(key, m[1]);
+            } catch (e) {}
+            location.reload();
+        })
+        .catch(function () {});
+})();
+
 // RESEARCH 하위 메뉴: 터치 기기에서는 첫 번째 탭에 메뉴를 펼치고, 두 번째 탭에 이동합니다.
 document.addEventListener('DOMContentLoaded', function () {
     var touch = window.matchMedia('(hover: none)').matches;
