@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     function get(q) {
         return fetch(base + '/counter/TOTAL.json' + q).then(function (r) {
+            if (r.status === 404) return { count: '0' };     // 그날 방문 기록이 없으면 404
             if (!r.ok) throw new Error(r.status);
             return r.json();
         }).then(function (j) { return parseInt(String(j.count_unique || j.count).replace(/\D/g, ''), 10) || 0; });
@@ -72,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var row = document.querySelector('.visitor-row');
         if (!row || !window.fetch) return;
         var days = [6, 5, 4, 3, 2, 1, 0];                       // 최근 7일
-        var reqs = days.map(function (o) { return get('?start=' + day(o) + '&end=' + day(o)); });
+        var reqs = days.map(function (o) { return get('?start=' + day(o) + '&end=' + day(o)).catch(function () { return 0; }); });
         reqs.push(get(''));
         Promise.all(reqs).then(function (v) {
             var week = v.slice(0, 7), total = v[7], max = Math.max.apply(null, week.concat([1]));
