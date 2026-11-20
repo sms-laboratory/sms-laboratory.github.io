@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="home.css?v=5">
+    <link rel="stylesheet" href="home.css?v=7">
   <script src="nav.js?v=3" defer></script>
 </head>
 
@@ -86,7 +86,7 @@
                 <h1 id="hero-title">Smarter materials for structures that last.</h1>
                 <p class="hero-lede">
                     고성능·기능성 건설재료를 만들고, 그 재료가 보내는 신호로 구조물의 상태를 읽고,
-                    염분과 수분 같은 가혹한 환경에서도 오래 견디는 지속가능한 인프라를 연구합니다.
+                    가혹한 환경에서도 오래 견디는 재료와 노후 구조물을 되살리는 보수재료를 연구합니다.
                 </p>
                 <div class="hero-actions">
                     <a class="btn btn-solid" href="research.html">Explore our research</a>
@@ -99,11 +99,13 @@
                     <button type="button" role="tab" aria-selected="true" data-mode="0">Materials</button>
                     <button type="button" role="tab" aria-selected="false" data-mode="1">Sensing</button>
                     <button type="button" role="tab" aria-selected="false" data-mode="2">Durability</button>
+                    <button type="button" role="tab" aria-selected="false" data-mode="3">Repair</button>
                 </div>
                 <svg class="signal-plot" viewBox="0 0 600 320" preserveAspectRatio="none" aria-hidden="true">
                     <g class="grid"></g>
                     <path class="trace-a" d=""></path>
                     <path class="trace-b" d=""></path>
+                    <g class="marks"></g>
                 </svg>
                 <figcaption>
                     <p class="signal-title"></p>
@@ -171,9 +173,9 @@
                 <p>저항과 정전용량, 임피던스로 콘크리트의 응력과 손상, 환경 변화를 스스로 감지합니다.</p>
             </a>
             <a class="theme" href="research.html">
-                <img src="img/research-3.png" alt="친환경 건설재료" loading="lazy">
-                <h3>Sustainable materials</h3>
-                <p>산업 부산물과 대체 결합재로 탄소 배출을 줄인 건설재료를 연구합니다.</p>
+                <img src="img/research-3.png" alt="친환경·보수 건설재료" loading="lazy">
+                <h3>Sustainable &amp; repair materials</h3>
+                <p>슬래그 기반 무시멘트 결합재로 탄소를 줄이고, 폴리머 시멘트 모르타르·콘크리트(PCM·PCC)로 단면복구용 보수재료의 배합과 품질 기준을 연구합니다.</p>
             </a>
         </div>
     </section>
@@ -290,7 +292,7 @@
     io.observe(document.querySelector('.stats'));
 })();
 
-// HERO 그래프: 연구 분야 3가지를 번갈아 보여 줍니다
+// HERO 그래프: 연구 분야 4가지를 번갈아 보여 줍니다
 (function () {
     var fig = document.querySelector('.signal');
     if (!fig) return;
@@ -333,8 +335,46 @@
             fa: function (u) { return .9 * Math.exp(-u * 7.5) + .03; },
             fb: function (u) { return .9 * Math.exp(-u * 2.6) + .05; },
             moving: false
+        },
+        {   // 보수재료: PCM의 물-분체비(W/P)에 따른 부착성(적층 높이)과 충전성(충전 질량)
+            //   실험값(3개 제품 평균)을 0~1로 정규화한 추세. W/P 16 / 17 / 18 / 19 / 20 %
+            title: 'Tuning the water–powder ratio of repair mortar (PCM)',
+            a: 'Build-up height (overhead plastering)', b: 'Filling mass (pressure injection)',
+            fa: spline([.40, .62, .78, .28, .02]),
+            fb: spline([.05, .30, .48, .65, .74]),
+            ticks: ['16', '17', '18', '19', '20%'],
+            marks: [
+                { u: .5, curve: 'fa', label: '18% · plastering', side: 'left' },
+                { u: 1,  curve: 'fb', label: '20% · injection', side: 'below' }
+            ],
+            moving: false
         }
     ];
+    // 5개 점을 부드럽게 잇는 곡선 (Catmull-Rom)
+    function spline(p) {
+        return function (u) {
+            var x = u * (p.length - 1), i = Math.min(p.length - 2, Math.floor(x)), f = x - i;
+            var p0 = p[Math.max(0, i - 1)], p1 = p[i], p2 = p[i + 1], p3 = p[Math.min(p.length - 1, i + 2)];
+            return .5 * ((2 * p1) + (-p0 + p2) * f + (2 * p0 - 5 * p1 + 4 * p2 - p3) * f * f + (-p0 + 3 * p1 - 3 * p2 + p3) * f * f * f);
+        };
+    }
+    var marks = svg.querySelector('.marks');
+    function Y(v) { return H - 20 - Math.min(1, Math.max(0, v)) * (H - 50); }
+    function drawMarks(m) {
+        var h = '', sc = Math.max(1, W / (svg.clientWidth || W));   // 화면이 작아도 글자 크기 유지
+        marks.style.fontSize = (12.5 * sc) + 'px';
+        if (m.ticks) m.ticks.forEach(function (tk, i) {
+            var x = i / (m.ticks.length - 1) * W;
+            h += '<text class="tick" x="' + Math.min(W - 4, Math.max(4, x)) + '" y="' + (H - 4) + '" text-anchor="' + (i === 0 ? 'start' : i === m.ticks.length - 1 ? 'end' : 'middle') + '">' + tk + '</text>';
+        });
+        if (m.marks && reveal >= 1) m.marks.forEach(function (mk) {
+            var x = Math.min(W - 7, Math.max(7, mk.u * W)), y = Y(m[mk.curve](mk.u));
+            h += '<line class="mark-line" x1="' + x + '" y1="' + y + '" x2="' + x + '" y2="' + (H - 18) + '"/>' +
+                 '<circle class="mark-dot ' + mk.curve + '" cx="' + x + '" cy="' + y + '" r="' + (5 * sc) + '"/>' +
+                 '<text class="mark-label" x="' + (x - 10 * sc) + '" y="' + (mk.side === 'below' ? y + 22 * sc : y - 10 * sc) + '" text-anchor="end">' + mk.label + '</text>';
+        });
+        marks.innerHTML = h;
+    }
     var mode = 0, t = 0, k = 0, target = 0, reveal = 1, auto;
 
     function path(f) {
@@ -346,7 +386,7 @@
         }
         return d;
     }
-    function draw() { var m = modes[mode]; A.setAttribute('d', path(m.fa)); B.setAttribute('d', path(m.fb)); }
+    function draw() { var m = modes[mode]; A.setAttribute('d', path(m.fa)); B.setAttribute('d', path(m.fb)); drawMarks(m); }
     function setMode(i, user) {
         mode = i; reveal = reduce ? 1 : 0;
         var m = modes[i];

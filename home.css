@@ -282,3 +282,15 @@
     .stat-note .nb { display: block; }
     .stat-note .sep { display: none; }
 }
+
+/* 그래프 표시점 (Repair 탭) */
+.signal-plot .tick { fill: #6F86A6; font-size: 1em; font-weight: 600; }
+.signal-plot .mark-line { stroke: rgba(255, 255, 255, .22); stroke-width: 1; stroke-dasharray: 3 4; vector-effect: non-scaling-stroke; }
+.signal-plot .mark-dot { stroke: var(--ink); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.signal-plot .mark-dot.fa { fill: var(--crimson); }
+.signal-plot .mark-dot.fb { fill: #B9C6D8; }
+.signal-plot .mark-label { fill: #E4ECF7; font-size: 1.05em; font-weight: 700; }
+@media (max-width: 650px) {
+    .signal-tabs { gap: 4px; }
+    .signal-tabs button { padding: 5px 10px; font-size: .76rem; }
+}
