@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-    <meta name="site-build" content="20261123213907">
+    <meta name="site-build" content="20261123215127">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- SHARE-META -->
     <meta name="description" content="Courses taught by Prof. Min Kyoung KIM at Hannam University: Applied Mechanics and Practice 1·2, Structural Analysis, Prestressed Concrete, Capstone Design. 담당 강의.">
@@ -161,6 +161,23 @@
     @media (max-width: 520px) {
       .lectures-page .cap-link { height: 32px; }
     }
+    /* 강의 소개: 국문은 보이고, 영문은 English 를 눌러 펼침 */
+    .lectures-page .lec-body { flex: 1; display: flex; flex-direction: column; }
+    .lectures-page .lec-desc { margin: 12px 0 0; color: #3A4D63; font-size: .86rem; line-height: 1.65; }
+    .lectures-page .lec-en { margin-top: auto; padding-top: 12px; }
+    .lectures-page .lec-en summary {
+      display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border: 1px solid #D5DEE8; border-radius: 999px;
+      color: #4A6280; font-size: .74rem; font-weight: 700; cursor: pointer; list-style: none; user-select: none; transition: border-color .2s, color .2s;
+    }
+    .lectures-page .lec-en summary::-webkit-details-marker { display: none; }
+    .lectures-page .lec-en summary::after { content: "+"; font-size: .9rem; line-height: 1; }
+    .lectures-page .lec-en[open] summary::after { content: "\2212"; }
+    .lectures-page .lec-en summary:hover { border-color: #2F63D8; color: #2F63D8; }
+    .lectures-page .lec-en summary:focus-visible { outline: 3px solid #8CB4FF; outline-offset: 2px; }
+    .lectures-page .lec-en p { margin: 10px 0 0; color: #5B6B7E; font-size: .82rem; line-height: 1.6; }
+    /* 캡스톤 카드의 1위 표시: 그림 왼쪽 위에 얹어서 아래 English 버튼 줄이 다른 카드와 맞도록 */
+    .lectures-page .lec-box { position: relative; }
+    .lectures-page .lec-badge { position: absolute; left: 10px; top: 10px; margin: 0; box-shadow: 0 6px 14px -8px rgba(122, 82, 0, .6); }
     /* 타임라인의 캡스톤디자인 카드: 2년 연속 1위 표시 + 위 카드로 연결 */
     .lectures-page .lec-badge { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; padding: 4px 10px 4px 4px; border-radius: 999px; background: #FFF6DC; color: #7A5200; font-size: .74rem; font-weight: 800; text-decoration: none; }
     .lectures-page .lec-badge b { padding: 1px 7px; border-radius: 999px; background: linear-gradient(140deg, #FFE7A3, #F4C95D 50%, #D9962B); color: #4A2E00; }
@@ -224,6 +241,8 @@
           <div class="lec-body">
             <h2>Applied Mechanics and Practice 1</h2>
             <p class="ko">응용역학 및 실습 1</p>
+            <p class="lec-desc">힘과 모멘트, 질점·강체의 평형, 트러스와 골조, 도심과 단면2차모멘트 등 정역학의 기초를 매주 문제 풀이 실습과 함께 익힙니다.</p>
+            <details class="lec-en"><summary>English</summary><p lang="en">Statics for civil engineers: force systems, equilibrium of particles and rigid bodies, trusses and frames, centroids and moments of inertia, with weekly problem-solving practice.</p></details>
           </div>
         </div>
       </li>
@@ -247,6 +266,8 @@
           <div class="lec-body">
             <h2>Applied Mechanics and Practice 2</h2>
             <p class="ko">응용역학 및 실습 2</p>
+            <p class="lec-desc">응력과 변형률, 축하중·비틀림·보의 휨과 전단, 응력 변환(모어 원), 보의 처짐과 기둥의 좌굴까지 재료역학의 핵심을 다룹니다.</p>
+            <details class="lec-en"><summary>English</summary><p lang="en">Mechanics of materials: stress and strain, axial load, torsion, bending and shear in beams, stress transformation, beam deflection and column buckling.</p></details>
           </div>
         </div>
       </li>
@@ -268,6 +289,8 @@
           <div class="lec-body">
             <h2>Structural Analysis</h2>
             <p class="ko">구조해석</p>
+            <p class="lec-desc">정정·부정정 구조물의 해석, 영향선, 에너지법에 의한 처짐, 응력법과 변위법, 강성도법(매트릭스 해석)의 기초를 배웁니다.</p>
+            <details class="lec-en"><summary>English</summary><p lang="en">Analysis of statically determinate and indeterminate structures: influence lines, deflections by energy methods, the force and displacement methods, and an introduction to matrix stiffness analysis.</p></details>
           </div>
         </div>
       </li>
@@ -289,6 +312,8 @@
           <div class="lec-body">
             <h2>Prestressed Concrete</h2>
             <p class="ko">프리스트레스트 콘크리트</p>
+            <p class="lec-desc">프리스트레싱의 원리와 방식, 긴장력 손실, PSC 부재의 휨·전단 설계와 사용성 검토를 다룹니다.</p>
+            <details class="lec-en"><summary>English</summary><p lang="en">Principles and design of prestressed concrete: prestressing systems, prestress losses, flexural and shear design, and serviceability checks of PSC members.</p></details>
           </div>
         </div>
       </li>
@@ -310,6 +335,8 @@
           <div class="lec-body">
             <h2>Capstone Design</h2>
             <p class="ko">캡스톤디자인</p>
+            <p class="lec-desc">팀별로 실제 건설 현안을 정해 문제 정의부터 구조 개념, 해석, 3D 모델링, 최종 포스터 발표까지 설계의 전 과정을 수행합니다.</p>
+            <details class="lec-en"><summary>English</summary><p lang="en">Student teams take a real civil-engineering problem from concept to design: problem definition, structural concept, analysis, 3D modeling, and a final poster presentation.</p></details>
             <a class="lec-badge" href="#capstone-award"><b>1st</b> 2024 · 2025 ↓</a>
           </div>
         </div>
