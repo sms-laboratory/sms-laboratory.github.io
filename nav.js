@@ -5,7 +5,7 @@
 (function () {
     var meta = document.querySelector('meta[name="site-build"]');
     if (!meta || !window.fetch || location.protocol === 'file:') return;
-    var mine = meta.content, key = 'sms-build-reload';
+    var mine = meta.content, key = 'sms-build-reload:' + location.pathname;   // 페이지마다 따로
     fetch(location.pathname + '?b=' + Date.now(), { cache: 'no-store' })
         .then(function (r) { return r.ok ? r.text() : ''; })
         .then(function (html) {
