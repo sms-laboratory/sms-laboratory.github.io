@@ -639,3 +639,14 @@ nav .logo .em-glow { fill: none; stroke: #2F63D8; stroke-width: 3; opacity: 0; t
 nav .logo .em-glow.is-on { animation: emGlow .9s ease-out; }
 @keyframes emGlow { 0% { opacity: .8; transform: scale(1); } 100% { opacity: 0; transform: scale(2.6); } }
 @media (max-width: 650px) { nav .logo .emblem { height: 46px; } }
+
+/* ---------- 모바일 메뉴: LECTURES 추가로 7개 → HOME은 로고가 대신 ---------- */
+@media (max-width: 650px) {
+    nav > ul > li:first-child { display: none; }      /* HOME: 왼쪽 위 로고를 누르면 홈 */
+}
+@media (max-width: 340px) {
+    nav ul li a { font-size: .56rem; }
+}
+@media (max-width: 430px) { nav ul li a { font-size: .65rem; } }
+@media (max-width: 370px) { nav ul li a { font-size: .6rem; } }
+@media (max-width: 340px) { nav ul li a { font-size: .55rem; } }

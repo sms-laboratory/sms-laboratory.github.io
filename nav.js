@@ -107,6 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
 //   projects     : 과제 기간 막대가 시간축을 따라 뻗고, 오늘 위치 표시
 //   members      : 교수 노드에서 구성원 노드로 연결선이 퍼짐
 //   gallery      : 사진 타일이 대각선 순서로 채워짐
+//   lectures     : 모어 원(Mohr's circle)이 그려지고 주응력 점이 나타남
 //   contact      : 경로가 그려지고 위치 핀이 떨어진 뒤 파동이 퍼짐
 // ==========================================================
 (function () {
@@ -202,6 +203,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
             return o;
+        },
+        lectures: function () {
+            // 모어 원 (Mohr's circle): 축 → 원 → 지름 → 주응력 점
+            var cx = 330, cy = 104, r = 74, a = 0.55, ax = Math.cos(a) * r, ay = Math.sin(a) * r;
+            return '<path class="pbm-draw" stroke="' + F + '" stroke-width="1.4" d="M150 ' + cy + ' H560 M200 22 V190"' + d(0) + '/>' +
+                   '<text class="pbm-fade" x="566" y="' + (cy + 4) + '" fill="' + T + '" font-size="14" font-weight="700"' + d(.4) + '>σ</text>' +
+                   '<text class="pbm-fade" x="206" y="24" fill="' + T + '" font-size="14" font-weight="700"' + d(.4) + '>τ</text>' +
+                   '<path class="pbm-draw" stroke="' + C + '" stroke-width="2.6" d="M' + (cx + r) + ' ' + cy + ' A' + r + ' ' + r + ' 0 1 1 ' + (cx - r) + ' ' + cy + ' A' + r + ' ' + r + ' 0 1 1 ' + (cx + r) + ' ' + cy + '"' + d(.3) + '/>' +
+                   '<path class="pbm-draw" stroke="' + B + '" stroke-width="2" d="M' + (cx + ax).toFixed(1) + ' ' + (cy - ay).toFixed(1) + ' L' + (cx - ax).toFixed(1) + ' ' + (cy + ay).toFixed(1) + '"' + d(1.4) + '/>' +
+                   '<circle class="pbm-pop" cx="' + (cx + ax).toFixed(1) + '" cy="' + (cy - ay).toFixed(1) + '" r="5" fill="' + B + '"' + d(1.8) + '/>' +
+                   '<circle class="pbm-pop" cx="' + (cx - ax).toFixed(1) + '" cy="' + (cy + ay).toFixed(1) + '" r="5" fill="' + B + '"' + d(1.8) + '/>' +
+                   '<circle class="pbm-pop" cx="' + (cx + r) + '" cy="' + cy + '" r="5.5" fill="#fff"' + d(2.1) + '/>' +
+                   '<circle class="pbm-pop" cx="' + (cx - r) + '" cy="' + cy + '" r="5.5" fill="#fff"' + d(2.1) + '/>' +
+                   '<circle class="pbm-pop" cx="' + cx + '" cy="' + cy + '" r="3" fill="' + T + '"' + d(1.4) + '/>' +
+                   '<text class="pbm-fade" x="' + (cx + r + 8) + '" y="' + (cy + 20) + '" fill="#fff" font-size="12" font-weight="700"' + d(2.3) + '>σ₁</text>' +
+                   '<text class="pbm-fade" x="' + (cx - r - 24) + '" y="' + (cy + 20) + '" fill="#fff" font-size="12" font-weight="700"' + d(2.3) + '>σ₂</text>';
         },
         contact: function () {
             var px = 470, py = 120;
