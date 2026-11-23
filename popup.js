@@ -7,8 +7,9 @@
 var POPUP = {
     active: true,
     id: 'capstone-2024-2025',
-    badge: '1st Place &middot; 2 years in a row',
-    title: 'Capstone Design Award',
+    streak: '2',                                   // 연속 1위 햇수 (큰 숫자로 표시)
+    badge: 'Capstone Design Award',
+    title: '1st Place, Two Years Running',
     titleKo: '캡스톤디자인 2년 연속 1위',
     advisor: 'Advisor: Prof. Min Kyoung KIM',
     items: [
@@ -42,7 +43,7 @@ var POPUP = {
             return '<article class="np-card">' +
                 '<a class="np-poster" href="' + it.poster + '" target="_blank" rel="noopener" aria-label="' + it.year + ' 포스터 크게 보기">' +
                     '<img src="' + it.thumb + '" alt="' + it.year + ' 캡스톤디자인 포스터">' +
-                    '<span class="np-year">' + it.year + '</span>' +
+                    '<span class="np-year"><b>1st</b>' + it.year + '</span>' +
                     '<span class="np-zoom">View poster</span>' +
                 '</a>' +
                 '<div class="np-project">' +
@@ -57,9 +58,15 @@ var POPUP = {
         wrap.innerHTML =
             '<div class="np" role="dialog" aria-modal="true" aria-labelledby="np-title">' +
                 '<div class="np-head">' +
-                    '<span class="np-badge">' + POPUP.badge + '</span>' +
-                    '<h2 id="np-title">' + POPUP.title + '</h2>' +
-                    '<p class="np-ko">' + POPUP.titleKo + '</p>' +
+                    '<div class="np-streak" aria-hidden="true">' +
+                        '<span class="np-streak-n">' + POPUP.streak + '</span>' +
+                        '<span class="np-streak-t">years<br>in a row</span>' +
+                    '</div>' +
+                    '<div class="np-head-text">' +
+                        '<span class="np-badge">' + POPUP.badge + '</span>' +
+                        '<h2 id="np-title">' + POPUP.title + '</h2>' +
+                        '<p class="np-ko">' + POPUP.titleKo + '</p>' +
+                    '</div>' +
                 '</div>' +
                 '<div class="np-cards">' + cards + '</div>' +
                 '<div class="np-foot">' +
