@@ -17,7 +17,7 @@ var POPUP = {
         {
             year: '2025',
             project: 'Design of an Urban Smart Hybrid Disaster Prevention System for Extreme Rainfall Response',
-            projectKo: '극한 호우 대응 도시형 스마트 하이브리드 방재 시스템 설계',
+            projectKo: '<span class="nb">극한 호우 대응 도시형</span> <span class="nb">스마트 하이브리드 방재 시스템 설계</span>',
             team: '김경후, 김민재, 육찬솔, 이도희, 이재혁, 이환희',
             thumb: 'img/capstone-2025-thumb.webp',
             poster: 'img/capstone-2025-poster.webp'
