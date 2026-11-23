@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
 (function () {
     var GOATCOUNTER_CODE = 'sms-laboratory';
     var base = 'https://' + GOATCOUNTER_CODE + '.goatcounter.com';
-    if (location.hostname !== 'sms-laboratory.github.io') return;   // 실제 사이트에서만 집계
+    if (['sms-lab.hnu.kr', 'sms-laboratory.github.io'].indexOf(location.hostname) < 0) return;   // 실제 사이트에서만 집계
 
     var s = document.createElement('script');
     s.async = true;

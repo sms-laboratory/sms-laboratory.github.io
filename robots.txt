@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sms-laboratory.github.io/sitemap.xml
+Sitemap: https://sms-lab.hnu.kr/sitemap.xml
