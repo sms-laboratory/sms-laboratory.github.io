@@ -215,3 +215,21 @@ document.addEventListener('DOMContentLoaded', function () {
         requestAnimationFrame(function () { svg.classList.add('is-on'); });
     });
 })();
+
+// ==========================================================
+// 상단 로고 등장 효과: 사이트에 들어와 처음 보는 페이지에서 한 번만
+// ==========================================================
+(function () {
+    document.addEventListener('DOMContentLoaded', function () {
+        var a = document.querySelector('nav .logo'), img = a && a.querySelector('img');
+        if (!img) return;
+        var mark = document.createElement('span');
+        mark.className = 'logo-mark';
+        img.parentNode.insertBefore(mark, img); mark.appendChild(img);
+        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var seen = false;
+        try { seen = sessionStorage.getItem('smsLogoIntro') === '1'; sessionStorage.setItem('smsLogoIntro', '1'); } catch (e) {}
+        if (seen || reduce || !(window.CSS && CSS.registerProperty)) return;   // 각도 애니메이션 미지원 브라우저는 그대로 표시
+        a.classList.add('logo-intro');
+    });
+})();
