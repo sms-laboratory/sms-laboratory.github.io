@@ -10,7 +10,8 @@ var POPUP = {
     streak: '2',                                   // 연속 1위 햇수 (큰 숫자로 표시)
     badge: 'Capstone Design Award',
     title: '1st Place, Two Years Running',
-    titleKo: '캡스톤디자인 2년 연속 1위',
+    titleKo: '<span class="nb">한남대학교 건설환경공학과</span> <span class="nb">캡스톤디자인 2년 연속 1위</span>',
+    org: '<span class="nb">Department of Civil and Environmental Engineering,</span> <span class="nb">HANNAM UNIVERSITY</span>',
     advisor: 'Advisor: Prof. Min Kyoung KIM',
     items: [
         {
@@ -66,6 +67,7 @@ var POPUP = {
                         '<span class="np-badge">' + POPUP.badge + '</span>' +
                         '<h2 id="np-title">' + POPUP.title + '</h2>' +
                         '<p class="np-ko">' + POPUP.titleKo + '</p>' +
+                        '<p class="np-org">' + POPUP.org + '</p>' +
                     '</div>' +
                 '</div>' +
                 '<div class="np-cards">' + cards + '</div>' +
