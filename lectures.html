@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-    <meta name="site-build" content="20261123205950">
+    <meta name="site-build" content="20261123210029">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- SHARE-META -->
     <meta name="description" content="Courses taught by Prof. Min Kyoung KIM at Hannam University: Applied Mechanics and Practice 1·2, Structural Analysis, Prestressed Concrete, Capstone Design. 담당 강의.">
@@ -59,6 +59,8 @@
       .lectures-page .lec-card .draw { stroke-dashoffset: 0; animation: none !important; }
       .lectures-page .lec-card .pop { opacity: 1; animation: none !important; }
     }
+    /* PC 가로 배치: 영문 과목명을 두 줄 높이로 맞춰 국문 줄 위치를 통일 */
+    @media (min-width: 1100px) { .lectures-page .lec-body h2 { min-height: 2.4em; } }
     /* 태블릿·모바일: 세로 타임라인 */
     @media (max-width: 1099px) {
       .lectures-page .lec-track { grid-template-columns: 1fr; gap: 26px; max-width: 620px; margin: 0 auto; padding-left: 30px; }
