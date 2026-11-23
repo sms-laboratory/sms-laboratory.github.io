@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-    <meta name="site-build" content="20261123210041">
+    <meta name="site-build" content="20261123210237">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- SHARE-META -->
     <meta name="description" content="Courses taught by Prof. Min Kyoung KIM at Hannam University: Applied Mechanics and Practice 1·2, Structural Analysis, Prestressed Concrete, Capstone Design. 담당 강의.">
@@ -86,7 +86,7 @@
     /* ---------- 캡스톤디자인 2년 연속 1위 카드 ---------- */
     .lectures-page .cap-award {
       position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.6fr); gap: 36px; align-items: center;
-      margin: 0 0 64px; padding: 40px 40px 40px 44px; border-radius: 26px; color: #fff;
+      margin: 0; padding: 40px 40px 40px 44px; border-radius: 26px; color: #fff;
       background:
         radial-gradient(520px 260px at 12% 0%, rgba(244, 201, 93, .28), transparent 70%),
         radial-gradient(600px 300px at 100% 100%, rgba(47, 99, 216, .35), transparent 70%),
@@ -122,10 +122,10 @@
     @keyframes capMedal { to { transform: none; } }
     @media (prefers-reduced-motion: reduce) { .lectures-page .cap-award .cap-medal { transform: none; animation: none !important; } }
     @media (max-width: 1099px) {
-      .lectures-page .cap-award { grid-template-columns: 1fr; gap: 26px; max-width: 620px; margin: 0 auto 48px; padding: 32px 26px; }
+      .lectures-page .cap-award { grid-template-columns: 1fr; gap: 26px; max-width: 620px; margin: 0 auto; padding: 32px 26px; }
     }
     @media (max-width: 520px) {
-      .lectures-page .cap-award { padding: 26px 18px 20px; border-radius: 22px; margin-bottom: 40px; }
+      .lectures-page .cap-award { padding: 26px 18px 20px; border-radius: 22px; }
       .lectures-page .cap-slots { grid-template-columns: 1fr 1fr; gap: 10px; }
       .lectures-page .cap-slot.is-next { grid-column: 1 / -1; }
       .lectures-page .cap-next { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 4px 12px; padding: 12px 14px; }
@@ -135,6 +135,26 @@
       .lectures-page .cap-medal { width: 42px; height: 42px; font-size: .86rem; }
       .lectures-page .cap-title { font-size: .84rem; }
       .lectures-page .cap-title-ko { font-size: .72rem; }
+    }
+    /* 캡스톤 → 수상 연결선 */
+    .lectures-page .cap-link { position: relative; height: 56px; }
+    .lectures-page .cap-link::before {
+      content: ""; position: absolute; top: 0; bottom: 0; width: 2px;
+      left: calc((100% - 4 * 18px) / 5 * 4.5 + 4 * 18px - 1px);   /* 5열 중 마지막(캡스톤) 열 가운데 */
+      background: linear-gradient(180deg, #D23A4E, #F4C95D);
+    }
+    .lectures-page .cap-link::after {
+      content: ""; position: absolute; bottom: -5px; width: 10px; height: 10px; border-radius: 50%;
+      left: calc((100% - 4 * 18px) / 5 * 4.5 + 4 * 18px - 5px);
+      background: #F4C95D; box-shadow: 0 0 0 4px rgba(244, 201, 93, .25);
+    }
+    @media (max-width: 1099px) {
+      .lectures-page .cap-link { max-width: 620px; height: 40px; margin: 0 auto; }
+      .lectures-page .cap-link::before { left: 5px; }
+      .lectures-page .cap-link::after { left: 1px; }
+    }
+    @media (max-width: 520px) {
+      .lectures-page .cap-link { height: 32px; }
     }
     /* 타임라인의 캡스톤디자인 카드: 2년 연속 1위 표시 + 위 카드로 연결 */
     .lectures-page .lec-badge { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; padding: 4px 10px 4px 4px; border-radius: 999px; background: #FFF6DC; color: #7A5200; font-size: .74rem; font-weight: 800; text-decoration: none; }
@@ -177,43 +197,6 @@
   </div>
 
   <section class="lec-section" aria-label="Courses by year and semester">
-    <!-- 캡스톤디자인 2년 연속 1위 -->
-    <article class="cap-award" id="capstone-award" aria-labelledby="cap-award-title">
-      <div class="cap-text">
-        <p class="cap-kicker">Capstone Design Award</p>
-        <h2 id="cap-award-title">Back-to-back<br>1st place.</h2>
-        <p class="cap-ko">캡스톤디자인 2년 연속 1위</p>
-        <p class="cap-note">Advised by Prof. Min Kyoung KIM</p>
-      </div>
-      <ol class="cap-slots">
-        <li class="cap-slot is-win" style="--d:.1s">
-          <a href="img/capstone-2024-poster.webp" target="_blank" rel="noopener" aria-label="2024 1위 작품 포스터 보기: AQUA FLEX BRIDGE">
-            <span class="cap-thumb"><img src="img/capstone-2024-thumb.webp" alt="" loading="lazy"></span>
-            <span class="cap-medal"><b>1st</b></span>
-            <span class="cap-year">2024</span>
-            <span class="cap-title">AQUA FLEX BRIDGE</span>
-            <span class="cap-title-ko">수위 변화 대응 차세대 스마트 교량</span>
-          </a>
-        </li>
-        <li class="cap-slot is-win" style="--d:.35s">
-          <a href="img/capstone-2025-poster.webp" target="_blank" rel="noopener" aria-label="2025 1위 작품 포스터 보기: 극한 호우 대응 도시형 스마트 하이브리드 방재 시스템 설계">
-            <span class="cap-thumb"><img src="img/capstone-2025-thumb.webp" alt="" loading="lazy"></span>
-            <span class="cap-medal"><b>1st</b></span>
-            <span class="cap-year">2025</span>
-            <span class="cap-title">Urban Smart Hybrid Disaster Prevention System</span>
-            <span class="cap-title-ko">극한 호우 대응 도시형 스마트 하이브리드 방재 시스템</span>
-          </a>
-        </li>
-        <li class="cap-slot is-next" style="--d:.6s">
-          <span class="cap-next">
-            <span class="cap-medal is-empty"><b>?</b></span>
-            <span class="cap-year">2026</span>
-            <span class="cap-title">Your team next.</span>
-            <span class="cap-title-ko">다음 1위는 여러분의 차례</span>
-          </span>
-        </li>
-      </ol>
-    </article>
 
     <ol class="lec-track">
 
@@ -322,12 +305,53 @@
           <div class="lec-body">
             <h2>Capstone Design</h2>
             <p class="ko">캡스톤디자인</p>
-            <a class="lec-badge" href="#capstone-award"><b>1st</b> 2024 · 2025</a>
+            <a class="lec-badge" href="#capstone-award"><b>1st</b> 2024 · 2025 ↓</a>
           </div>
         </div>
       </li>
 
     </ol>
+
+    <!-- 캡스톤디자인 카드에서 수상 카드로 이어지는 선 -->
+    <div class="cap-link" aria-hidden="true"></div>
+
+    <!-- 캡스톤디자인 2년 연속 1위 -->
+    <article class="cap-award" id="capstone-award" aria-labelledby="cap-award-title">
+      <div class="cap-text">
+        <p class="cap-kicker">Capstone Design Award</p>
+        <h2 id="cap-award-title">Back-to-back<br>1st place.</h2>
+        <p class="cap-ko">캡스톤디자인 2년 연속 1위</p>
+        <p class="cap-note">Advised by Prof. Min Kyoung KIM</p>
+      </div>
+      <ol class="cap-slots">
+        <li class="cap-slot is-win" style="--d:.1s">
+          <a href="img/capstone-2024-poster.webp" target="_blank" rel="noopener" aria-label="2024 1위 작품 포스터 보기: AQUA FLEX BRIDGE">
+            <span class="cap-thumb"><img src="img/capstone-2024-thumb.webp" alt="" loading="lazy"></span>
+            <span class="cap-medal"><b>1st</b></span>
+            <span class="cap-year">2024</span>
+            <span class="cap-title">AQUA FLEX BRIDGE</span>
+            <span class="cap-title-ko">수위 변화 대응 차세대 스마트 교량</span>
+          </a>
+        </li>
+        <li class="cap-slot is-win" style="--d:.35s">
+          <a href="img/capstone-2025-poster.webp" target="_blank" rel="noopener" aria-label="2025 1위 작품 포스터 보기: 극한 호우 대응 도시형 스마트 하이브리드 방재 시스템 설계">
+            <span class="cap-thumb"><img src="img/capstone-2025-thumb.webp" alt="" loading="lazy"></span>
+            <span class="cap-medal"><b>1st</b></span>
+            <span class="cap-year">2025</span>
+            <span class="cap-title">Urban Smart Hybrid Disaster Prevention System</span>
+            <span class="cap-title-ko">극한 호우 대응 도시형 스마트 하이브리드 방재 시스템</span>
+          </a>
+        </li>
+        <li class="cap-slot is-next" style="--d:.6s">
+          <span class="cap-next">
+            <span class="cap-medal is-empty"><b>?</b></span>
+            <span class="cap-year">2026</span>
+            <span class="cap-title">Your team next.</span>
+            <span class="cap-title-ko">다음 1위는 여러분의 차례</span>
+          </span>
+        </li>
+      </ol>
+    </article>
   </section>
   <script>
     (function () {
