@@ -560,17 +560,18 @@
 .np-ko { margin: 8px 0 0; color: #0D2341; font-size: 1.12rem; font-weight: 800; }
 .np-org { margin: 4px 0 0; color: #7B8794; font-size: .84rem; font-weight: 600; }
 .np .nb { display: inline-block; }
-.np-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 24px; }
-.np-card { display: flex; flex-direction: column; overflow: hidden; border: 1px solid #E3E9F0; border-radius: 16px; }
+.np-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; margin-top: 24px; }
+/* 두 카드의 영문·국문 시작 줄을 맞춤 (subgrid) */
+.np-card { display: grid; grid-row: span 4; grid-template-rows: subgrid; align-content: start; }
+.np-card { overflow: hidden; border: 1px solid #E3E9F0; border-radius: 16px; }
 .np-poster { position: relative; display: block; height: 190px; overflow: hidden; background: #0D2341; }
 .np-poster img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .4s; }
 .np-poster:hover img { transform: scale(1.04); }
 .np-year { position: absolute; left: 12px; top: 12px; display: inline-flex; align-items: center; gap: 7px; padding: 4px 12px 4px 5px; border-radius: 999px; background: #0D2341; color: #fff; font-family: 'Bricolage Grotesque', sans-serif; font-size: .92rem; font-weight: 800; box-shadow: 0 6px 14px -6px rgba(0, 0, 0, .6); }
 .np-year b { padding: 2px 8px; border-radius: 999px; background: linear-gradient(140deg, #FFE7A3, #F4C95D 50%, #D9962B); color: #4A2E00; font-size: .78rem; }
 .np-zoom { position: absolute; right: 12px; bottom: 12px; padding: 6px 11px; border-radius: 999px; background: rgba(13, 35, 65, .85); color: #fff; font-size: .74rem; font-weight: 700; }
-.np-project { padding: 16px 18px 0; }
-.np-project strong { display: block; color: #102B46; font-size: .98rem; line-height: 1.35; }
-.np-project span { display: block; margin-top: 4px; color: #5B6B7E; font-size: .86rem; line-height: 1.45; }
+.np-en { margin: 0; padding: 16px 18px 0; color: #102B46; font-size: .98rem; font-weight: 700; line-height: 1.35; }
+.np-kr { margin: 0; padding: 4px 18px 0; color: #5B6B7E; font-size: .86rem; line-height: 1.45; }
 .np-team { margin: 10px 18px 16px; color: #7B8794; font-size: .82rem; line-height: 1.55; }
 .np-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; margin-top: 20px; }
 .np-advisor { margin: 0 auto 0 0; color: #66809A; font-size: .84rem; font-weight: 600; }
@@ -583,7 +584,8 @@
 .np button:focus-visible, .np a:focus-visible, .np-today input:focus-visible { outline: 3px solid #8CB4FF; outline-offset: 2px; }
 @media (max-width: 680px) {
     .np { padding: 24px 18px 18px; border-radius: 20px; }
-    .np-cards { grid-template-columns: 1fr; gap: 14px; margin-top: 18px; }
+    .np-cards { grid-template-columns: 1fr; gap: 0; margin-top: 18px; }
+    .np-card + .np-card { margin-top: 14px; }
     .np-poster { height: 130px; }
     .np-foot { margin-top: 16px; }
     .np-advisor { flex-basis: 100%; }

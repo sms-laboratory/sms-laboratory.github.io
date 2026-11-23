@@ -47,10 +47,8 @@ var POPUP = {
                     '<span class="np-year"><b>1st</b>' + it.year + '</span>' +
                     '<span class="np-zoom">View poster</span>' +
                 '</a>' +
-                '<div class="np-project">' +
-                    '<strong>' + it.project + '</strong>' +
-                    '<span>' + it.projectKo + '</span>' +
-                '</div>' +
+                '<p class="np-en">' + it.project + '</p>' +
+                '<p class="np-kr">' + it.projectKo + '</p>' +
                 '<p class="np-team">' + it.team + '</p>' +
             '</article>';
         }).join('');

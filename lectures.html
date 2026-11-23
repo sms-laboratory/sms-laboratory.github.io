@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-    <meta name="site-build" content="20261123210408">
+    <meta name="site-build" content="20261123210551">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- SHARE-META -->
     <meta name="description" content="Courses taught by Prof. Min Kyoung KIM at Hannam University: Applied Mechanics and Practice 1·2, Structural Analysis, Prestressed Concrete, Capstone Design. 담당 강의.">
@@ -96,8 +96,12 @@
     .lectures-page .cap-text h2 { margin: 16px 0 0; padding: 0; border: 0; color: #fff; font-family: 'Bricolage Grotesque', 'Pretendard Variable', sans-serif; font-size: clamp(2.3rem, 4.4vw, 3.4rem); font-weight: 800; letter-spacing: -.045em; line-height: .98; }
     .lectures-page .cap-ko { margin: 14px 0 0; color: #F4C95D; font-size: 1.08rem; font-weight: 800; line-height: 1.45; }
     .lectures-page .cap-note { margin: 18px 0 0; color: #9FB4D3; font-size: .82rem; font-weight: 600; line-height: 1.55; }
-    .lectures-page .cap-slots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
-    .lectures-page .cap-slot > a, .lectures-page .cap-next { position: relative; display: flex; flex-direction: column; height: 100%; padding: 12px 12px 16px; border-radius: 18px; color: inherit; text-decoration: none; }
+    .lectures-page .cap-slots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 14px; margin: 0; padding: 0; list-style: none; }
+    /* 2024·2025 칸의 연도·영문·국문 줄 높이를 서로 맞춤 (subgrid) */
+    .lectures-page .cap-slot { display: grid; grid-row: span 4; grid-template-rows: subgrid; }
+    .lectures-page .cap-slot.is-win > a { display: grid; grid-row: span 4; grid-template-rows: subgrid; align-content: start; }
+    .lectures-page .cap-slot.is-next > .cap-next { grid-row: 1 / span 4; }
+    .lectures-page .cap-slot > a, .lectures-page .cap-next { position: relative; display: flex; flex-direction: column; padding: 12px 12px 16px; border-radius: 18px; color: inherit; text-decoration: none; }
     .lectures-page .cap-slot.is-win > a { background: rgba(255, 255, 255, .07); border: 1px solid rgba(255, 255, 255, .12); transition: background .25s, transform .25s; }
     .lectures-page .cap-slot.is-win > a:hover { background: rgba(255, 255, 255, .12); transform: translateY(-3px); }
     .lectures-page .cap-slot > a:focus-visible { outline: 3px solid #8CB4FF; outline-offset: 3px; }
@@ -126,7 +130,8 @@
     }
     @media (max-width: 520px) {
       .lectures-page .cap-award { padding: 26px 18px 20px; border-radius: 22px; }
-      .lectures-page .cap-slots { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .lectures-page .cap-slots { grid-template-columns: 1fr 1fr; gap: 0 10px; }
+      .lectures-page .cap-slot.is-next { margin-top: 10px; }
       .lectures-page .cap-slot.is-next { grid-column: 1 / -1; }
       .lectures-page .cap-next { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 4px 12px; padding: 12px 14px; }
       .lectures-page .cap-next .cap-medal { margin: 0; width: 40px; height: 40px; font-size: 1.1rem; }
