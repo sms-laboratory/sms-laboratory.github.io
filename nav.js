@@ -137,15 +137,30 @@ document.addEventListener('DOMContentLoaded', function () {
                    '<path class="pbm-draw" stroke="' + C + '" stroke-width="2.6" d="' + wave(95, 52, 4.5, 0) + '"' + d(.7) + '/>';
         },
         publications: function () {
+            // 막대: 연도별 SCI(E) 논문 수 (사이트 목록 기준)
+            // 선:   연도별 피인용 수 (Scopus, 2026.11 기준) — 막대가 선 뒤로 솟은 뒤 선이 그려짐
             var yrs = [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027],
-                n = [1, 0, 2, 2, 1, 5, 2, 4, 10, 0, 5, 1], o = '<path stroke="' + F + '" stroke-width="1.2" d="M30 180 H590"/>';
+                n = [1, 0, 2, 2, 1, 5, 2, 4, 10, 0, 5, 1],
+                cit = [1, 7, 9, 18, 18, 39, 41, 70, 123, 107, 227, null],   // 2027년 피인용은 아직 해가 시작되지 않아 표시 안 함
+                L = '#8CB4FF', o = '<path stroke="' + F + '" stroke-width="1.2" d="M30 180 H590"/>', line = '', dots = '';
             yrs.forEach(function (yr, i) {
-                var x = 40 + i * 46, h = n[i] * 14;
+                var x = 40 + i * 46, h = n[i] * 12, cx = x + 14, cy = 180 - cit[i] / 227 * 148;
                 if (h) o += '<rect class="pbm-grow-y" x="' + x + '" y="' + (180 - h) + '" width="28" height="' + h + '" rx="4" fill="' + (n[i] === 10 ? C : S) + '"' + d(.1 + i * .07) + '/>';
                 if (i === 0 || i === yrs.length - 1 || n[i] === 10)
-                    o += '<text class="pbm-fade" x="' + (x + 14) + '" y="197" text-anchor="middle" fill="' + T + '" font-size="11" font-weight="600"' + d(1) + '>' + yr + '</text>';
+                    o += '<text class="pbm-fade" x="' + cx + '" y="197" text-anchor="middle" fill="' + T + '" font-size="11" font-weight="600"' + d(1) + '>' + yr + '</text>';
+                if (cit[i] === null) return;
+                line += (i ? 'L' : 'M') + cx + ' ' + cy.toFixed(1);
+                dots += '<circle class="pbm-pop" cx="' + cx + '" cy="' + cy.toFixed(1) + '" r="3.6" fill="#0D2341" stroke="' + L + '" stroke-width="2"' + d(1.25 + i * .09) + '/>';
             });
-            return o + '<text class="pbm-fade" x="' + (40 + 8 * 46 + 14) + '" y="30" text-anchor="middle" fill="#fff" font-size="13" font-weight="700"' + d(1.1) + '>10</text>';
+            var px = 40 + 8 * 46 + 14, cx26 = 40 + 10 * 46 + 14;
+            return o +
+                '<text class="pbm-fade" x="' + px + '" y="' + (180 - 120 - 8) + '" text-anchor="middle" fill="#fff" font-size="12" font-weight="700"' + d(1.1) + '>10</text>' +
+                '<path class="pbm-draw" stroke="' + L + '" stroke-width="2.2" d="' + line + '"' + d(1.2) + '/>' + dots +
+                '<text class="pbm-fade" x="' + cx26 + '" y="20" text-anchor="middle" fill="' + L + '" font-size="12" font-weight="700"' + d(2.3) + '>227</text>' +
+                '<g class="pbm-fade"' + d(2.4) + ' font-size="11" font-weight="600" fill="' + T + '">' +
+                    '<rect x="40" y="6" width="10" height="10" rx="2" fill="' + S + '"/><text x="56" y="15">Papers</text>' +
+                    '<path d="M110 11 H128" stroke="' + L + '" stroke-width="2.2"/><circle cx="119" cy="11" r="3" fill="#0D2341" stroke="' + L + '" stroke-width="1.8"/><text x="134" y="15">Citations (Scopus)</text>' +
+                '</g>';
         },
         projects: function () {
             var X = function (y, m) { return 40 + ((y - 2021) + (m - 1) / 12) * 54; }, o = '';
