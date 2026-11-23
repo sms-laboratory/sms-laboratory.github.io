@@ -1,21 +1,34 @@
 // ==========================================================
 // 홈 화면 알림 팝업
-//   - 내용을 바꾸려면 아래 POPUP만 수정하세요.
+//   - 내용을 바꾸려면 아래 POPUP만 수정하세요. (items: 최신 순)
 //   - 팝업을 끄려면 POPUP.active 를 false 로 바꾸면 됩니다.
 //   - "오늘 하루 보지 않기"를 누르면 그날은 다시 뜨지 않습니다.
 // ==========================================================
 var POPUP = {
     active: true,
-    id: 'capstone-2024',
-    badge: '1st Place',
-    title: '2024 Capstone Design',
-    titleKo: '2024년도 캡스톤디자인 1위',
-    project: 'AQUA FLEX BRIDGE',
-    projectKo: '수위 변화 대응 차세대 스마트 교량',
-    team: '유성, 임용석, 이효열, 지성현, 조재성, 류태호, 강태규',
+    id: 'capstone-2024-2025',
+    badge: '1st Place &middot; 2 years in a row',
+    title: 'Capstone Design Award',
+    titleKo: '캡스톤디자인 2년 연속 1위',
     advisor: 'Advisor: Prof. Min Kyoung KIM',
-    thumb: 'img/capstone-2024-thumb.webp',
-    poster: 'img/capstone-2024-poster.webp'
+    items: [
+        {
+            year: '2025',
+            project: 'Design of an Urban Smart Hybrid Disaster Prevention System for Extreme Rainfall Response',
+            projectKo: '극한 호우 대응 도시형 스마트 하이브리드 방재 시스템 설계',
+            team: '김경후, 김민재, 육찬솔, 이도희, 이재혁, 이환희',
+            thumb: 'img/capstone-2025-thumb.webp',
+            poster: 'img/capstone-2025-poster.webp'
+        },
+        {
+            year: '2024',
+            project: 'AQUA FLEX BRIDGE',
+            projectKo: '수위 변화 대응 차세대 스마트 교량',
+            team: '유성, 임용석, 이효열, 지성현, 조재성, 류태호, 강태규',
+            thumb: 'img/capstone-2024-thumb.webp',
+            poster: 'img/capstone-2024-poster.webp'
+        }
+    ]
 };
 
 (function () {
@@ -25,28 +38,34 @@ var POPUP = {
     try { if (localStorage.getItem(KEY) === today()) return; } catch (e) {}
 
     document.addEventListener('DOMContentLoaded', function () {
+        var cards = POPUP.items.map(function (it) {
+            return '<article class="np-card">' +
+                '<a class="np-poster" href="' + it.poster + '" target="_blank" rel="noopener" aria-label="' + it.year + ' 포스터 크게 보기">' +
+                    '<img src="' + it.thumb + '" alt="' + it.year + ' 캡스톤디자인 포스터">' +
+                    '<span class="np-year">' + it.year + '</span>' +
+                    '<span class="np-zoom">View poster</span>' +
+                '</a>' +
+                '<div class="np-project">' +
+                    '<strong>' + it.project + '</strong>' +
+                    '<span>' + it.projectKo + '</span>' +
+                '</div>' +
+                '<p class="np-team">' + it.team + '</p>' +
+            '</article>';
+        }).join('');
         var wrap = document.createElement('div');
         wrap.className = 'np-backdrop';
         wrap.innerHTML =
             '<div class="np" role="dialog" aria-modal="true" aria-labelledby="np-title">' +
-                '<a class="np-poster" href="' + POPUP.poster + '" target="_blank" rel="noopener" aria-label="포스터 크게 보기">' +
-                    '<img src="' + POPUP.thumb + '" alt="' + POPUP.project + ' 포스터">' +
-                    '<span class="np-zoom">View poster</span>' +
-                '</a>' +
-                '<div class="np-body">' +
+                '<div class="np-head">' +
                     '<span class="np-badge">' + POPUP.badge + '</span>' +
                     '<h2 id="np-title">' + POPUP.title + '</h2>' +
                     '<p class="np-ko">' + POPUP.titleKo + '</p>' +
-                    '<div class="np-project">' +
-                        '<strong>' + POPUP.project + '</strong>' +
-                        '<span>' + POPUP.projectKo + '</span>' +
-                    '</div>' +
-                    '<p class="np-team">' + POPUP.team + '</p>' +
+                '</div>' +
+                '<div class="np-cards">' + cards + '</div>' +
+                '<div class="np-foot">' +
                     '<p class="np-advisor">' + POPUP.advisor + '</p>' +
-                    '<div class="np-foot">' +
-                        '<label class="np-today"><input type="checkbox"> 오늘 하루 보지 않기</label>' +
-                        '<button type="button" class="np-close">Close</button>' +
-                    '</div>' +
+                    '<label class="np-today"><input type="checkbox"> 오늘 하루 보지 않기</label>' +
+                    '<button type="button" class="np-close">Close</button>' +
                 '</div>' +
                 '<button type="button" class="np-x" aria-label="닫기">&times;</button>' +
             '</div>';
