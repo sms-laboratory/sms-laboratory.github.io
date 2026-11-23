@@ -63,7 +63,7 @@ nav .logo {
     line-height: 1.15;
 }
 nav .logo { gap: 14px; }
-nav .logo img { display: block; height: 46px; width: auto; }
+nav .logo img { display: block; height: 56px; width: auto; }
 nav .logo .logo-text {
     padding-left: 14px;
     border-left: 1px solid var(--line);
@@ -396,7 +396,7 @@ footer address {
 @media (max-width: 640px) {
     body { font-size: 15px; }
     nav .logo { font-size: 1.35rem; }
-    nav .logo img { height: 38px; }
+    nav .logo img { height: 46px; }
     nav ul { gap: 9px 15px; }
     nav ul li a { font-size: .72rem; }
     .hero { min-height: 390px; padding: 48px 24px; background-position: 58% center; }
@@ -631,29 +631,11 @@ body .page-banner .pb-art {
 body .kr-name, body .cv-ko, body .hero-lede-ko, body .alumni-period, body .member-history, body .profile-fields li span { font-weight: 560; }
 
 /* ==========================================================
-   상단 로고 등장 효과 (세션당 처음 한 번, nav.js가 .logo-intro 추가)
-   1) 궤도처럼 한 바퀴 돌며 로고가 드러남  2) 빛이 한 번 훑고 지나감
+   상단 엠블럼: 궤도 위 파란 구슬이 한 바퀴 돌고 제자리로 (nav.js)
+   - 사이트에 들어와 처음 보는 페이지에서 한 번, 로고에 마우스를 올리면 다시
    ========================================================== */
-@property --logo-sweep { syntax: '<angle>'; inherits: false; initial-value: 360deg; }
-nav .logo .logo-mark { position: relative; display: block; flex-shrink: 0; }
-nav .logo .logo-mark::after {
-    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0;
-    background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, .95) 50%, transparent 62%) 160% 0 / 260% 100% no-repeat;
-    -webkit-mask: url('img/sms-logo-color.png') center / contain no-repeat;
-            mask: url('img/sms-logo-color.png') center / contain no-repeat;
-}
-nav .logo.logo-intro .logo-mark img {
-    --logo-sweep: 0deg;
-    -webkit-mask-image: conic-gradient(from 210deg at 52% 50%, #000 var(--logo-sweep), transparent 0);
-            mask-image: conic-gradient(from 210deg at 52% 50%, #000 var(--logo-sweep), transparent 0);
-    animation: logoSweep 1.15s cubic-bezier(.65, .05, .25, 1) .2s forwards;
-}
-nav .logo.logo-intro .logo-mark::after { animation: logoShine .85s ease-in-out 1.45s forwards; }
-nav .logo.logo-intro .logo-text { opacity: 0; transform: translateX(-8px); animation: logoText .55s ease 1.05s forwards; }
-@keyframes logoSweep { to { --logo-sweep: 360deg; } }
-@keyframes logoShine { 0% { opacity: 1; background-position: 160% 0; } 100% { opacity: 1; background-position: -60% 0; } }
-@keyframes logoText { to { opacity: 1; transform: none; } }
-@media (prefers-reduced-motion: reduce) {
-    nav .logo.logo-intro .logo-mark img, nav .logo.logo-intro .logo-mark::after, nav .logo.logo-intro .logo-text { animation: none; -webkit-mask-image: none; mask-image: none; opacity: 1; transform: none; }
-    nav .logo.logo-intro .logo-mark::after { opacity: 0; }
-}
+nav .logo .emblem { display: block; height: 56px; width: auto; aspect-ratio: 800 / 340; overflow: visible; }
+nav .logo .em-glow { fill: none; stroke: #2F63D8; stroke-width: 3; opacity: 0; transform-box: fill-box; transform-origin: center; }
+nav .logo .em-glow.is-on { animation: emGlow .9s ease-out; }
+@keyframes emGlow { 0% { opacity: .8; transform: scale(1); } 100% { opacity: 0; transform: scale(2.6); } }
+@media (max-width: 650px) { nav .logo .emblem { height: 46px; } }

@@ -217,19 +217,57 @@ document.addEventListener('DOMContentLoaded', function () {
 })();
 
 // ==========================================================
-// 상단 로고 등장 효과: 사이트에 들어와 처음 보는 페이지에서 한 번만
+// 상단 엠블럼: 궤도 위 파란 구슬이 궤도를 따라 한 바퀴 돌고 제자리에 멈춤
+//   - 구슬이 글자 뒤를 지날 때는 글자에 가려지도록 앞 레이어(emblem-front)를 덮음
+//   - 처음 보는 페이지에서 한 번, 로고에 마우스를 올리면 다시
+//   - '동작 줄이기' 설정이면 움직이지 않음
 // ==========================================================
 (function () {
+    var E = { w: 800, h: 340, cx: 361.835, cy: 209.828, rx: 365.611, ry: 75.058, rot: -15.3355, tb: 5.91836 };
+    var cr = Math.cos(E.rot * Math.PI / 180), sr = Math.sin(E.rot * Math.PI / 180);
+    function pos(t) {
+        var x = E.rx * Math.cos(t), y = E.ry * Math.sin(t);
+        return [E.cx + x * cr - y * sr, E.cy + x * sr + y * cr];
+    }
+    function ease(u) { return u < .5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2; }
     document.addEventListener('DOMContentLoaded', function () {
         var a = document.querySelector('nav .logo'), img = a && a.querySelector('img');
         if (!img) return;
-        var mark = document.createElement('span');
-        mark.className = 'logo-mark';
-        img.parentNode.insertBefore(mark, img); mark.appendChild(img);
+        var ns = 'http://www.w3.org/2000/svg', p0 = pos(E.tb);
+        var svg = document.createElementNS(ns, 'svg');
+        svg.setAttribute('class', 'emblem');
+        svg.setAttribute('viewBox', '0 0 ' + E.w + ' ' + E.h);
+        svg.setAttribute('role', 'img');
+        svg.setAttribute('aria-label', img.getAttribute('alt') || 'SMS Lab.');
+        svg.innerHTML =
+            '<image href="img/emblem-base.webp" width="800" height="340"/>' +
+            '<circle class="em-glow" r="26" cx="' + p0[0] + '" cy="' + p0[1] + '"/>' +
+            '<g class="em-ball" transform="translate(' + p0[0] + ' ' + p0[1] + ')">' +
+                '<circle r="26.5" fill="#fff"/>' +
+                '<image href="img/emblem-ball.webp" x="-23.3" y="-23.3" width="46.6" height="46.6"/>' +
+            '</g>' +
+            '<image class="em-front" href="img/emblem-front.webp" width="800" height="340"/>';
+        // 경로가 사이트 루트 기준이어야 하는 404 페이지 대응
+        if (img.getAttribute('src').charAt(0) === '/') svg.querySelectorAll('image').forEach(function (im) { im.setAttribute('href', '/' + im.getAttribute('href')); });
+        img.replaceWith(svg);
+
+        var ball = svg.querySelector('.em-ball'), glow = svg.querySelector('.em-glow'), running = false;
         var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function orbit() {
+            if (running || reduce) return;
+            running = true;
+            var t0 = performance.now(), D = 2400;
+            (function step(now) {
+                var u = Math.min(1, (now - t0) / D), t = E.tb - ease(u) * Math.PI * 2, p = pos(t);
+                ball.setAttribute('transform', 'translate(' + p[0].toFixed(2) + ' ' + p[1].toFixed(2) + ')');
+                if (u < 1) return requestAnimationFrame(step);
+                running = false;
+                glow.classList.remove('is-on'); void glow.getBoundingClientRect(); glow.classList.add('is-on');
+            })(t0);
+        }
         var seen = false;
-        try { seen = sessionStorage.getItem('smsLogoIntro') === '1'; sessionStorage.setItem('smsLogoIntro', '1'); } catch (e) {}
-        if (seen || reduce || !(window.CSS && CSS.registerProperty)) return;   // 각도 애니메이션 미지원 브라우저는 그대로 표시
-        a.classList.add('logo-intro');
+        try { seen = sessionStorage.getItem('smsEmblem') === '1'; sessionStorage.setItem('smsEmblem', '1'); } catch (e) {}
+        if (!seen) setTimeout(orbit, 350);
+        a.addEventListener('mouseenter', orbit);
     });
 })();
