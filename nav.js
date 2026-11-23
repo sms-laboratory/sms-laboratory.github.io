@@ -73,7 +73,8 @@ document.addEventListener('DOMContentLoaded', function () {
         var row = document.querySelector('.visitor-row');
         if (!row || !window.fetch) return;
         var days = [6, 5, 4, 3, 2, 1, 0];                       // 최근 7일
-        var reqs = days.map(function (o) { return get('?start=' + day(o) + '&end=' + day(o)).catch(function () { return 0; }); });
+        // end 는 '그날을 포함하지 않는' 날짜라서 다음 날을 넣어야 하루치가 나옴 (start=오늘&end=내일)
+        var reqs = days.map(function (o) { return get('?start=' + day(o) + '&end=' + day(o - 1)).catch(function () { return 0; }); });
         reqs.push(get(''));
         Promise.all(reqs).then(function (v) {
             var week = v.slice(0, 7), total = v[7], max = Math.max.apply(null, week.concat([1]));
