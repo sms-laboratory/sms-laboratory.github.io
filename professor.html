@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="site-build" content="20261123213549">
+    <meta name="site-build" content="20261123213907">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- SHARE-META -->
     <meta name="description" content="Prof. Min Kyoung KIM, Assistant Professor, Department of Civil and Environmental Engineering, Hannam University. 김민경 교수 — 학력, 경력, 학회 활동.">
@@ -269,6 +269,15 @@
     .professor-page .pm-links { flex-direction: row; justify-content: flex-start; margin: 4px 0 0; flex-basis: 100%; gap: 16px; }
     .professor-page .profile-photo { max-width: 240px; }
 }
+/* ---------- Teaching (담당 강의) ---------- */
+.professor-page .cv-h-link { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.professor-page .cv-more { color: #17639b; font-size: .86rem; font-weight: 700; letter-spacing: 0; text-decoration: none; border-bottom: 2px solid rgba(23, 99, 155, .2); }
+.professor-page .cv-more:hover { border-color: #17639b; }
+.professor-page .cv-course { color: inherit; text-decoration: none; background: linear-gradient(#2F63D8, #2F63D8) 0 100% / 0 2px no-repeat; transition: background-size .25s; }
+.professor-page .cv-course:hover { background-size: 100% 2px; }
+.professor-page .cv-award { display: inline-flex; align-items: center; gap: 6px; margin-left: 8px; padding: 2px 9px 2px 3px; border-radius: 999px; background: #FFF6DC; color: #7A5200; font-size: .72rem; font-weight: 800; vertical-align: 2px; text-decoration: none; white-space: nowrap; }
+.professor-page .cv-award b { padding: 1px 7px; border-radius: 999px; background: linear-gradient(140deg, #FFE7A3, #F4C95D 50%, #D9962B); color: #4A2E00; }
+.professor-page .cv-more:focus-visible, .professor-page .cv-course:focus-visible, .professor-page .cv-award:focus-visible { outline: 3px solid #8CB4FF; outline-offset: 2px; }
     </style>
   <script src="nav.js?v=16" defer></script>
 </head>
@@ -506,6 +515,46 @@
                     <h4 class="cv-title"><span class="nb">Vice Chair,</span> <span class="nb">Korean Journal Editorial Committee</span> <span class="cv-now">Current</span></h4>
                     <p class="cv-org">Korean Recycled Construction Resources Institute (KOREC)</p>
                     <p class="cv-ko">한국건설순환자원학회 국문논문편집위원회 부위원장</p>
+                </div>
+            </li>
+        </ol>
+
+        <!-- TEACHING (담당 강의) — 자세한 내용은 Lectures 페이지 -->
+        <h3 class="cv-h-link">Teaching <a class="cv-more" href="lectures.html">View lectures</a></h3>
+        <ol class="cv-list">
+            <li class="cv-row">
+                <span class="cv-period">Year 2 · Semester 1</span>
+                <div class="cv-body">
+                    <h4 class="cv-title"><a class="cv-course" href="lectures.html">Applied Mechanics and Practice 1</a></h4>
+                    <p class="cv-ko">응용역학 및 실습 1 · 2학년 1학기</p>
+                </div>
+            </li>
+            <li class="cv-row">
+                <span class="cv-period">Year 2 · Semester 2</span>
+                <div class="cv-body">
+                    <h4 class="cv-title"><a class="cv-course" href="lectures.html">Applied Mechanics and Practice 2</a></h4>
+                    <p class="cv-ko">응용역학 및 실습 2 · 2학년 2학기</p>
+                </div>
+            </li>
+            <li class="cv-row">
+                <span class="cv-period">Year 3 · Semester 1</span>
+                <div class="cv-body">
+                    <h4 class="cv-title"><a class="cv-course" href="lectures.html">Structural Analysis</a></h4>
+                    <p class="cv-ko">구조해석 · 3학년 1학기</p>
+                </div>
+            </li>
+            <li class="cv-row">
+                <span class="cv-period">Year 4 · Semester 1</span>
+                <div class="cv-body">
+                    <h4 class="cv-title"><a class="cv-course" href="lectures.html">Prestressed Concrete</a></h4>
+                    <p class="cv-ko">프리스트레스트 콘크리트 · 4학년 1학기</p>
+                </div>
+            </li>
+            <li class="cv-row">
+                <span class="cv-period">Year 4 · Semester 2</span>
+                <div class="cv-body">
+                    <h4 class="cv-title"><a class="cv-course" href="lectures.html">Capstone Design</a> <a class="cv-award" href="lectures.html#capstone-award"><b>1st</b> 2024 · 2025</a></h4>
+                    <p class="cv-ko">캡스톤디자인 · 4학년 2학기</p>
                 </div>
             </li>
         </ol>
