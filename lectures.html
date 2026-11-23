@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-    <meta name="site-build" content="20261123205738">
+    <meta name="site-build" content="20261123205950">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- SHARE-META -->
     <meta name="description" content="Courses taught by Prof. Min Kyoung KIM at Hannam University: Applied Mechanics and Practice 1·2, Structural Analysis, Prestressed Concrete, Capstone Design. 담당 강의.">
@@ -80,6 +80,63 @@
       .lectures-page .lec-body { align-self: stretch; padding: 16px 18px 18px; }
       .lectures-page .lec-body h2 { font-size: 1.15rem; }
     }
+    /* ---------- 캡스톤디자인 2년 연속 1위 카드 ---------- */
+    .lectures-page .cap-award {
+      position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.6fr); gap: 36px; align-items: center;
+      margin: 0 0 64px; padding: 40px 40px 40px 44px; border-radius: 26px; color: #fff;
+      background:
+        radial-gradient(520px 260px at 12% 0%, rgba(244, 201, 93, .28), transparent 70%),
+        radial-gradient(600px 300px at 100% 100%, rgba(47, 99, 216, .35), transparent 70%),
+        #0D2341;
+    }
+    .lectures-page .cap-kicker { display: inline-block; margin: 0; padding: 5px 12px; border-radius: 999px; background: rgba(244, 201, 93, .16); color: #F4C95D; font-size: .8rem; font-weight: 800; }
+    .lectures-page .cap-text h2 { margin: 16px 0 0; padding: 0; border: 0; color: #fff; font-family: 'Bricolage Grotesque', 'Pretendard Variable', sans-serif; font-size: clamp(2.3rem, 4.4vw, 3.4rem); font-weight: 800; letter-spacing: -.045em; line-height: .98; }
+    .lectures-page .cap-ko { margin: 14px 0 0; color: #F4C95D; font-size: 1.12rem; font-weight: 800; }
+    .lectures-page .cap-note { margin: 18px 0 0; color: #9FB4D3; font-size: .86rem; font-weight: 600; }
+    .lectures-page .cap-slots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
+    .lectures-page .cap-slot > a, .lectures-page .cap-next { position: relative; display: flex; flex-direction: column; height: 100%; padding: 12px 12px 16px; border-radius: 18px; color: inherit; text-decoration: none; }
+    .lectures-page .cap-slot.is-win > a { background: rgba(255, 255, 255, .07); border: 1px solid rgba(255, 255, 255, .12); transition: background .25s, transform .25s; }
+    .lectures-page .cap-slot.is-win > a:hover { background: rgba(255, 255, 255, .12); transform: translateY(-3px); }
+    .lectures-page .cap-slot > a:focus-visible { outline: 3px solid #8CB4FF; outline-offset: 3px; }
+    .lectures-page .cap-thumb { display: block; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 12px; background: #fff; }
+    .lectures-page .cap-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .lectures-page .cap-medal {
+      position: absolute; top: 4px; right: 4px; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #FFF1C4, #F4C95D 45%, #C9851F 100%);
+      box-shadow: 0 10px 20px -8px rgba(0, 0, 0, .6), inset 0 0 0 3px rgba(255, 255, 255, .35);
+      color: #4A2E00; font-family: 'Bricolage Grotesque', sans-serif; font-size: 1rem; font-weight: 800; letter-spacing: -.02em;
+    }
+    .lectures-page .cap-medal.is-empty { position: static; margin: 4px 0 0; background: transparent; border: 2px dashed rgba(244, 201, 93, .55); box-shadow: none; color: #F4C95D; font-size: 1.4rem; }
+    .lectures-page .cap-year { margin-top: 12px; color: #F4C95D; font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.35rem; font-weight: 800; letter-spacing: -.02em; line-height: 1; }
+    .lectures-page .cap-title { margin-top: 6px; color: #fff; font-size: .92rem; font-weight: 700; line-height: 1.3; }
+    .lectures-page .cap-title-ko { margin-top: 4px; color: #9FB4D3; font-size: .78rem; font-weight: 560; line-height: 1.4; }
+    .lectures-page .cap-next { justify-content: center; border: 2px dashed rgba(244, 201, 93, .35); }
+    .lectures-page .cap-next .cap-year { color: rgba(244, 201, 93, .8); }
+    /* 보일 때 메달이 차례로 찍힘 */
+    .lectures-page .cap-award .cap-medal { transform: scale(0) rotate(-30deg); }
+    .lectures-page .cap-award.is-in .cap-medal { animation: capMedal .55s cubic-bezier(.3, 1.6, .5, 1) forwards; animation-delay: calc(var(--d, 0s) + .2s); }
+    .lectures-page .cap-slot { --d: 0s; }
+    @keyframes capMedal { to { transform: none; } }
+    @media (prefers-reduced-motion: reduce) { .lectures-page .cap-award .cap-medal { transform: none; animation: none !important; } }
+    @media (max-width: 1099px) {
+      .lectures-page .cap-award { grid-template-columns: 1fr; gap: 26px; max-width: 620px; margin: 0 auto 48px; padding: 32px 26px; }
+    }
+    @media (max-width: 520px) {
+      .lectures-page .cap-award { padding: 26px 18px 20px; border-radius: 22px; margin-bottom: 40px; }
+      .lectures-page .cap-slots { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .lectures-page .cap-slot.is-next { grid-column: 1 / -1; }
+      .lectures-page .cap-next { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 4px 12px; padding: 12px 14px; }
+      .lectures-page .cap-next .cap-medal { margin: 0; width: 40px; height: 40px; font-size: 1.1rem; }
+      .lectures-page .cap-next .cap-year { margin: 0; }
+      .lectures-page .cap-next .cap-title, .lectures-page .cap-next .cap-title-ko { flex-basis: 100%; margin-top: 2px; }
+      .lectures-page .cap-medal { width: 42px; height: 42px; font-size: .86rem; }
+      .lectures-page .cap-title { font-size: .84rem; }
+      .lectures-page .cap-title-ko { font-size: .72rem; }
+    }
+    /* 타임라인의 캡스톤디자인 카드: 2년 연속 1위 표시 + 위 카드로 연결 */
+    .lectures-page .lec-badge { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; padding: 4px 10px 4px 4px; border-radius: 999px; background: #FFF6DC; color: #7A5200; font-size: .74rem; font-weight: 800; text-decoration: none; }
+    .lectures-page .lec-badge b { padding: 1px 7px; border-radius: 999px; background: linear-gradient(140deg, #FFE7A3, #F4C95D 50%, #D9962B); color: #4A2E00; }
+    .lectures-page .lec-badge:hover { background: #FCEBB6; }
   </style>
   <script src="nav.js?v=15" defer></script>
 </head>
@@ -117,6 +174,44 @@
   </div>
 
   <section class="lec-section" aria-label="Courses by year and semester">
+    <!-- 캡스톤디자인 2년 연속 1위 -->
+    <article class="cap-award" id="capstone-award" aria-labelledby="cap-award-title">
+      <div class="cap-text">
+        <p class="cap-kicker">Capstone Design Award</p>
+        <h2 id="cap-award-title">Back-to-back<br>1st place.</h2>
+        <p class="cap-ko">캡스톤디자인 2년 연속 1위</p>
+        <p class="cap-note">Advised by Prof. Min Kyoung KIM</p>
+      </div>
+      <ol class="cap-slots">
+        <li class="cap-slot is-win" style="--d:.1s">
+          <a href="img/capstone-2024-poster.webp" target="_blank" rel="noopener" aria-label="2024 1위 작품 포스터 보기: AQUA FLEX BRIDGE">
+            <span class="cap-thumb"><img src="img/capstone-2024-thumb.webp" alt="" loading="lazy"></span>
+            <span class="cap-medal"><b>1st</b></span>
+            <span class="cap-year">2024</span>
+            <span class="cap-title">AQUA FLEX BRIDGE</span>
+            <span class="cap-title-ko">수위 변화 대응 차세대 스마트 교량</span>
+          </a>
+        </li>
+        <li class="cap-slot is-win" style="--d:.35s">
+          <a href="img/capstone-2025-poster.webp" target="_blank" rel="noopener" aria-label="2025 1위 작품 포스터 보기: 극한 호우 대응 도시형 스마트 하이브리드 방재 시스템 설계">
+            <span class="cap-thumb"><img src="img/capstone-2025-thumb.webp" alt="" loading="lazy"></span>
+            <span class="cap-medal"><b>1st</b></span>
+            <span class="cap-year">2025</span>
+            <span class="cap-title">Urban Smart Hybrid Disaster Prevention System</span>
+            <span class="cap-title-ko">극한 호우 대응 도시형 스마트 하이브리드 방재 시스템</span>
+          </a>
+        </li>
+        <li class="cap-slot is-next" style="--d:.6s">
+          <span class="cap-next">
+            <span class="cap-medal is-empty"><b>?</b></span>
+            <span class="cap-year">2026</span>
+            <span class="cap-title">Your team next.</span>
+            <span class="cap-title-ko">다음 1위는 여러분의 차례</span>
+          </span>
+        </li>
+      </ol>
+    </article>
+
     <ol class="lec-track">
 
       <!-- 2학년 1학기: 응용역학 1 — 트러스 절점 하중 (정역학) -->
@@ -224,6 +319,7 @@
           <div class="lec-body">
             <h2>Capstone Design</h2>
             <p class="ko">캡스톤디자인</p>
+            <a class="lec-badge" href="#capstone-award"><b>1st</b> 2024 · 2025</a>
           </div>
         </div>
       </li>
@@ -232,9 +328,9 @@
   </section>
   <script>
     (function () {
-      var cards = document.querySelectorAll('.lec-card');
+      var cards = document.querySelectorAll('.lec-card, .cap-award');
       cards.forEach(function (c) {
-        c.querySelectorAll('.draw').forEach(function (p) { p.style.setProperty('--len', Math.ceil(p.getTotalLength() + 2)); });
+        (c.querySelectorAll('.draw')).forEach(function (p) { p.style.setProperty('--len', Math.ceil(p.getTotalLength() + 2)); });
       });
       if (!('IntersectionObserver' in window)) { cards.forEach(function (c) { c.classList.add('is-in'); }); return; }
       var io = new IntersectionObserver(function (es) {
