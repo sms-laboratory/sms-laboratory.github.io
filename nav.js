@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // ==========================================================
 // 상단 엠블럼: 궤도 위 파란 구슬이 궤도를 따라 한 바퀴 돌고 제자리에 멈춤
 //   - 구슬이 글자 뒤를 지날 때는 글자에 가려지도록 앞 레이어(emblem-front)를 덮음
-//   - 처음 보는 페이지에서 한 번, 로고에 마우스를 올리면 다시
+//   - 페이지를 열 때마다 한 번, 로고에 마우스를 올리면 다시
 //   - '동작 줄이기' 설정이면 움직이지 않음
 // ==========================================================
 (function () {
@@ -265,9 +265,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 glow.classList.remove('is-on'); void glow.getBoundingClientRect(); glow.classList.add('is-on');
             })(t0);
         }
-        var seen = false;
-        try { seen = sessionStorage.getItem('smsEmblem') === '1'; sessionStorage.setItem('smsEmblem', '1'); } catch (e) {}
-        if (!seen) setTimeout(orbit, 350);
+        setTimeout(orbit, 350);   // 페이지를 열 때마다 한 바퀴
         a.addEventListener('mouseenter', orbit);
     });
 })();

@@ -632,7 +632,7 @@ body .kr-name, body .cv-ko, body .hero-lede-ko, body .alumni-period, body .membe
 
 /* ==========================================================
    상단 엠블럼: 궤도 위 파란 구슬이 한 바퀴 돌고 제자리로 (nav.js)
-   - 사이트에 들어와 처음 보는 페이지에서 한 번, 로고에 마우스를 올리면 다시
+   - 페이지를 열 때마다 한 번, 로고에 마우스를 올리면 다시
    ========================================================== */
 nav .logo .emblem { display: block; height: 56px; width: auto; aspect-ratio: 800 / 340; overflow: visible; }
 nav .logo .em-glow { fill: none; stroke: #2F63D8; stroke-width: 3; opacity: 0; transform-box: fill-box; transform-origin: center; }
