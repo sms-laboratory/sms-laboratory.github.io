@@ -411,6 +411,7 @@ footer address {
     .footer-inner { grid-template-columns: 1fr; gap: 28px; padding: 36px 20px; }
     .footer-col { white-space: normal; }
     .footer-group { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .footer-group > div { width: 100%; }
     .footer-col { padding-left: 0; border-left: 0; }
     .footer-bottom { width: calc(100% - 40px); padding: 18px 0; }
 }
