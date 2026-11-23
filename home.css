@@ -557,7 +557,7 @@
     font-size: .76rem; font-weight: 800;
 }
 .np-head h2 { margin: 12px 0 0; padding: 0; border: 0; color: #0D2341; font-family: 'Bricolage Grotesque', 'Pretendard Variable', sans-serif; font-size: clamp(1.7rem, 3.4vw, 2.3rem); font-weight: 800; letter-spacing: -.035em; line-height: 1.05; }
-.np-ko { margin: 8px 0 0; color: #0D2341; font-size: 1.12rem; font-weight: 800; }
+.np-ko { margin: 8px 0 0; color: #A0670B; font-size: 1.12rem; font-weight: 800; }   /* 금색 계열: 제목(남색)과 구분 */
 .np-org { margin: 4px 0 0; color: #7B8794; font-size: .84rem; font-weight: 600; }
 .np .nb { display: inline-block; }
 .np-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; margin-top: 24px; }
