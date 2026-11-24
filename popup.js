@@ -29,8 +29,8 @@ var SLIDES = [
     {   // 1. 구성원 모집
         type: 'join',
         badge: 'Join SMS Lab',
-        title: 'Build smarter<br>infrastructure with us.',
-        titleKo: 'SMS 연구실과 함께할 대학원생·학부연구생을 모집합니다',
+        title: 'Your boarding pass to SMS Lab.',
+        titleKo: 'SMS 연구실 행 탑승권, 대학원생·학부연구생을 모집합니다',
         roles: [
             { en: 'M.S. Students', ko: '석사과정' },
             { en: 'Undergraduate Researchers', ko: '학부연구생' }
@@ -132,27 +132,37 @@ var SLIDES = [
             '<p class="np-advisor">' + s.advisor + '</p>' +
         '</div>';
     }
-    var JOIN_ICONS = {
-        Make: '<svg viewBox="0 0 48 48"><rect x="8" y="18" width="32" height="22" rx="3"/><path d="M8 26h32M18 18v22M30 18v22"/><path d="M16 10l8-4 8 4"/></svg>',
-        Sense: '<svg viewBox="0 0 48 48"><path d="M4 30h8l4-14 6 24 6-18 4 8h12"/></svg>',
-        Restore: '<svg viewBox="0 0 48 48"><path d="M8 38h32M12 38V18h24v20"/><path d="M20 18l4 8-3 4 4 8" stroke-dasharray="3 3"/><path d="M30 10l6 6M33 13l-9 9"/></svg>'
-    };
     function join(s) {
-        var roles = s.roles.map(function (r, i) {
-            return '<li class="jn-role' + (i === 0 ? ' is-main' : '') + '"><span class="jn-role-n">0' + (i + 1) + '</span><b>' + r.ko + '</b><span class="jn-role-en">' + r.en + '</span></li>';
-        }).join('');
-        var areas = s.areas.map(function (r) {
-            return '<li class="jn-area"><span class="jn-ic" aria-hidden="true">' + (JOIN_ICONS[r.key] || '') + '</span><em>' + r.key + '</em><b>' + r.ko + '</b><span>' + r.en + '</span></li>';
-        }).join('');
+        var bars = '', x = 0;
+        for (var i = 0; i < 46; i++) { var w = [1, 2, 1, 3, 1, 2][i % 6] + (i % 7 === 0 ? 1 : 0); bars += '<rect x="' + x + '" y="0" width="' + w + '" height="60"/>'; x += w + 2; }
+        var route = s.areas.map(function (r) { return '<span class="bp-stop"><b>' + r.key + '</b><i>' + r.ko + '</i></span>'; }).join('<span class="bp-arrow" aria-hidden="true">→</span>');
+        var cls = s.roles.map(function (r) { return '<span class="bp-class"><b>' + r.ko + '</b><i>' + r.en + '</i></span>'; }).join('<span class="bp-or">or</span>');
         return '<div class="np-slide np-s-join">' +
             '<span class="np-badge">' + s.badge + '</span>' +
             '<h2>' + s.title + '</h2>' +
             '<p class="np-ko">' + s.titleKo + '</p>' +
-            '<div class="jn-board">' +
-                '<div class="jn-left"><p class="jn-h">We are recruiting</p><ul class="jn-roles">' + roles + '</ul></div>' +
-                '<div class="jn-right"><p class="jn-h">What you will work on</p><ul class="jn-areas">' + areas + '</ul></div>' +
+            '<div class="bp" role="group" aria-label="SMS Lab 탑승권">' +
+                '<div class="bp-main">' +
+                    '<div class="bp-band"><span>SMS LAB AIRLINES</span><span>BOARDING PASS · 탑승권</span></div>' +
+                    '<div class="bp-route">' +
+                        '<div class="bp-city"><small>FROM</small><b>HNU</b><i>한남대학교 건설환경공학과</i></div>' +
+                        '<div class="bp-plane" aria-hidden="true"><svg viewBox="0 0 120 24"><path d="M2 12h96" stroke-dasharray="4 5"/><path d="M104 12l-10-7v4l-14 0v6l14 0v4z" class="pl"/></svg></div>' +
+                        '<div class="bp-city is-to"><small>TO</small><b>SMS</b><i>스마트 재료 및 구조 연구실</i></div>' +
+                    '</div>' +
+                    '<div class="bp-fields">' +
+                        '<div class="bp-f"><small>PASSENGER</small><b>You</b><i>바로 당신</i></div>' +
+                        '<div class="bp-f is-wide"><small>CLASS</small><div class="bp-classes">' + cls + '</div></div>' +
+                        '<div class="bp-f is-full"><small>RESEARCH ROUTE</small><div class="bp-stops">' + route + '</div></div>' +
+                    '</div>' +
+                '</div>' +
+                '<div class="bp-stub">' +
+                    '<div class="bp-f"><small>GATE</small><b>1014</b><i>SMS 연구실</i></div>' +
+                    '<div class="bp-f"><small>DEPARTURE</small><b>Anytime</b><i>지원 상시 문의</i></div>' +
+                    '<svg class="bp-bar" viewBox="0 0 ' + x + ' 60" preserveAspectRatio="none" aria-hidden="true">' + bars + '</svg>' +
+                    '<a class="bp-go" href="mailto:' + s.email + '?subject=SMS%20Lab%20%EC%A7%80%EC%9B%90%20%EB%AC%B8%EC%9D%98">Board now</a>' +
+                    '<p class="bp-mail">' + s.email + '</p>' +
+                '</div>' +
             '</div>' +
-            '<div class="jn-cta"><span class="jn-cta-t">관심 있는 학생은 언제든 연락 주세요</span><a class="jn-mail" href="mailto:' + s.email + '?subject=SMS%20Lab%20%EC%A7%80%EC%9B%90%20%EB%AC%B8%EC%9D%98">' + s.email + '</a><span class="jn-room">' + s.office + '</span></div>' +
         '</div>';
     }
     function students(s) {
@@ -167,7 +177,7 @@ var SLIDES = [
                 '<div class="st-who"><img src="' + p.photo + '" alt="' + p.ko + '" loading="lazy">' +
                     '<p class="st-name">' + p.ko + '</p><p class="st-en">' + p.name + '</p>' +
                     '<p class="st-level">' + p.levelKo + '</p><p class="st-level-en">' + p.level + '</p></div>' +
-                slot(p, 'SCI(E)') + slot(p, 'KCI') +
+                slot(p, 'KCI') + slot(p, 'SCI(E)') +
             '</article>';
         }).join('');
         return '<div class="np-slide np-s-students">' +
