@@ -999,3 +999,49 @@
     .bp-fields { flex: none; }
     .bp-stops { flex: none; }
 }
+
+/* ================= 모집: 차분한 2단 구성 ================= */
+.np-s-join h2, .np-s-students h2, .np-s-awards h2 { font-size: clamp(2rem, 4.2vw, 2.9rem); }
+.np-s-join .np-ko, .np-s-students .np-ko, .np-s-awards .np-ko { font-size: 1.2rem; }
+.jb { flex: 1; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.3fr); gap: 16px; margin-top: 22px; min-height: 0; }
+.jb-h { margin: 0 0 10px; font-size: .78rem; font-weight: 800; color: #66809A; }
+.jb-pos { display: flex; flex-direction: column; padding: 22px 24px; border-radius: 18px; background: #0D2341; color: #fff; }
+.jb-pos .jb-h { color: #9FB4D3; }
+.jb-pos ul { flex: 1; display: grid; grid-auto-rows: 1fr; margin: 0; padding: 0; list-style: none; }
+.jb-pos li { display: flex; flex-direction: column; justify-content: center; border-top: 1px solid rgba(255, 255, 255, .14); }
+.jb-pos li b { font-size: 1.7rem; font-weight: 800; letter-spacing: -.02em; }
+.jb-pos li span { margin-top: 2px; color: #9FB4D3; font-size: .9rem; font-weight: 600; }
+.jb-contact { display: flex; flex-direction: column; gap: 6px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, .14); }
+.jb-contact a { align-self: flex-start; padding: 10px 18px; border-radius: 999px; background: #D23A4E; color: #fff; font-size: .88rem; font-weight: 800; text-decoration: none; }
+.jb-contact a:hover { background: #b52e41; }
+.jb-contact span { color: #9FB4D3; font-size: .78rem; }
+.jb-areas { display: flex; flex-direction: column; }
+.jb-areas ul { flex: 1; display: grid; grid-auto-rows: 1fr; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.jb-areas li { display: grid; grid-template-columns: 110px minmax(0, 1fr) 120px; align-items: center; gap: 14px; padding: 14px 18px; border: 1px solid #E1E8F0; border-radius: 16px; background: #fff; }
+.jb-areas em { color: #D23A4E; font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.6rem; font-style: normal; font-weight: 800; letter-spacing: -.02em; }
+.jb-areas b { display: block; color: #0D2341; font-size: 1rem; }
+.jb-areas span { display: block; margin-top: 2px; color: #66809A; font-size: .8rem; }
+.jb-areas i svg { display: block; width: 100%; height: auto; fill: none; stroke: #9AACC2; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 900px) { .jb { grid-template-columns: 1fr; } .jb-pos ul { grid-auto-rows: auto; } .jb-pos li { padding: 12px 0; } }
+@media (max-width: 680px) {
+    .np-s-join h2, .np-s-students h2, .np-s-awards h2 { font-size: 1.7rem; }
+    .jb { flex: none; }
+    .jb-areas li { grid-template-columns: 84px minmax(0, 1fr); }
+    .jb-areas i { display: none; }
+    .jb-areas em { font-size: 1.3rem; }
+}
+
+/* ================= 학생: 태그·제목·저널 줄을 칸끼리 맞춤 ================= */
+.np-s-students .st-grid { grid-template-rows: auto auto auto auto auto auto auto; }
+.np-s-students .st-card { grid-row: span 7; row-gap: 0; }
+.np-s-students .st-who { margin-bottom: 10px; }
+.np-s-students .st-slot { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 4px; }
+.np-s-students .st-slot + .st-slot { margin-top: 8px; }
+.np-s-students .st-tag { margin: 0; }
+.np-s-students .st-t { margin: 0; }
+.np-s-students .st-v { margin: 0; align-self: start; }
+@media (max-width: 900px) {
+    .np-s-students .st-grid { grid-template-rows: none; }
+    .np-s-students .st-card { grid-row: auto; }
+    .np-s-students .st-slot { grid-row: auto; grid-template-rows: none; }
+}

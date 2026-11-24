@@ -29,8 +29,8 @@ var SLIDES = [
     {   // 1. 구성원 모집
         type: 'join',
         badge: 'Join SMS Lab',
-        title: 'Your boarding pass to SMS Lab.',
-        titleKo: 'SMS 연구실 행 탑승권, 대학원생·학부연구생을 모집합니다',
+        title: 'Build smarter infrastructure with us.',
+        titleKo: 'SMS 연구실과 함께할 대학원생·학부연구생을 모집합니다',
         roles: [
             { en: 'M.S. Students', ko: '석사과정' },
             { en: 'Undergraduate Researchers', ko: '학부연구생' }
@@ -41,7 +41,7 @@ var SLIDES = [
             { key: 'Restore', en: 'Repair and strengthening', ko: '보수보강 재료·기술' }
         ],
         email: 'mkkim9112@hnu.kr',
-        office: 'Room 1004 · 교수 연구실 1004호'
+        office: 'Prof. office Room 1004 · 교수 연구실 1004호'
     },
     {   // 2. 학생 1저자 논문 — 학생별로 묶어 이름·과정을 강조
         type: 'students',
@@ -132,36 +132,29 @@ var SLIDES = [
             '<p class="np-advisor">' + s.advisor + '</p>' +
         '</div>';
     }
+    var AREA_LINES = {   // 연구 분야별 작은 선 그림
+        Make: '<svg viewBox="0 0 120 40"><path d="M4 32h112"/><rect x="14" y="14" width="18" height="18"/><rect x="38" y="8" width="18" height="24"/><rect x="62" y="18" width="18" height="14"/><rect x="86" y="4" width="18" height="28"/></svg>',
+        Sense: '<svg viewBox="0 0 120 40"><path d="M2 30 L16 30 L26 10 L38 34 L50 14 L62 28 L74 12 L86 30 L98 18 L118 18"/></svg>',
+        Restore: '<svg viewBox="0 0 120 40"><path d="M4 32h112"/><path d="M20 32V14h80v18"/><path d="M48 14l6 8-5 5 6 5" stroke-dasharray="3 3"/><path d="M70 14l6 8-5 5 6 5"/></svg>'
+    };
     function join(s) {
-        var bars = '', x = 0;
-        for (var i = 0; i < 46; i++) { var w = [1, 2, 1, 3, 1, 2][i % 6] + (i % 7 === 0 ? 1 : 0); bars += '<rect x="' + x + '" y="0" width="' + w + '" height="60"/>'; x += w + 2; }
-        var route = s.areas.map(function (r) { return '<span class="bp-stop"><b>' + r.key + '</b><i>' + r.ko + '</i></span>'; }).join('<span class="bp-arrow" aria-hidden="true">→</span>');
-        var cls = s.roles.map(function (r) { return '<span class="bp-class"><b>' + r.ko + '</b><i>' + r.en + '</i></span>'; }).join('<span class="bp-or">or</span>');
+        var roles = s.roles.map(function (r) {
+            return '<li><b>' + r.ko + '</b><span>' + r.en + '</span></li>';
+        }).join('');
+        var areas = s.areas.map(function (r) {
+            return '<li><em>' + r.key + '</em><div><b>' + r.ko + '</b><span>' + r.en + '</span></div><i aria-hidden="true">' + (AREA_LINES[r.key] || '') + '</i></li>';
+        }).join('');
         return '<div class="np-slide np-s-join">' +
             '<span class="np-badge">' + s.badge + '</span>' +
             '<h2>' + s.title + '</h2>' +
             '<p class="np-ko">' + s.titleKo + '</p>' +
-            '<div class="bp" role="group" aria-label="SMS Lab 탑승권">' +
-                '<div class="bp-main">' +
-                    '<div class="bp-band"><span>SMS LAB AIRLINES</span><span>BOARDING PASS · 탑승권</span></div>' +
-                    '<div class="bp-route">' +
-                        '<div class="bp-city"><small>FROM</small><b>HNU</b><i>한남대학교 건설환경공학과</i></div>' +
-                        '<div class="bp-plane" aria-hidden="true"><svg viewBox="0 0 120 24"><path d="M2 12h96" stroke-dasharray="4 5"/><path d="M104 12l-10-7v4l-14 0v6l14 0v4z" class="pl"/></svg></div>' +
-                        '<div class="bp-city is-to"><small>TO</small><b>SMS</b><i>스마트 재료 및 구조 연구실</i></div>' +
-                    '</div>' +
-                    '<div class="bp-fields">' +
-                        '<div class="bp-f"><small>PASSENGER</small><b>You</b><i>바로 당신</i></div>' +
-                        '<div class="bp-f is-wide"><small>CLASS</small><div class="bp-classes">' + cls + '</div></div>' +
-                        '<div class="bp-f is-full"><small>RESEARCH ROUTE</small><div class="bp-stops">' + route + '</div></div>' +
-                    '</div>' +
+            '<div class="jb">' +
+                '<div class="jb-pos">' +
+                    '<p class="jb-h">Open positions</p>' +
+                    '<ul>' + roles + '</ul>' +
+                    '<div class="jb-contact"><a href="mailto:' + s.email + '?subject=SMS%20Lab%20%EC%A7%80%EC%9B%90%20%EB%AC%B8%EC%9D%98">Contact ' + s.email + '</a><span>' + s.office + '</span></div>' +
                 '</div>' +
-                '<div class="bp-stub">' +
-                    '<div class="bp-f"><small>GATE</small><b>1014</b><i>SMS 연구실</i></div>' +
-                    '<div class="bp-f"><small>DEPARTURE</small><b>Anytime</b><i>지원 상시 문의</i></div>' +
-                    '<svg class="bp-bar" viewBox="0 0 ' + x + ' 60" preserveAspectRatio="none" aria-hidden="true">' + bars + '</svg>' +
-                    '<a class="bp-go" href="mailto:' + s.email + '?subject=SMS%20Lab%20%EC%A7%80%EC%9B%90%20%EB%AC%B8%EC%9D%98">Board now</a>' +
-                    '<p class="bp-mail">' + s.email + '</p>' +
-                '</div>' +
+                '<div class="jb-areas"><p class="jb-h">Research you will join</p><ul>' + areas + '</ul></div>' +
             '</div>' +
         '</div>';
     }
@@ -169,7 +162,7 @@ var SLIDES = [
         function slot(p, kind) {
             var x = p.papers.filter(function (q) { return q.idx === kind; })[0];
             if (!x) return '<div class="st-slot is-empty"></div>';
-            return '<div class="st-slot"><span class="st-idx' + (kind === 'KCI' ? ' is-kci' : '') + '">' + kind + '</span><span class="st-yr">' + x.year + '</span>' +
+            return '<div class="st-slot"><p class="st-tag"><span class="st-idx' + (kind === 'KCI' ? ' is-kci' : '') + '">' + kind + '</span><span class="st-yr">' + x.year + '</span></p>' +
                    '<p class="st-t">' + x.title + '</p><p class="st-v">' + x.venue + '</p></div>';
         }
         var cols = s.people.map(function (p) {
