@@ -839,3 +839,81 @@
 .np-viewport .np-slide > .np-badge, .np-viewport .np-slide > .yir-kick { align-self: flex-start; }
 .st-level { padding: 3px 11px; font-size: .8rem; }
 .st-level-en { margin: 3px 0 0; color: #66809A; font-size: .72rem; font-weight: 700; }
+
+/* ================= 2026-11-24 카드 정리 ================= */
+/* 1. 캡스톤: 남는 높이는 포스터가 가져감 (글줄 간격은 그대로) */
+.np-s-cap .np-cards { grid-template-rows: minmax(190px, 1fr) auto auto auto; }
+.np-s-cap .np-card { grid-template-rows: subgrid; }
+.np-s-cap .np-poster { height: auto; min-height: 190px; }
+.np-s-cap .np-en { align-self: start; }
+
+/* 2. 모집: 보드형 */
+.jn-board { flex: 1; display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.4fr); gap: 16px; margin-top: 20px; min-height: 0; }
+.jn-left, .jn-right { display: flex; flex-direction: column; min-height: 0; }
+.jn-board .jn-h { margin: 0 0 10px; color: #66809A; font-size: .78rem; font-weight: 800; }
+.jn-board .jn-roles { flex: 1; display: grid; grid-template-rows: 1fr 1fr; gap: 10px; height: auto; }
+.jn-board .jn-role { position: relative; display: flex; flex-direction: column; justify-content: flex-end; padding: 16px 18px; border: 0; border-radius: 16px; background: #EEF3FA; overflow: hidden; }
+.jn-board .jn-role.is-main { background: #0D2341; }
+.jn-role-n { position: absolute; top: 10px; right: 14px; color: rgba(13, 35, 65, .12); font-family: 'Bricolage Grotesque', sans-serif; font-size: 3.4rem; font-weight: 800; line-height: 1; }
+.is-main .jn-role-n { color: rgba(255, 255, 255, .12); }
+.jn-board .jn-role b { color: #0D2341; font-size: 1.45rem; font-weight: 800; letter-spacing: -.02em; }
+.jn-role-en { margin-top: 2px; color: #4A6280; font-size: .84rem; font-weight: 700; }
+.is-main b, .is-main .jn-role-en { color: #fff !important; }
+.is-main .jn-role-en { color: #9FB4D3 !important; }
+.jn-board .jn-areas { flex: 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: none; gap: 10px; height: auto; }
+.jn-board .jn-area { display: flex; flex-direction: column; padding: 16px; border: 1px solid #E1E8F0; border-radius: 16px; background: #fff; }
+.jn-ic { display: grid; place-items: center; width: 52px; height: 52px; margin-bottom: auto; border-radius: 14px; background: #FDECEE; }
+.jn-ic svg { width: 30px; height: 30px; fill: none; stroke: #D23A4E; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.jn-board .jn-area em { margin-top: 18px; color: #D23A4E; font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.4rem; font-style: normal; font-weight: 800; line-height: 1; }
+.jn-board .jn-area b { margin-top: 8px; color: #0D2341; font-size: .92rem; }
+.jn-board .jn-area span { margin-top: 2px; color: #66809A; font-size: .76rem; }
+.jn-cta { flex-wrap: nowrap; margin-top: 14px; padding: 12px 12px 12px 18px; border-radius: 999px; background: #F5F8FC; }
+.jn-cta-t { margin-right: auto; color: #0D2341; font-size: .88rem; font-weight: 700; }
+.jn-room { color: #66809A; font-size: .8rem; white-space: nowrap; }
+
+/* 3. 학생: 사진 크게, SCI(E)·KCI 줄 맞춤 (subgrid) */
+.np-s-students .st-grid { grid-template-rows: auto 1fr 1fr; gap: 0 14px; }
+.np-s-students .st-card { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 10px; padding: 16px; }
+.np-s-students .st-who { display: grid; grid-template-columns: 92px 1fr; grid-template-rows: auto auto auto auto; column-gap: 14px; align-items: center; }
+.np-s-students .st-who img { grid-row: 1 / span 4; width: 92px; height: 110px; border-radius: 14px; object-position: center 20%; }
+.np-s-students .st-name { margin: 0; font-size: 1.5rem; }
+.st-en { margin: 0; color: #4A6280; font-family: 'Bricolage Grotesque', sans-serif; font-size: .9rem; font-weight: 700; }
+.np-s-students .st-level { justify-self: start; margin: 8px 0 0; }
+.np-s-students .st-level-en { margin: 2px 0 0; }
+.st-slot { padding: 10px 12px; border-radius: 10px; background: #fff; border: 1px solid #E6ECF3; }
+.st-slot.is-empty { background: transparent; border: 1px dashed #D5DEE8; }
+@media (max-width: 900px) {
+    .np-s-students .st-grid { grid-template-rows: none; }
+    .np-s-students .st-card { grid-row: auto; grid-template-rows: none; }
+    .np-s-students .st-card + .st-card { margin-top: 12px; }
+    .st-slot.is-empty { display: none; }
+    .jn-board { grid-template-columns: 1fr; }
+    .jn-board .jn-roles { grid-template-rows: none; grid-template-columns: 1fr 1fr; }
+}
+
+/* 4. 수상: 상장·글줄 모두 같은 위치 (subgrid) */
+.np-s-awards .aw-grid { grid-template-rows: minmax(160px, 1fr) auto auto auto auto auto; gap: 0 14px; }
+.np-s-awards .aw-card { display: grid; grid-row: span 6; grid-template-rows: subgrid; }
+.np-s-awards .aw-cert { height: auto; min-height: 0; flex: none; position: relative; }
+.np-s-awards .aw-cert img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+@media (max-width: 680px) {
+    .np-s-awards .aw-grid { grid-template-rows: none; }
+    .np-s-awards .aw-card { grid-row: auto; grid-template-rows: none; grid-template-columns: 86px 1fr; }
+    .np-s-awards .aw-card + .aw-card { margin-top: 12px; }
+    .np-s-awards .aw-cert { grid-row: span 6; height: 116px; }
+    .jn-board .jn-areas { grid-template-columns: 1fr; }
+    .jn-cta { flex-wrap: wrap; border-radius: 16px; }
+}
+.np-s-cap .np-poster { position: relative; }
+.np-s-cap .np-poster img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.np-s-students .st-who { grid-template-columns: 80px 1fr; }
+.np-s-students .st-who img { width: 80px; height: 96px; }
+.np-s-students .st-name { font-size: 1.36rem; }
+.np-s-students .st-slot { padding: 8px 10px; }
+.np-s-students .st-t { font-size: .76rem; line-height: 1.38; }
+.np-s-students .st-card { padding: 14px; row-gap: 8px; }
+.np-s-students .st-who { align-items: start; align-content: start; grid-template-rows: auto auto auto 1fr; }
+.np-s-students .st-who img { grid-column: 1; grid-row: 1 / span 4; }
+.np-s-students .st-who > p { grid-column: 2; text-align: left; }
+.np-s-students .st-name { align-self: end; padding-top: 6px; }
+.np-s-students .st-level-en { line-height: 1.3; }

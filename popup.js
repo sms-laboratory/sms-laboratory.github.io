@@ -47,7 +47,7 @@ var SLIDES = [
         type: 'students',
         badge: 'Student Research Highlights',
         title: 'Students lead as first authors.',
-        titleKo: '학생이 1저자로 발표한 SCI(E)·KCI 논문',
+        titleKo: '학생 1저자 발표논문',
         link: 'publications.html',
         people: [
             { name: 'Gun Ho HA', ko: '하건호', level: 'M.S. Student', levelKo: '석사과정', photo: 'img/Gun Ho Ha.jpg?v=2',
@@ -132,32 +132,42 @@ var SLIDES = [
             '<p class="np-advisor">' + s.advisor + '</p>' +
         '</div>';
     }
+    var JOIN_ICONS = {
+        Make: '<svg viewBox="0 0 48 48"><rect x="8" y="18" width="32" height="22" rx="3"/><path d="M8 26h32M18 18v22M30 18v22"/><path d="M16 10l8-4 8 4"/></svg>',
+        Sense: '<svg viewBox="0 0 48 48"><path d="M4 30h8l4-14 6 24 6-18 4 8h12"/></svg>',
+        Restore: '<svg viewBox="0 0 48 48"><path d="M8 38h32M12 38V18h24v20"/><path d="M20 18l4 8-3 4 4 8" stroke-dasharray="3 3"/><path d="M30 10l6 6M33 13l-9 9"/></svg>'
+    };
     function join(s) {
-        var roles = s.roles.map(function (r) { return '<li><b>' + r.en + '</b><span>' + r.ko + '</span></li>'; }).join('');
-        var areas = s.areas.map(function (r) { return '<li><em>' + r.key + '</em><b>' + r.en + '</b><span>' + r.ko + '</span></li>'; }).join('');
+        var roles = s.roles.map(function (r, i) {
+            return '<li class="jn-role' + (i === 0 ? ' is-main' : '') + '"><span class="jn-role-n">0' + (i + 1) + '</span><b>' + r.ko + '</b><span class="jn-role-en">' + r.en + '</span></li>';
+        }).join('');
+        var areas = s.areas.map(function (r) {
+            return '<li class="jn-area"><span class="jn-ic" aria-hidden="true">' + (JOIN_ICONS[r.key] || '') + '</span><em>' + r.key + '</em><b>' + r.ko + '</b><span>' + r.en + '</span></li>';
+        }).join('');
         return '<div class="np-slide np-s-join">' +
             '<span class="np-badge">' + s.badge + '</span>' +
             '<h2>' + s.title + '</h2>' +
             '<p class="np-ko">' + s.titleKo + '</p>' +
-            '<div class="jn-grid">' +
-                '<div><p class="jn-h">Open positions</p><ul class="jn-roles">' + roles + '</ul></div>' +
-                '<div><p class="jn-h">Research areas</p><ul class="jn-areas">' + areas + '</ul></div>' +
+            '<div class="jn-board">' +
+                '<div class="jn-left"><p class="jn-h">We are recruiting</p><ul class="jn-roles">' + roles + '</ul></div>' +
+                '<div class="jn-right"><p class="jn-h">What you will work on</p><ul class="jn-areas">' + areas + '</ul></div>' +
             '</div>' +
-            '<div class="jn-cta"><a class="jn-mail" href="mailto:' + s.email + '?subject=SMS%20Lab%20%EC%A7%80%EC%9B%90%20%EB%AC%B8%EC%9D%98">Contact ' + s.email + '</a><span>' + s.office + '</span></div>' +
+            '<div class="jn-cta"><span class="jn-cta-t">관심 있는 학생은 언제든 연락 주세요</span><a class="jn-mail" href="mailto:' + s.email + '?subject=SMS%20Lab%20%EC%A7%80%EC%9B%90%20%EB%AC%B8%EC%9D%98">' + s.email + '</a><span class="jn-room">' + s.office + '</span></div>' +
         '</div>';
     }
     function students(s) {
+        function slot(p, kind) {
+            var x = p.papers.filter(function (q) { return q.idx === kind; })[0];
+            if (!x) return '<div class="st-slot is-empty"></div>';
+            return '<div class="st-slot"><span class="st-idx' + (kind === 'KCI' ? ' is-kci' : '') + '">' + kind + '</span><span class="st-yr">' + x.year + '</span>' +
+                   '<p class="st-t">' + x.title + '</p><p class="st-v">' + x.venue + '</p></div>';
+        }
         var cols = s.people.map(function (p) {
-            var list = p.papers.map(function (x) {
-                return '<li><span class="st-idx' + (x.idx === 'KCI' ? ' is-kci' : '') + '">' + x.idx + '</span><span class="st-yr">' + x.year + '</span>' +
-                       '<p class="st-t">' + x.title + '</p><p class="st-v">' + x.venue + '</p></li>';
-            }).join('');
             return '<article class="st-card">' +
                 '<div class="st-who"><img src="' + p.photo + '" alt="' + p.ko + '" loading="lazy">' +
-                    '<div><p class="st-name">' + p.ko + ' <span>' + p.name + '</span></p>' +
-                    '<p class="st-level">' + p.levelKo + '</p><p class="st-level-en">' + p.level + '</p></div></div>' +
-                '<p class="st-count"><b>' + p.papers.length + '</b> first-author paper' + (p.papers.length > 1 ? 's' : '') + '</p>' +
-                '<ul class="st-papers">' + list + '</ul>' +
+                    '<p class="st-name">' + p.ko + '</p><p class="st-en">' + p.name + '</p>' +
+                    '<p class="st-level">' + p.levelKo + '</p><p class="st-level-en">' + p.level + '</p></div>' +
+                slot(p, 'SCI(E)') + slot(p, 'KCI') +
             '</article>';
         }).join('');
         return '<div class="np-slide np-s-students">' +
@@ -328,6 +338,7 @@ var SLIDES = [
             });
         }
         go(0);
+        wrap.querySelectorAll('img').forEach(function (im) { if (!im.complete) im.addEventListener('load', fit); });   // 사진이 늦게 뜨면 높이 다시 맞춤
 
         var last = document.activeElement;
         function close() {
