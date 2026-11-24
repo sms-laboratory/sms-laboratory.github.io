@@ -836,3 +836,6 @@
 .st-papers li { padding: 8px 10px; }
 .st-t { font-size: .78rem; }
 @media (max-width: 680px) { .pj-years-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 5px; min-height: 76px; } .pj-y { padding: 8px 6px; } .pj-y b { font-size: .86rem; } .pj-y span { font-size: .6rem; } .pj-y em { top: 6px; right: 6px; font-size: .58rem; padding: 0 5px; } }
+.np-viewport .np-slide > .np-badge, .np-viewport .np-slide > .yir-kick { align-self: flex-start; }
+.st-level { padding: 3px 11px; font-size: .8rem; }
+.st-level-en { margin: 3px 0 0; color: #66809A; font-size: .72rem; font-weight: 700; }

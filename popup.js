@@ -155,7 +155,7 @@ var SLIDES = [
             return '<article class="st-card">' +
                 '<div class="st-who"><img src="' + p.photo + '" alt="' + p.ko + '" loading="lazy">' +
                     '<div><p class="st-name">' + p.ko + ' <span>' + p.name + '</span></p>' +
-                    '<p class="st-level">' + p.levelKo + ' <span>' + p.level + '</span></p></div></div>' +
+                    '<p class="st-level">' + p.levelKo + '</p><p class="st-level-en">' + p.level + '</p></div></div>' +
                 '<p class="st-count"><b>' + p.papers.length + '</b> first-author paper' + (p.papers.length > 1 ? 's' : '') + '</p>' +
                 '<ul class="st-papers">' + list + '</ul>' +
             '</article>';
