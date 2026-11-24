@@ -286,7 +286,7 @@ var SLIDES = [
             '<div class="np" role="dialog" aria-modal="true" aria-label="알림">' +
                 '<div class="np-viewport"><div class="np-track">' + SLIDES.map(function (s) { return R[s.type](s); }).join('') + '</div></div>' +
                 '<div class="np-foot">' +
-                    (n > 1 ? '<div class="np-nav"><div class="np-dots">' + dots + '</div><span class="np-count"><b>1</b> / ' + n + '</span></div>' : '') +
+                    (n > 1 ? '<div class="np-nav"><button type="button" class="np-mini np-prev" aria-label="이전 카드"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><div class="np-dots">' + dots + '</div><span class="np-count"><b>1</b> / ' + n + '</span><button type="button" class="np-mini np-next" aria-label="다음 카드"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div>' : '') +
                     '<label class="np-today"><input type="checkbox"> 오늘 하루 보지 않기</label>' +
                     '<button type="button" class="np-close">Close</button>' +
                 '</div>' +
@@ -334,8 +334,8 @@ var SLIDES = [
             if (slides[cur].classList.contains('np-s-explain') || slides[cur].classList.contains('np-s-project')) slides[cur].classList.add('is-on');
         }
         if (n > 1) {
-            wrap.querySelector('.np-prev').addEventListener('click', function () { go(cur - 1); });
-            wrap.querySelector('.np-next').addEventListener('click', function () { go(cur + 1); });
+            wrap.querySelectorAll('.np-prev').forEach(function (b) { b.addEventListener('click', function () { go(cur - 1); }); });
+            wrap.querySelectorAll('.np-next').forEach(function (b) { b.addEventListener('click', function () { go(cur + 1); }); });
             dotEls.forEach(function (d, k) { d.addEventListener('click', function () { go(k); }); });
             var sx = null, sy = null;
             track.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });

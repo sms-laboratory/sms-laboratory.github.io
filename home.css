@@ -1081,3 +1081,20 @@
 }
 .np-backdrop { grid-template-columns: minmax(0, 1fr); }
 .np-frame { width: 100%; max-width: 900px; justify-self: center; }
+
+/* ---- 화살표 다듬기: 동그라미 없이 얇은 화살표 ---- */
+.np-side {
+    width: 56px; height: 96px; margin-top: -48px; border-radius: 14px;
+    background: transparent; box-shadow: none; color: rgba(255, 255, 255, .72);
+}
+.np-side svg { width: 34px; height: 34px; stroke-width: 1.6; }
+.np-side:hover { background: rgba(255, 255, 255, .08); color: #fff; }
+.np-prev.np-side { left: -72px; }
+.np-next.np-side { right: -72px; }
+.np-mini { display: none; width: 30px; height: 30px; padding: 0; border: 0; background: none; color: #0D2341; cursor: pointer; }
+.np-mini svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+/* 카드 옆에 자리가 없으면: 양옆 화살표 숨기고 아래 줄의 작은 화살표 사용 */
+@media (max-width: 1080px) {
+    .np-side { display: none; }
+    .np-mini { display: inline-grid; place-items: center; }
+}
