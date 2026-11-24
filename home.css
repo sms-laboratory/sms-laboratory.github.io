@@ -779,3 +779,60 @@
 .np { overflow: hidden; }
 .np-track { align-items: stretch; height: 100%; }
 .np-viewport .np-slide { height: 100%; overflow-y: auto; overscroll-behavior: contain; }
+
+/* ---- 학생 논문: 학생별 카드 ---- */
+.st-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+.st-card { display: flex; flex-direction: column; padding: 16px; border-radius: 16px; background: #F5F8FC; border: 1px solid #E1E8F0; }
+.st-who { display: flex; align-items: center; gap: 12px; }
+.st-who img { flex: 0 0 auto; width: 58px; height: 58px; border-radius: 50%; object-fit: cover; object-position: center 18%; border: 3px solid #fff; box-shadow: 0 6px 14px -8px rgba(13, 35, 65, .6); }
+.st-name { margin: 0; color: #0D2341; font-size: 1.32rem; font-weight: 800; line-height: 1.15; letter-spacing: -.02em; }
+.st-name span { display: block; margin-top: 2px; color: #4A6280; font-family: 'Bricolage Grotesque', sans-serif; font-size: .86rem; font-weight: 700; letter-spacing: 0; }
+.st-level { display: inline-flex; align-items: center; gap: 6px; margin: 6px 0 0; padding: 3px 10px; border-radius: 999px; background: #0D2341; color: #fff; font-size: .78rem; font-weight: 800; }
+.st-level span { color: #9FB4D3; font-size: .7rem; font-weight: 700; }
+.st-count { margin: 12px 0 8px; color: #66809A; font-size: .76rem; font-weight: 700; }
+.st-count b { color: #D23A4E; font-size: 1rem; }
+.st-papers { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.st-papers li { padding: 10px 12px; border-radius: 10px; background: #fff; border: 1px solid #E6ECF3; }
+.st-idx { display: inline-block; padding: 1px 7px; border-radius: 6px; background: #2F63D8; color: #fff; font-size: .68rem; font-weight: 800; }
+.st-idx.is-kci { background: #A0670B; }
+.st-yr { margin-left: 6px; color: #66809A; font-size: .74rem; font-weight: 800; }
+.st-t { margin: 5px 0 0; color: #0D2341; font-size: .8rem; font-weight: 700; line-height: 1.4; }
+.st-v { margin: 3px 0 0; color: #66809A; font-size: .72rem; font-style: italic; }
+
+/* ---- 여백 없이: 카드 안 내용이 높이를 채움 ---- */
+.np-viewport .np-slide { display: flex; flex-direction: column; }
+.np-viewport .np-slide > .np-more { margin-top: auto; padding-top: 14px; align-self: flex-start; }
+.st-grid { flex: 1; }
+.np-s-join .jn-grid { flex: 1; }
+.jn-roles, .jn-areas { height: 100%; grid-auto-rows: 1fr; }
+.jn-roles li, .jn-areas li { display: flex; flex-direction: column; justify-content: center; }
+.jn-areas li { display: grid; align-content: center; }
+.np-s-cap .np-cards { flex: 1; }
+.np-s-awards .aw-grid { flex: 1; }
+.np-s-awards .aw-cert { height: auto; flex: 1; min-height: 150px; }
+.np-s-awards .aw-card { display: flex; flex-direction: column; }
+@media (max-width: 900px) { .st-grid { grid-template-columns: 1fr; } }
+@media (max-width: 680px) {
+    .np-s-awards .aw-card { display: grid; }
+    .np-s-awards .aw-cert { min-height: 0; height: 116px; flex: none; }
+}
+/* ---- 과제 카드 채우기: 연차 블록 + 키워드 ---- */
+.pj-years-grid { flex: 1; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin-top: 18px; min-height: 96px; }
+.pj-y { position: relative; display: flex; flex-direction: column; justify-content: flex-end; padding: 12px; border-radius: 12px; background: #F0F4F9; border: 1px solid #E1E8F0; }
+.pj-y span { color: #8A97A8; font-size: .72rem; font-weight: 700; }
+.pj-y b { color: #4A6280; font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.25rem; font-weight: 800; }
+.pj-y.is-done { background: #DCE7F7; }
+.pj-y.is-now { background: linear-gradient(160deg, #2F63D8, #D23A4E); border-color: transparent; }
+.pj-y.is-now span, .pj-y.is-now b { color: #fff; }
+.pj-y em { position: absolute; top: 10px; right: 10px; padding: 1px 8px; border-radius: 999px; background: #fff; color: #D23A4E; font-size: .7rem; font-style: normal; font-weight: 800; }
+.np-s-project .pj-track { margin-top: 14px; height: 8px; }
+.pj-pct { margin: 8px 0 0; color: #66809A; font-size: .8rem; font-weight: 600; }
+.pj-pct b { color: #0D2341; }
+.pj-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 0; padding: 0; list-style: none; }
+.pj-tags li { padding: 4px 10px; border-radius: 999px; background: #F0F4F9; color: #2E4258; font-size: .76rem; font-weight: 700; }
+/* ---- 학생 카드 조금 촘촘하게 ---- */
+.st-card { padding: 14px; }
+.st-who img { width: 52px; height: 52px; }
+.st-papers li { padding: 8px 10px; }
+.st-t { font-size: .78rem; }
+@media (max-width: 680px) { .pj-years-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 5px; min-height: 76px; } .pj-y { padding: 8px 6px; } .pj-y b { font-size: .86rem; } .pj-y span { font-size: .6rem; } .pj-y em { top: 6px; right: 6px; font-size: .58rem; padding: 0 5px; } }

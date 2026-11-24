@@ -43,29 +43,27 @@ var SLIDES = [
         email: 'mkkim9112@hnu.kr',
         office: 'Room 1004 · 교수 연구실 1004호'
     },
-    {   // 2. 학생 1저자 논문 (두 편)
-        type: 'papers',
+    {   // 2. 학생 1저자 논문 — 학생별로 묶어 이름·과정을 강조
+        type: 'students',
         badge: 'Student Research Highlights',
         title: 'Students lead as first authors.',
         titleKo: '학생이 1저자로 발표한 SCI(E)·KCI 논문',
         link: 'publications.html',
-        items: [
-            { fig: 'water', journal: 'Measurement', year: '2027',
-              title: 'Monitoring of submerged and chloride-rich environments using apparent electrical resistivity and capacitance of self-sensing concrete',
-              authors: 'S Yu and <strong>MK Kim</strong><sup>*</sup>',
-              student: 'Seong YU, M.S. Student · 유성 (석사과정)' },
-            { fig: 'cyclic', journal: 'Case Studies in Construction Materials', year: '2026',
-              title: 'Capacitance-based self-sensing response of smart ultra-high-performance concrete under cyclic and monotonic compressive loading',
-              authors: 'GH Ha and <strong>MK Kim</strong><sup>*</sup>',
-              student: 'Gun Ho HA, M.S. Student · 하건호 (석사과정)' }
-        ],
-        kci: [   // 국내 학술지(KCI) — 학생 1저자
-            { year: '2026', title: '시멘트 기반 재료의 정전용량 기반 자기감지 거동 및 유전 분극 메커니즘',
-              journal: '한국건설순환자원학회 논문집', authors: 'GH Ha and <strong>MK Kim</strong><sup>*</sup>', student: '하건호 (석사과정)' },
-            { year: '2025', title: '해수 수위 및 측정 조건에 따른 시멘트 복합재료의 전기저항률 및 정전용량 특성 분석',
-              journal: '한국건설순환자원학회 논문집', authors: 'S Yu and <strong>MK Kim</strong><sup>*</sup>', student: '유성 (석사과정)' },
-            { year: '2025', title: '잔골재를 혼입한 슬래그 기반 알칼리 활성 무시멘트의 내구성능 및 평가 방법 유효성 검토',
-              journal: '한국건설순환자원학회 논문집', authors: 'JH Lee, SJ Kwon, and <strong>MK Kim</strong><sup>*</sup>', student: '이재혁 (학부연구생)' }
+        people: [
+            { name: 'Gun Ho HA', ko: '하건호', level: 'M.S. Student', levelKo: '석사과정', photo: 'img/Gun Ho Ha.jpg?v=2',
+              papers: [
+                { idx: 'SCI(E)', year: '2026', venue: 'Case Studies in Construction Materials', title: 'Capacitance-based self-sensing response of smart ultra-high-performance concrete under cyclic and monotonic compressive loading' },
+                { idx: 'KCI', year: '2026', venue: '한국건설순환자원학회 논문집', title: '시멘트 기반 재료의 정전용량 기반 자기감지 거동 및 유전 분극 메커니즘' }
+              ] },
+            { name: 'Seong YU', ko: '유성', level: 'M.S. Student', levelKo: '석사과정', photo: 'img/Seong Yu.jpg',
+              papers: [
+                { idx: 'SCI(E)', year: '2027', venue: 'Measurement', title: 'Monitoring of submerged and chloride-rich environments using apparent electrical resistivity and capacitance of self-sensing concrete' },
+                { idx: 'KCI', year: '2025', venue: '한국건설순환자원학회 논문집', title: '해수 수위 및 측정 조건에 따른 시멘트 복합재료의 전기저항률 및 정전용량 특성 분석' }
+              ] },
+            { name: 'Jae Hyeok LEE', ko: '이재혁', level: 'Undergraduate Researcher', levelKo: '학부연구생', photo: 'img/Jae Hyeok Lee.jpg',
+              papers: [
+                { idx: 'KCI', year: '2025', venue: '한국건설순환자원학회 논문집', title: '잔골재를 혼입한 슬래그 기반 알칼리 활성 무시멘트의 내구성능 및 평가 방법 유효성 검토' }
+              ] }
         ]
     },
     {   // 4. 신진연구 과제
@@ -77,20 +75,8 @@ var SLIDES = [
         program: 'Early Career Research (Type B) · 신진연구(유형B)',
         funder: 'Ministry of Science and ICT · 과학기술정보통신부',
         role: 'Principal Investigator · 연구책임자',
+        tags: ['Self-sensing signal', 'Internal degradation', 'Strength reduction', 'Smart diagnosis'],
         link: 'projects.html'
-    },
-    {   // 7. 2026 결산 (숫자는 2026.11 기준)
-        type: 'yir',
-        kicker: 'Year in Review',
-        title: '2026 at<span>SMS Lab.</span>',
-        titleKo: '숫자로 보는 SMS 연구실의 2026년',
-        citations: { now: 227, prev: 107, label: 'Citations this year', ko: '올해 피인용 · 역대 최고 (Scopus)' },
-        tiles: [
-            { to: 5, label: 'SCI(E) papers', ko: 'SCI(E) 논문 게재' },
-            { to: 3, label: 'Awards', ko: '학회 수상 3건' },
-            { to: 5, unit: 'yr', label: 'New NRF project', ko: '신진연구(유형B) 5년 과제 착수' },
-            { to: 4, label: 'New members', ko: '새 구성원 합류' }
-        ]
     },
     {   // 3. 2026 수상
         type: 'awards',
@@ -160,52 +146,25 @@ var SLIDES = [
             '<div class="jn-cta"><a class="jn-mail" href="mailto:' + s.email + '?subject=SMS%20Lab%20%EC%A7%80%EC%9B%90%20%EB%AC%B8%EC%9D%98">Contact ' + s.email + '</a><span>' + s.office + '</span></div>' +
         '</div>';
     }
-    var FIGS = {
-        // 침수·염화물 환경: 반쯤 잠긴 시편과 전극
-        water: '<svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice"><rect width="320" height="180" fill="#F2F6FB"/>' +
-            '<path d="M0 100 Q40 93 80 100 T160 100 T240 100 T320 100 V180 H0 Z" fill="#CFE0F5"/>' +
-            '<rect x="112" y="40" width="96" height="112" rx="6" fill="#B9C2CC" stroke="#0D2341" stroke-width="3"/>' +
-            '<rect x="128" y="30" width="9" height="128" fill="#D23A4E"/><rect x="183" y="30" width="9" height="128" fill="#D23A4E"/>' +
-            '<path d="M132 30 V14 H188 V30" fill="none" stroke="#0D2341" stroke-width="2.5"/>' +
-            '<circle cx="160" cy="14" r="11" fill="#fff" stroke="#0D2341" stroke-width="2.5"/><text x="160" y="18.5" text-anchor="middle" font-size="12" font-weight="800" fill="#0D2341">Ω</text>' +
-            '<g font-size="12" font-weight="800" fill="#2F63D8"><text x="34" y="132">Cl⁻</text><text x="252" y="142">Cl⁻</text><text x="64" y="166">Cl⁻</text><text x="240" y="170">H₂O</text></g></svg>',
-        // 반복 압축: 정전용량(안정) vs 저항(흔들림)
-        cyclic: (function () {
-            var c = '', r = '';
-            for (var i = 0; i <= 120; i++) {
-                var u = i / 120, k = u * 4 % 1, t = k < .5 ? k * 2 : 2 - k * 2, x = (24 + u * 280).toFixed(1);
-                c += (i ? 'L' : 'M') + x + ' ' + (120 - t * 52).toFixed(1);
-                r += (i ? 'L' : 'M') + x + ' ' + (62 + t * 44 + Math.sin(u * 37) * 6 + Math.sin(u * 91) * 3 + u * 10).toFixed(1);
-            }
-            return '<svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice"><rect width="320" height="180" fill="#F2F6FB"/>' +
-                '<path d="M24 150 H304 M24 20 V150" stroke="#C9D3DF" stroke-width="1.4" fill="none"/>' +
-                '<path d="' + r + '" fill="none" stroke="#9AACC2" stroke-width="2.2" stroke-linejoin="round"/>' +
-                '<path d="' + c + '" fill="none" stroke="#D23A4E" stroke-width="2.8" stroke-linejoin="round"/>' +
-                '<g font-size="11" font-weight="800"><text x="30" y="166" fill="#D23A4E">Capacitance — stable</text><text x="186" y="166" fill="#7B8794">Resistance</text></g></svg>';
-        })()
-    };
-    function papers(s) {
-        var cards = s.items.map(function (it) {
-            return '<article class="pp-card">' +
-                '<div class="pp-fig" aria-hidden="true">' + FIGS[it.fig] + '</div>' +
-                '<p class="pp-venue"><em>' + it.journal + '</em> · ' + it.year + '</p>' +
-                '<p class="pp-title">' + it.title + '</p>' +
-                '<p class="pp-authors">' + it.authors + '</p>' +
-                '<p class="pp-student">First author: ' + it.student + '</p>' +
+    function students(s) {
+        var cols = s.people.map(function (p) {
+            var list = p.papers.map(function (x) {
+                return '<li><span class="st-idx' + (x.idx === 'KCI' ? ' is-kci' : '') + '">' + x.idx + '</span><span class="st-yr">' + x.year + '</span>' +
+                       '<p class="st-t">' + x.title + '</p><p class="st-v">' + x.venue + '</p></li>';
+            }).join('');
+            return '<article class="st-card">' +
+                '<div class="st-who"><img src="' + p.photo + '" alt="' + p.ko + '" loading="lazy">' +
+                    '<div><p class="st-name">' + p.ko + ' <span>' + p.name + '</span></p>' +
+                    '<p class="st-level">' + p.levelKo + ' <span>' + p.level + '</span></p></div></div>' +
+                '<p class="st-count"><b>' + p.papers.length + '</b> first-author paper' + (p.papers.length > 1 ? 's' : '') + '</p>' +
+                '<ul class="st-papers">' + list + '</ul>' +
             '</article>';
         }).join('');
-        return '<div class="np-slide np-s-papers">' +
+        return '<div class="np-slide np-s-students">' +
             '<span class="np-badge">' + s.badge + '</span>' +
             '<h2>' + s.title + '</h2>' +
             '<p class="np-ko">' + s.titleKo + '</p>' +
-            '<p class="pp-h">SCI(E)</p>' +
-            '<div class="pp-grid">' + cards + '</div>' +
-            '<p class="pp-h">KCI</p>' +
-            '<ul class="pp-kci">' + s.kci.map(function (k) {
-                return '<li><span class="pp-kci-y">' + k.year + '</span><div><p class="pp-kci-t">' + k.title + '</p>' +
-                       '<p class="pp-kci-m">' + k.authors + ' · <em>' + k.journal + '</em></p>' +
-                       '<p class="pp-kci-s">First author: ' + k.student + '</p></div></li>';
-            }).join('') + '</ul>' +
+            '<div class="st-grid">' + cols + '</div>' +
             '<a class="np-more" href="' + s.link + '">See all publications</a>' +
         '</div>';
     }
@@ -219,8 +178,17 @@ var SLIDES = [
             '<p class="pj-years">' + s.start.replace('-', '.') + ' – ' + s.end.replace('-', '.') + ' · 5 years</p>' +
             '<h2>' + s.title + '</h2>' +
             '<p class="np-ko">' + s.titleKo + '</p>' +
-            '<div class="pj-track" aria-label="진행 ' + pct + '%"><i style="--pct:' + pct + '%"></i><b style="left:' + pct + '%">Now · ' + pct + '%</b></div>' +
-            '<div class="pj-ticks">' + ticks + '</div>' +
+            '<div class="pj-years-grid">' + (function () {
+                var o = '', cy = now.getFullYear();
+                for (var k = 0; k < 5; k++) {
+                    var y = y0 + k, st = y < cy ? 'is-done' : (y === cy ? 'is-now' : '');
+                    o += '<div class="pj-y ' + st + '"><span>Year ' + (k + 1) + '</span><b>' + y + (k === 4 ? '–' + y1 : '') + '</b>' + (st === 'is-now' ? '<em>Now</em>' : '') + '</div>';
+                }
+                return o;
+            })() + '</div>' +
+            '<div class="pj-track" aria-label="진행 ' + pct + '%"><i style="--pct:' + pct + '%"></i></div>' +
+            '<p class="pj-pct"><b>' + pct + '%</b> of the 5-year project · 5년 과제 중 ' + pct + '% 진행</p>' +
+            '<ul class="pj-tags">' + s.tags.map(function (t) { return '<li>' + t + '</li>'; }).join('') + '</ul>' +
             '<dl class="pj-meta"><div><dt>Program</dt><dd>' + s.program + '</dd></div><div><dt>Funded by</dt><dd>' + s.funder + '</dd></div><div><dt>Role</dt><dd>' + s.role + '</dd></div></dl>' +
             '<a class="np-more" href="' + s.link + '">See all projects</a>' +
         '</div>';
@@ -291,7 +259,7 @@ var SLIDES = [
             '</ul>' +
         '</div>';
     }
-    var R = { capstone: capstone, join: join, papers: papers, project: project, explain: explain, yir: yir, awards: awards };
+    var R = { capstone: capstone, join: join, students: students, project: project, explain: explain, yir: yir, awards: awards };
 
     document.addEventListener('DOMContentLoaded', function () {
         var n = SLIDES.length;
