@@ -30,8 +30,9 @@ var SLIDES = [
         type: 'join',
         badge: 'Join SMS Lab',
         title: 'Build smarter infrastructure with us.',
-        titleKo: 'SMS 연구실과 함께할 대학원생·학부연구생을 모집합니다',
+        titleKo: 'SMS 연구실과 함께할 박사·석사과정생과 학부연구생을 모집합니다',
         roles: [
+            { en: 'Ph.D. Students', ko: '박사과정' },
             { en: 'M.S. Students', ko: '석사과정' },
             { en: 'Undergraduate Researchers', ko: '학부연구생' }
         ],
