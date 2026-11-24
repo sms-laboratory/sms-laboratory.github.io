@@ -282,14 +282,18 @@ var SLIDES = [
         var wrap = document.createElement('div');
         wrap.className = 'np-backdrop';
         wrap.innerHTML =
+            '<div class="np-frame">' +
             '<div class="np" role="dialog" aria-modal="true" aria-label="알림">' +
                 '<div class="np-viewport"><div class="np-track">' + SLIDES.map(function (s) { return R[s.type](s); }).join('') + '</div></div>' +
                 '<div class="np-foot">' +
-                    (n > 1 ? '<div class="np-nav"><button type="button" class="np-arr np-prev" aria-label="이전 카드">&#8249;</button><div class="np-dots">' + dots + '</div><button type="button" class="np-arr np-next" aria-label="다음 카드">&#8250;</button></div>' : '') +
+                    (n > 1 ? '<div class="np-nav"><div class="np-dots">' + dots + '</div><span class="np-count"><b>1</b> / ' + n + '</span></div>' : '') +
                     '<label class="np-today"><input type="checkbox"> 오늘 하루 보지 않기</label>' +
                     '<button type="button" class="np-close">Close</button>' +
                 '</div>' +
                 '<button type="button" class="np-x" aria-label="닫기">&times;</button>' +
+            '</div>' +
+            (n > 1 ? '<button type="button" class="np-side np-prev" aria-label="이전 카드"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>' +
+                     '<button type="button" class="np-side np-next" aria-label="다음 카드"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>' : '') +
             '</div>';
         document.body.appendChild(wrap);
 
@@ -323,6 +327,7 @@ var SLIDES = [
                 slides[k].inert = k !== cur;
                 if (dotEls[k]) dotEls[k].classList.toggle('is-cur', k === cur);
             }
+            var cnt = wrap.querySelector('.np-count b'); if (cnt) cnt.textContent = cur + 1;
             slides[cur].scrollTop = 0;
             fit();
             if (slides[cur].classList.contains('np-s-yir')) setTimeout(function () { countUp(slides[cur]); }, 250);

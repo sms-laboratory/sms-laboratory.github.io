@@ -1045,3 +1045,39 @@
     .np-s-students .st-card { grid-row: auto; }
     .np-s-students .st-slot { grid-row: auto; grid-template-rows: none; }
 }
+
+/* ---- 넘기기 화살표: 카드 양옆 ---- */
+.np-frame { position: relative; width: min(900px, 100%); }
+.np-frame .np { width: 100%; }
+.np-side {
+    position: absolute; top: 50%; z-index: 3; display: grid; place-items: center;
+    width: 52px; height: 52px; margin-top: -26px; border: 0; border-radius: 50%;
+    background: rgba(255, 255, 255, .96); color: #0D2341; cursor: pointer;
+    box-shadow: 0 12px 28px -12px rgba(0, 0, 0, .6); transition: transform .2s, background .2s, color .2s;
+}
+.np-side svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.np-side:hover { background: #0D2341; color: #fff; }
+.np-prev.np-side { left: -76px; }
+.np-next.np-side { right: -76px; }
+.np-prev.np-side:hover { transform: translateX(-3px); }
+.np-next.np-side:hover { transform: translateX(3px); }
+.np-side:focus-visible { outline: 3px solid #8CB4FF; outline-offset: 3px; }
+.np-count { color: #66809A; font-size: .8rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.np-count b { color: #0D2341; }
+.np-nav { gap: 12px; }
+/* 화면이 좁아 바깥 자리가 없으면 카드 가장자리에 살짝 겹쳐 둠 */
+@media (max-width: 1080px) {
+    .np-prev.np-side { left: -18px; }
+    .np-next.np-side { right: -18px; }
+    .np-side { width: 44px; height: 44px; margin-top: -22px; }
+}
+@media (max-width: 680px) {
+    .np-backdrop { padding: 20px 14px; }
+    .np-prev.np-side { left: -10px; }
+    .np-next.np-side { right: -10px; }
+    .np-side { width: 38px; height: 38px; margin-top: -19px; }
+    .np-side svg { width: 20px; height: 20px; }
+    .np-nav { flex-basis: auto; margin: 0 auto 0 0; }
+}
+.np-backdrop { grid-template-columns: minmax(0, 1fr); }
+.np-frame { width: 100%; max-width: 900px; justify-self: center; }
