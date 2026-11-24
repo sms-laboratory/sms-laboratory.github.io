@@ -79,18 +79,6 @@ var SLIDES = [
         role: 'Principal Investigator · 연구책임자',
         link: 'projects.html'
     },
-    {   // 5. 자가감지 콘크리트 설명
-        type: 'explain',
-        badge: 'What we do',
-        title: 'Concrete that feels its own stress.',
-        titleKo: '스스로 응력을 감지하는 콘크리트',
-        steps: [
-            { en: 'Load', ko: '하중이 가해지면', text: 'Compression squeezes the conductive network inside the concrete.', textKo: '콘크리트 속 전도성 네트워크가 눌립니다' },
-            { en: 'Signal', ko: '전기 신호가 바뀌고', text: 'Its electrical resistance drops in step with the load.', textKo: '하중에 맞춰 전기저항이 함께 변합니다' },
-            { en: 'Read', ko: '상태를 읽어냅니다', text: 'Reading the signal reveals stress and damage — no external sensor.', textKo: '외부 센서 없이 응력과 손상을 진단합니다' }
-        ],
-        link: 'research.html'
-    },
     {   // 7. 2026 결산 (숫자는 2026.11 기준)
         type: 'yir',
         kicker: 'Year in Review',
@@ -324,7 +312,11 @@ var SLIDES = [
         document.body.appendChild(wrap);
 
         var track = wrap.querySelector('.np-track'), viewport = wrap.querySelector('.np-viewport'), slides = track.children, dotEls = wrap.querySelectorAll('.np-dots button');
-        function fit() { viewport.style.height = slides[cur].offsetHeight + 'px'; }   // 카드마다 높이가 달라 현재 카드 높이에 맞춤
+        function fit() {   // 모든 카드를 같은 높이로: 가장 긴 카드 기준, 화면보다 길면 카드 안에서 스크롤
+            var foot = wrap.querySelector('.np-foot').offsetHeight, max = 0;
+            for (var k = 0; k < n; k++) max = Math.max(max, slides[k].scrollHeight);
+            viewport.style.height = Math.min(max, window.innerHeight - 40 - foot) + 'px';
+        }
         window.addEventListener('resize', fit);
         var cur = 0, counted = false;
         function countUp(slide) {
@@ -349,7 +341,7 @@ var SLIDES = [
                 slides[k].inert = k !== cur;
                 if (dotEls[k]) dotEls[k].classList.toggle('is-cur', k === cur);
             }
-            wrap.querySelector('.np').scrollTop = 0;
+            slides[cur].scrollTop = 0;
             fit();
             if (slides[cur].classList.contains('np-s-yir')) setTimeout(function () { countUp(slides[cur]); }, 250);
             if (slides[cur].classList.contains('np-s-explain') || slides[cur].classList.contains('np-s-project')) slides[cur].classList.add('is-on');

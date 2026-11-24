@@ -583,7 +583,7 @@
 .np-x:hover { background: #E2E8F0; color: #0D2341; }
 .np button:focus-visible, .np a:focus-visible, .np-today input:focus-visible { outline: 3px solid #8CB4FF; outline-offset: 2px; }
 @media (max-width: 680px) {
-    .np { padding: 24px 18px 18px; border-radius: 20px; }
+    .np { border-radius: 20px; }
     .np-cards { grid-template-columns: 1fr; gap: 0; margin-top: 18px; }
     .np-card + .np-card { margin-top: 14px; }
     .np-poster { height: 130px; }
@@ -597,6 +597,8 @@
 }
 @media (max-width: 520px) { .np-head { flex-direction: column; align-items: flex-start; } }
 @media (prefers-reduced-motion: reduce) { .np-backdrop, .np { transition: none; } .np-backdrop.is-open .np-streak::after { animation: none; } }
+
+/* ==========================================================
    알림 팝업 — 여러 장 카드(슬라이드) 구조
    ========================================================== */
 .np { padding: 0; width: min(900px, 100%); display: flex; flex-direction: column; }
@@ -772,3 +774,8 @@
 @media (max-width: 680px) { .pp-kci li { grid-template-columns: 1fr; gap: 2px; } }
 .np-s-papers .pp-card .pp-fig { height: 118px; }
 .np-s-papers .pp-card .pp-fig svg { height: 100%; }
+
+/* 카드 높이 통일: 모든 카드가 같은 높이, 내용이 길면 카드 안에서 스크롤 */
+.np { overflow: hidden; }
+.np-track { align-items: stretch; height: 100%; }
+.np-viewport .np-slide { height: 100%; overflow-y: auto; overscroll-behavior: contain; }
